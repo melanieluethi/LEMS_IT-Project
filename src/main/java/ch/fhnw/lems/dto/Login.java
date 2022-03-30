@@ -1,10 +1,19 @@
-package ch.fhnw.lems.persistence;
+package ch.fhnw.lems.dto;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 // LUM
+@Entity
 public class Login {
+	@Id
+	@GeneratedValue
 	private Long loginId;
+	@ManyToOne
 	private User user;
 	private Date login;
 	private Date logout;

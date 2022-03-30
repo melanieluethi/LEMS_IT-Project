@@ -1,7 +1,14 @@
-package ch.fhnw.lems.persistence;
+package ch.fhnw.lems.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 //LUM
+@Entity
 public class Role {
+	@Id
+	@GeneratedValue
 	private Long roleId;
 	private String role;
 	

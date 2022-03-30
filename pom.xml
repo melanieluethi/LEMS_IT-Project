@@ -40,17 +40,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<!-- Image Dependency - https://www.baeldung.com/java-images#:~:text=By%20default%2C%20Java%20supports%20only,when%20accessing%20the%20BufferedImage%20variable. -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-			<groupId>com.twelvemonkeys.imageio</groupId>
-			<artifactId>imageio-bmp</artifactId>
-			<version>3.3.2</version>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.twelvemonkeys.imageio</groupId>
-			<artifactId>imageio-core</artifactId>
-			<version>3.3.2</version>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -62,5 +64,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

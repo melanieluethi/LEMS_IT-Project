@@ -1,7 +1,14 @@
-package ch.fhnw.lems.persistence;
+package ch.fhnw.lems.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 // LUM
+@Entity
 public class Country {
+	@Id
+	@GeneratedValue
 	private Long countyId;
 	private String country;
 

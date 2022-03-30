@@ -1,14 +1,22 @@
-package ch.fhnw.lems.persistence;
+package ch.fhnw.lems.dto;
 
-import javax.imageio.ImageIO;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Lob;
 
 // LUM
+@Entity
 public class Product {
+	@Id
+	@GeneratedValue
 	private Long productId;
 	private String Description;
 	private Double price;
 	private Integer discount;
-	private ImageIO productImg;
+	@Lob
+	private Byte[] productImg;
+	
 
 	public Long getProductId() {
 		return productId;
@@ -42,11 +50,11 @@ public class Product {
 		this.discount = discount;
 	}
 
-	public ImageIO getProductImg() {
+	public Byte[] getProductImg() {
 		return productImg;
 	}
 
-	public void setProductImg(ImageIO productImg) {
+	public void setProductImg(Byte[] productImg) {
 		this.productImg = productImg;
 	}
 }

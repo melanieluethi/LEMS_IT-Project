@@ -1,11 +1,20 @@
-package ch.fhnw.lems.persistence;
+package ch.fhnw.lems.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 // LUM
+@Entity
 public class Adress {
+	@Id
+	@GeneratedValue
 	private Long adressId;
 	private String street;
 	private Integer postalCode;
 	private String city;
+	@ManyToOne
 	private Country country;
 
 	public Long getAdressId() {

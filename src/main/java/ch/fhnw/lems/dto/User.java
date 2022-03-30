@@ -1,12 +1,21 @@
-package ch.fhnw.lems.persistence;
+package ch.fhnw.lems.dto;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 //LUM
+@Entity
 public class User {
+	@Id
+	@GeneratedValue
 	private Long userId;
 	private String lastname;
 	private String firstname;
 	private String email;
 	private String password;
+	@ManyToOne
 	private Role role;
 	
 	public Long getUserId() {
