@@ -3,6 +3,7 @@ package ch.fhnw.lems.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -11,6 +12,7 @@ public class OrderItem {
 	@GeneratedValue
 	private Long orderItemId;
 	@ManyToOne
+	@JoinColumn(name = "product_id")
 	private Product product;
 	private Integer quantity;
 

@@ -1,8 +1,10 @@
 package ch.fhnw.lems.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 //LUM
@@ -13,9 +15,11 @@ public class User {
 	private Long userId;
 	private String lastname;
 	private String firstname;
+	@Column(unique=true, nullable = false)
 	private String email;
 	private String password;
 	@ManyToOne
+	@JoinColumn(name = "role_id")
 	private Role role;
 	
 	public Long getUserId() {

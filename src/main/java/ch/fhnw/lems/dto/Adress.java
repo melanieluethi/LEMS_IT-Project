@@ -3,6 +3,7 @@ package ch.fhnw.lems.dto;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 // LUM
@@ -15,6 +16,7 @@ public class Adress {
 	private Integer postalCode;
 	private String city;
 	@ManyToOne
+	@JoinColumn(name = "country_id")
 	private Country country;
 
 	public Long getAdressId() {

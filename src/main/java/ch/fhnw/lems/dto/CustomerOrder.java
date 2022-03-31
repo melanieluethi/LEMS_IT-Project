@@ -5,18 +5,23 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 // LUM
 @Entity
-public class Order {
+public class CustomerOrder {
 	@Id
 	@GeneratedValue
 	private Long orderId;
+	
 	@ManyToOne
+	@JoinColumn(name = "user_id")
 	private User user;
-	@OneToMany  
+	
+	@OneToMany
+	@JoinColumn(name = "customer_order_id")
 	private List<OrderItem> orderItems;
 
 	public Long getOrderId() {

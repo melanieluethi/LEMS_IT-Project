@@ -10,7 +10,7 @@ public class Role {
 	@Id
 	@GeneratedValue
 	private Long roleId;
-	private String role;
+	private UserRole role;
 	
 	public Long getRoleId() {
 		return roleId;
@@ -20,11 +20,11 @@ public class Role {
 		this.roleId = roleId;
 	}
 	
-	public String getRole() {
+	public UserRole getRole() {
 		return role;
 	}
 	
-	public void setRole(String role) {
+	public void setRole(UserRole role) {
 		this.role = role;
 	}
 }
