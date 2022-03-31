@@ -29,11 +29,13 @@ public class LemsApplication {
 
 	@PostConstruct
 	public void createRole() {
-		Role adminRole = new Role();
-		adminRole.setRole(UserRole.ADMIN);
-		Role userRole = new Role();
-		userRole.setRole(UserRole.USER);
-		roleRepository.saveAll(Arrays.asList(adminRole, userRole));
+		if (roleRepository.findAll().isEmpty()) {
+			Role adminRole = new Role();
+			adminRole.setRole(UserRole.ADMIN);
+			Role userRole = new Role();
+			userRole.setRole(UserRole.USER);
+			roleRepository.saveAll(Arrays.asList(adminRole, userRole));
+		}
 	}
 	
 	// Vordefinierter Admin wird erstellt.

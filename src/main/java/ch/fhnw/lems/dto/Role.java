@@ -1,5 +1,6 @@
 package ch.fhnw.lems.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ public class Role {
 	@Id
 	@GeneratedValue
 	private Long roleId;
+	@Column(unique=true, nullable = false)
 	private UserRole role;
 	
 	public Long getRoleId() {
