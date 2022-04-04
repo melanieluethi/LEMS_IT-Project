@@ -23,6 +23,10 @@ public class LemsApplication {
 	@Autowired
 	private RoleRepository roleRepository;
 
+	@Autowired
+	private TransportCostRepository transportCostRepository;
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(LemsApplication.class, args);
 	}
@@ -37,7 +41,7 @@ public class LemsApplication {
 			roleRepository.saveAll(Arrays.asList(adminRole, userRole));
 		}
 	}
-	
+
 	// Vordefinierter Admin wird erstellt.
 	@PostConstruct
 	public void creatAdmin() {
@@ -52,4 +56,17 @@ public class LemsApplication {
 			userRepository.save(admin);			
 		}
 	}
+
+	// method for HiS Claculation Stuff
+	@PostConstruct
+	public void createTransportCost() {
+		if (transportCostRepository.findAll().isEmpty()) {
+			Role adminRole = new Role();
+			adminRole.setRole(UserRole.ADMIN);
+			Role userRole = new Role();
+			userRole.setRole(UserRole.USER);
+			roleRepository.saveAll(Arrays.asList(adminRole, userRole));
+		}
+	}
+
 }

@@ -7,8 +7,15 @@ public class PriceCalculationStandard {
     double testPrice;
 
 
-    if (testPaletts = 1){
-        switch(testDistance) {
+
+
+
+
+
+
+
+    if (testPaletts.equals(1.0)){
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 58.65;
                 break;
@@ -50,7 +57,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 2){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 87.00;
                 break;
@@ -88,7 +95,7 @@ public class PriceCalculationStandard {
                 testPrice = 223.80;
                 break;
             default:
-                //pls insert
+                testPrice = 99999999;
         }
     }
 
@@ -115,7 +122,7 @@ public class PriceCalculationStandard {
 
 
     else if(testPaletts = 3){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -157,7 +164,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 4){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -199,7 +206,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 5){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -241,7 +248,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 6){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -283,7 +290,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 7){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -325,7 +332,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 8){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -367,7 +374,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 9){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -409,7 +416,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 10){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -451,7 +458,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 11){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
@@ -493,7 +500,7 @@ public class PriceCalculationStandard {
         }
     }
     else if(testPaletts = 12){
-        switch(testDistance) {
+        switch((int) testDistance) {
             case testDistance < 30:
                 testPrice = 1;
                 break;
