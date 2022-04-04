@@ -1,7 +1,10 @@
 package ch.fhnw.lems.business;
 
-public class PricaCalculationExpress {
+public class PriceCalculationExpress {
 
+	
+	
+	//done by HiS
     //Preiskalulation EXPRESS
 
     //Formel: x=Distanz, y=Anz.Pal, a=Faktor, b=GewichtungPal, c=Zusatzgebühr
@@ -13,14 +16,18 @@ public class PricaCalculationExpress {
     private double expressFee = 80;
 
     //justForTesting -->pls delete befor handing in
-    private double testDistance;
-    private double testPallett;
+    private double distance;
+    private double pallett;
 
 
 
-
-
-
+    public double calculateExpressPrice() {
+    	
+    	//add fancy calculations
+    	
+    	
+    	return 0.0;
+    }
 
 
 
