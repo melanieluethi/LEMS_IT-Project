@@ -1,7 +1,7 @@
 package ch.fhnw.lems.service.messages;
 
-//LUM
-public class MessageResultProduct extends MessageResultStandard {
+// LUM
+public class MessageProduct {
 	private String description;
 	private Double price;
 	private Integer discount;

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import ch.fhnw.lems.dto.LoginHistory;
 
+// LUM
 @Repository
 public interface LoginHistoryRepository extends JpaRepository<LoginHistory, Integer> {
 		@Query(value="select id from login_history where user_id =:user_id order by login DESC LIMIT 1", nativeQuery = true)

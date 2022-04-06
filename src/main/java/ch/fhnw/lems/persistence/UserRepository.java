@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import ch.fhnw.lems.dto.User;
 
+// LUM
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 	User findByEmail(String email);

@@ -1,7 +1,7 @@
 package ch.fhnw.lems.service.messages;
 
 //LUM
-public class MessageResultProfileSetting extends MessageResultStandard {
+public class MessageUser {
 	private String firstname;
 	private String lastname;
 	private String address;
@@ -74,4 +74,5 @@ public class MessageResultProfileSetting extends MessageResultStandard {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 }
