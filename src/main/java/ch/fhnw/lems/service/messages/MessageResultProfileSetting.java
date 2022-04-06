@@ -10,6 +10,7 @@ public class MessageResultProfileSetting extends MessageResultStandard {
 	private String country;
 	private String email;
 	private String password;
+	private Long roleId;
 
 	public String getFirstname() {
 		return firstname;
@@ -73,5 +74,13 @@ public class MessageResultProfileSetting extends MessageResultStandard {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
 	}
 }

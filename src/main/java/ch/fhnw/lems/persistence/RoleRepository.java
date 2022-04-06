@@ -8,6 +8,6 @@ import ch.fhnw.lems.dto.UserRole;
 
 // LUM
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Integer> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
 	Role findByRole(UserRole role);
 }
