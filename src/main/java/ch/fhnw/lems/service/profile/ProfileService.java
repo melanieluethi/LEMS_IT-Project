@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -72,20 +74,24 @@ public class ProfileService {
 	
 	@GetMapping(path= "/api/userProfileSettings", produces = " application/json")
 	public ArrayList<MessageResultProfileSetting> getUsers(){
-		// TODO LUM Needs to check that only the admin can do it
-		List<User> users = userRepository.findAll();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		User currentUser = userRepository.findByUserName(username);
 		
 		ArrayList<MessageResultProfileSetting> msgResults = new ArrayList<>();
-		users.forEach(u -> {
-			MessageResultProfileSetting msgResultUser = new MessageResultProfileSetting();
-			msgResultUser.setId(u.getUserId());
-			msgResultUser.setFirstname(u.getFirstname());
-			msgResultUser.setLastname(u.getLastname());
-			msgResultUser.setEmail(u.getEmail());
-			msgResultUser.setPassword(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));			
-			msgResultUser.setRoleId(u.getRole().getRoleId());
-			msgResults.add(msgResultUser);
-		});	
+		if(currentUser.getRole().getRole().equals(UserRole.ADMIN)) {
+			List<User> users = userRepository.findAll();
+			users.forEach(u -> {
+				MessageResultProfileSetting msgResultUser = new MessageResultProfileSetting();
+				msgResultUser.setId(u.getUserId());
+				msgResultUser.setFirstname(u.getFirstname());
+				msgResultUser.setLastname(u.getLastname());
+				msgResultUser.setEmail(u.getEmail());
+				msgResultUser.setPassword(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));			
+				msgResultUser.setRoleId(u.getRole().getRoleId());
+				msgResults.add(msgResultUser);
+			});	
+		} 
 		return msgResults;
 	}
 	

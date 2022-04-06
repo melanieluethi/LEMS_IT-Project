@@ -80,9 +80,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 						// Own logic after login
 						UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-						String email = userDetails.getUsername();						
-						User user = (User) userRepository.findByEmail(email);
-						logger.info("Der User: " + email + " hat sich erfolgreich eingeloggt!");
+						String username = userDetails.getUsername();						
+						User user = (User) userRepository.findByUserName(username);
+						logger.info("Der User: " + username + " hat sich erfolgreich eingeloggt!");
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		                LoginHistory loginHistory = new LoginHistory();
 		                loginHistory.setLogin(timestamp);
@@ -95,15 +95,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 						// Own logic after logout
 						UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-						String email = userDetails.getUsername();
-						User user = (User) userRepository.findByEmail(email);					
-						int lastLoginHistoryId = loginHistoryRepository.lastUserLogin(user.getUserId());
+						String username = userDetails.getUsername();
+						User user = (User) userRepository.findByUserName(username);					
+						Long lastLoginHistoryId = loginHistoryRepository.lastUserLogin(user.getUserId());
 						Optional<LoginHistory> historyList = loginHistoryRepository.findById(lastLoginHistoryId);
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());  
 		                LoginHistory history =  historyList.get();
 		                history.setLogout(timestamp);
 		                loginHistoryRepository.save(history);		                
-						logger.info("Der User: " + email + " hat sich erfolgreich abgemeldet!");
+						logger.info("Der User: " + username + " hat sich erfolgreich abgemeldet!");
 						response.sendRedirect(request.getContextPath());
 					}
 				}).permitAll();

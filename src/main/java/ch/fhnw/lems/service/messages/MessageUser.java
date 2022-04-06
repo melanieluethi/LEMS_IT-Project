@@ -2,6 +2,7 @@ package ch.fhnw.lems.service.messages;
 
 //LUM
 public class MessageUser {
+	private String username;
 	private String firstname;
 	private String lastname;
 	private String address;
@@ -11,6 +12,14 @@ public class MessageUser {
 	private String email;
 	private String password;
 	private Long roleId;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	public String getFirstname() {
 		return firstname;
