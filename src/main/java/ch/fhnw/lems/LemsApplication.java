@@ -43,6 +43,7 @@ public class LemsApplication {
 	public void creatAdmin() {
 		if (userRepository.findAll().isEmpty()) {
 			User admin = new User();
+			admin.setUsername("admin");
 			admin.setFirstname("LEMS");
 			admin.setLastname("Administrator");
 			admin.setEmail("administrator@lems.ch");
