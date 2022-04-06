@@ -1,6 +1,6 @@
 package ch.fhnw.lems.service.messages;
 
 //LUM
-public class MessageAddProduct {
-
+public class MessageAddProduct extends MessageProduct {
+	
 }
