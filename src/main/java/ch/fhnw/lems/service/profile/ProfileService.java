@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.fhnw.lems.dto.Language;
 import ch.fhnw.lems.dto.Role;
 import ch.fhnw.lems.dto.User;
 import ch.fhnw.lems.dto.UserRole;
 import ch.fhnw.lems.persistence.RoleRepository;
 import ch.fhnw.lems.persistence.UserRepository;
+import ch.fhnw.lems.service.messages.MessageChangeLanguage;
 import ch.fhnw.lems.service.messages.MessageChangePassword;
 import ch.fhnw.lems.service.messages.MessageChangeProfileSetting;
 import ch.fhnw.lems.service.messages.MessageCreateUser;
@@ -41,6 +43,7 @@ public class ProfileService {
 		user.setLastname(msgUser.getLastname());
 		user.setEmail(msgUser.getEmail());
 		user.setPassword(BCrypt.hashpw(msgUser.getPassword(), BCrypt.gensalt(12)));
+		user.setLanguage(Language.valueOf(msgUser.getLanguage()));
 		Role role = roleRepository.findByRole(UserRole.USER);
 		user.setRole(role);
 		User savedUser = userRepository.save(user);
@@ -103,6 +106,7 @@ public class ProfileService {
 			user.setLastname(msgProfileSetting.getLastname());
 			user.setEmail(msgProfileSetting.getEmail());
 			user.setPassword(BCrypt.hashpw(msgProfileSetting.getPassword(), BCrypt.gensalt(12)));
+			user.setLanguage(Language.valueOf(msgProfileSetting.getLanguage()));
 			Role role = roleRepository.getById(msgProfileSetting.getRoleId());
 			user.setRole(role);
 			userRepository.save(user);
@@ -119,6 +123,21 @@ public class ProfileService {
 		if(user != null) {
 			user.setPassword(BCrypt.hashpw(msgPassword.getNewPassword(), BCrypt.gensalt(12)));
 			userRepository.save(user);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	@PutMapping(path = "/api/changeLanguage", produces = "application/json")
+	public boolean changeLanguage(@RequestBody MessageChangeLanguage msgLanguage) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		User currentUser = userRepository.findByUsername(username);
+		
+		if(currentUser != null) {
+			currentUser.setLanguage(Language.valueOf(msgLanguage.getLanguage()));
+			userRepository.save(currentUser);
 			return true;
 		} else {
 			return false;

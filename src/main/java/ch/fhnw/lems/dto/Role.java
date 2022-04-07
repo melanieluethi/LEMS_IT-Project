@@ -1,7 +1,8 @@
 package ch.fhnw.lems.dto;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -11,21 +12,21 @@ public class Role {
 	@Id
 	@GeneratedValue
 	private Long roleId;
-	@Column(unique=true, nullable = false)
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
-	
+
 	public Long getRoleId() {
 		return roleId;
 	}
-	
+
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
-	
+
 	public UserRole getRole() {
 		return role;
 	}
-	
+
 	public void setRole(UserRole role) {
 		this.role = role;
 	}
