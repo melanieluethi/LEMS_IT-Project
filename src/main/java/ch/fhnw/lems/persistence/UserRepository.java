@@ -8,5 +8,5 @@ import ch.fhnw.lems.dto.User;
 // LUM
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-	User findByUserName(String username);
+	User findByUsername(String username);
 }

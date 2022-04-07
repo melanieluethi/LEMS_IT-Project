@@ -1,29 +1,29 @@
 package ch.fhnw.lems.service.messages;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import ch.fhnw.lems.dto.Product;
+import ch.fhnw.lems.dto.OrderItem;
 
 // LUM
 public class MessageOrder {
-	private String userId;
-	private ArrayList<Product> products;
+	private Long userId;
+	private List<OrderItem> orderItems;
 	private Long shippingId;
 
-	public String getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public ArrayList<Product> getProducts() {
-		return products;
+	public List<OrderItem> getOrderItems() {
+		return orderItems;
 	}
 
-	public void setProducts(ArrayList<Product> products) {
-		this.products = products;
+	public void setOrderItems(List<OrderItem> orderItems) {
+		this.orderItems = orderItems;
 	}
 
 	public Long getShippingId() {

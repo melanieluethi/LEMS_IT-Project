@@ -1,13 +1,97 @@
 package ch.fhnw.lems.service.product;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.fhnw.lems.dto.Product;
+import ch.fhnw.lems.dto.User;
+import ch.fhnw.lems.dto.UserRole;
 import ch.fhnw.lems.persistence.ProductRepository;
+import ch.fhnw.lems.persistence.UserRepository;
+import ch.fhnw.lems.service.messages.MessageAddProduct;
+import ch.fhnw.lems.service.messages.MessageChangeProduct;
+import ch.fhnw.lems.service.messages.MessageResultProduct;
 
 //LUM
 @RestController
 public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
+	
+	@GetMapping(path= "/api/products", produces = " application/json")
+	public ArrayList<MessageResultProduct> getProducts(){
+		List<Product> products = productRepository.findAll();
+		
+		ArrayList<MessageResultProduct> results = new ArrayList<>();
+		products.forEach(p -> {
+			MessageResultProduct msgProduct = new MessageResultProduct();
+			msgProduct.setId(p.getProductId());
+			msgProduct.setDescription(p.getDescription());
+			msgProduct.setDiscount(p.getDiscount());
+			msgProduct.setPrice(p.getPrice());
+			msgProduct.setProductImg(p.getProductImg());
+			results.add(msgProduct);
+		});
+		return results;
+	}
+	
+	@GetMapping(path= "/api/product/{productId}", produces = " application/json")
+	public MessageResultProduct getProduct(@PathVariable Long productId){
+		Product product = productRepository.getById(productId);		
+		MessageResultProduct msgResult = new MessageResultProduct();
+		if (product != null) {
+			msgResult.setSuccessful(true);
+			msgResult.setId(product.getProductId());
+			msgResult.setDescription(product.getDescription());
+			msgResult.setDiscount(product.getDiscount());
+			msgResult.setPrice(product.getPrice());
+			msgResult.setProductImg(product.getProductImg());
+		} else {
+			msgResult.setSuccessful(true);
+		}
+		return msgResult;
+	}
+	
+	@PostMapping (path = "/api/createProduct", produces = "application/json")
+	public boolean createProduct(@RequestBody MessageAddProduct msgProduct) {
+		Product product = new Product();
+		product.setDescription(msgProduct.getDescription());
+		product.setDiscount(msgProduct.getDiscount());
+		product.setPrice(msgProduct.getPrice());
+		product.setProductImg(msgProduct.getProductImg());
+		productRepository.save(product);
+		return true;
+	}
+	
+	@PutMapping(path = "/api/changeProduct", produces = "application/json")
+	public boolean changeProduct(@RequestBody MessageChangeProduct msgProduct) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		User currentUser = userRepository.findByUsername(username);
+		
+		if(currentUser.getRole().getRole().equals(UserRole.ADMIN)) {
+			Product product = new Product();
+			product.setDescription(msgProduct.getDescription());
+			product.setDiscount(msgProduct.getDiscount());
+			product.setPrice(msgProduct.getPrice());
+			product.setProductImg(msgProduct.getProductImg());
+			productRepository.save(product);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
