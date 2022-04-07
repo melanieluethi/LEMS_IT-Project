@@ -7,7 +7,7 @@ import ch.fhnw.lems.dto.Shipping;
 import ch.fhnw.lems.dto.User;
 
 // LUM
-public class MessageResultShoppingCard extends MessageResultStandard {
+public class MessageResultOrder extends MessageResultStandard {
 	private User user;
 	private List<OrderItem> orderItems;
 	private Shipping shipping;

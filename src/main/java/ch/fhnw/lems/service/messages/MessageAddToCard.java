@@ -3,7 +3,7 @@ package ch.fhnw.lems.service.messages;
 //LUM
 public class MessageAddToCard {
 	private Long productId;
-	private Long quantity;
+	private Integer quantity;
 	private Double price;
 
 	public Long getProductId() {
@@ -14,11 +14,11 @@ public class MessageAddToCard {
 		this.productId = productId;
 	}
 
-	public Long getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(Long quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 

@@ -2,7 +2,6 @@ package ch.fhnw.lems.springSecurity;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.Optional;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -81,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						// Own logic after login
 						UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 						String username = userDetails.getUsername();						
-						User user = (User) userRepository.findByUserName(username);
+						User user = (User) userRepository.findByUsername(username);
 						logger.info("Der User: " + username + " hat sich erfolgreich eingeloggt!");
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		                LoginHistory loginHistory = new LoginHistory();
@@ -96,11 +95,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						// Own logic after logout
 						UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 						String username = userDetails.getUsername();
-						User user = (User) userRepository.findByUserName(username);					
+						User user = (User) userRepository.findByUsername(username);					
 						Long lastLoginHistoryId = loginHistoryRepository.lastUserLogin(user.getUserId());
-						Optional<LoginHistory> historyList = loginHistoryRepository.findById(lastLoginHistoryId);
+						LoginHistory history = loginHistoryRepository.getById(lastLoginHistoryId);
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());  
-		                LoginHistory history =  historyList.get();
 		                history.setLogout(timestamp);
 		                loginHistoryRepository.save(history);		                
 						logger.info("Der User: " + username + " hat sich erfolgreich abgemeldet!");

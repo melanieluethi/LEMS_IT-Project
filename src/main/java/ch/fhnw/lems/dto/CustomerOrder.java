@@ -15,14 +15,18 @@ public class CustomerOrder {
 	@Id
 	@GeneratedValue
 	private Long orderId;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@OneToMany
 	@JoinColumn(name = "customer_order_id")
 	private List<OrderItem> orderItems;
+
+	@ManyToOne
+	@JoinColumn(name = "shipping_id")
+	private Shipping shipping;
 
 	public Long getOrderId() {
 		return orderId;
@@ -46,5 +50,13 @@ public class CustomerOrder {
 
 	public void setOrderItems(List<OrderItem> orderItems) {
 		this.orderItems = orderItems;
+	}
+
+	public Shipping getShipping() {
+		return shipping;
+	}
+
+	public void setShipping(Shipping shipping) {
+		this.shipping = shipping;
 	}
 }
