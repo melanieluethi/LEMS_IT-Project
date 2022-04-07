@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ch.fhnw.lems.dto.Language;
 import ch.fhnw.lems.dto.Role;
 import ch.fhnw.lems.dto.User;
 import ch.fhnw.lems.dto.UserRole;
@@ -48,6 +49,7 @@ public class LemsApplication {
 			admin.setLastname("Administrator");
 			admin.setEmail("administrator@lems.ch");
 			admin.setPassword("IAmAAdminOfLems2022");	
+			Language.valueOf("GERMAN");
 			Role role = roleRepository.findByRole(UserRole.ADMIN);
 			admin.setRole(role);
 			userRepository.save(admin);			

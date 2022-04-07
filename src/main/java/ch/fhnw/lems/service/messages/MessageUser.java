@@ -12,6 +12,7 @@ public class MessageUser {
 	private String email;
 	private String password;
 	private Long roleId;
+	private String language;
 
 	public String getUsername() {
 		return username;
@@ -91,5 +92,13 @@ public class MessageUser {
 
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 }
