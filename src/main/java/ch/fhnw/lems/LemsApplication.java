@@ -48,8 +48,8 @@ public class LemsApplication {
 			admin.setFirstname("LEMS");
 			admin.setLastname("Administrator");
 			admin.setEmail("administrator@lems.ch");
-			admin.setPassword("IAmAAdminOfLems2022");	
-			Language.valueOf("GERMAN");
+			admin.setPassword("IAmAAdminOfLems2022");
+			admin.setLanguage(Language.GERMAN);
 			Role role = roleRepository.findByRole(UserRole.ADMIN);
 			admin.setRole(role);
 			userRepository.save(admin);			
