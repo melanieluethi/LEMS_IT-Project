@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.fhnw.lems.dto.Product;
-import ch.fhnw.lems.dto.User;
-import ch.fhnw.lems.dto.UserRole;
+import ch.fhnw.lems.entity.Product;
+import ch.fhnw.lems.entity.User;
+import ch.fhnw.lems.entity.UserRole;
 import ch.fhnw.lems.persistence.ProductRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 import ch.fhnw.lems.service.messages.MessageAddProduct;

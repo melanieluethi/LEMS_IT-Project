@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ch.fhnw.lems.dto.Language;
-import ch.fhnw.lems.dto.Role;
-import ch.fhnw.lems.dto.User;
-import ch.fhnw.lems.dto.UserRole;
+import ch.fhnw.lems.entity.Language;
+import ch.fhnw.lems.entity.Role;
+import ch.fhnw.lems.entity.User;
+import ch.fhnw.lems.entity.UserRole;
 import ch.fhnw.lems.persistence.RoleRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 

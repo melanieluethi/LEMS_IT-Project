@@ -2,9 +2,9 @@ package ch.fhnw.lems.service.messages;
 
 import java.util.List;
 
-import ch.fhnw.lems.dto.OrderItem;
-import ch.fhnw.lems.dto.Shipping;
-import ch.fhnw.lems.dto.User;
+import ch.fhnw.lems.entity.OrderItem;
+import ch.fhnw.lems.entity.Shipping;
+import ch.fhnw.lems.entity.User;
 
 // LUM
 public class MessageResultShoppingCard extends MessageResultStandard {
