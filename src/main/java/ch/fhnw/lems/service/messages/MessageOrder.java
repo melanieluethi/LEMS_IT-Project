@@ -2,7 +2,7 @@ package ch.fhnw.lems.service.messages;
 
 import java.util.List;
 
-import ch.fhnw.lems.dto.OrderItem;
+import ch.fhnw.lems.entity.OrderItem;
 
 // LUM
 public class MessageOrder {

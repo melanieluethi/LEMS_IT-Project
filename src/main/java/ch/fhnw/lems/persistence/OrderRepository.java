@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import ch.fhnw.lems.dto.CustomerOrder;
+import ch.fhnw.lems.entity.CustomerOrder;
 
 // LUM
 public interface OrderRepository extends JpaRepository<CustomerOrder, Long> {

@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.fhnw.lems.dto.Language;
-import ch.fhnw.lems.dto.Role;
-import ch.fhnw.lems.dto.User;
-import ch.fhnw.lems.dto.UserRole;
+import ch.fhnw.lems.entity.Language;
+import ch.fhnw.lems.entity.Role;
+import ch.fhnw.lems.entity.User;
+import ch.fhnw.lems.entity.UserRole;
 import ch.fhnw.lems.persistence.RoleRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 import ch.fhnw.lems.service.messages.MessageChangeLanguage;
