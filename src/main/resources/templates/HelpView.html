@@ -1,0 +1,81 @@
+<!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden und
+https://www.youtube.com/watch?v=PaJrDAmrOB4-->
+<html lang="en">
+<head>
+    <title>Help</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/dummy.css">
+</head>
+<body>
+<a href="#en" data-reload>English</a>
+<a href="#de" data-reload>Deutsch</a>
+<nav class="navbar navbar-expand-md">
+  <a class="navbar-brand" href="#">LEMS Shipping</a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+	<span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="main-navigation">
+	<ul class="navbar-nav">
+		 <li class="nav-item">
+		<a class="nav-link" href="#">Home</a>
+	  </li>
+	  <li class="nav-item">
+	  	  <li class="nav-item">
+		<a class="nav-link" href="#">Profil</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="#">Help</a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="#">Language</a>
+	  </li>
+	  	  <li class="nav-item">
+		<a class="nav-link" href="#">Logout</a>
+	  </li>
+	</ul>
+  </div>
+</nav>
+<div class="help">
+<h1 id="greeting">Hello + name +, can we help you?</h1 >
+<p id="help"><br>You have reached the help page. Here you will find a short description of how to use our website and how to change the language.<br><br>
+From the home menu you can go directly to ordering products. In your profile you can change your personal data and view your orders.<br><br>
+We hope we could help you!<br>
+Your LEMS Team
+</p >
+
+</div>
+<script>
+// define language reload anchers
+var dataReload = document.querySelectorAll("[data-reload]")
+
+//Language translations
+var language = {
+	en: {
+		greeting: "Hello + name +, can we help you?",
+		help: "You have reached the help page. Here you will find a short description of how to use our website and how to change the language.From the home menu you can go directly to ordering products. In your profile you can change your personal data and view your orders. We hope we could help you! Your LEMS Team"
+	},
+	de: {
+		greeting: "Hallo + name +, können wir dir helfen?", 
+		help: "Du hast die Hilfeseite erreicht. Hier findest du eine kurze Beschreibung, wie du unsere Website benutzen und die Sprache ändern kannst. Von der Startseite kannst du sofort Produkte bestellen. In deinem Profil kannst du deine persönlichen Daten ändern und deine Bestellungen einsehen. Wir hoffen, dass wir dir geholfen haben! Dein LEMS Team"
+	}
+};
+//define language via window hash
+if(window.location.hash) {
+	if(window.location.hash ==="#de"){
+		greeting.textContent = language.de.greeting;
+		help.textContent = language.de.help;
+	}
+}
+for(i=0;i<=dataReload.length;i++){
+	dataReload[i].onclick = function(){
+		location.reload(true);
+	}
+}
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html >
