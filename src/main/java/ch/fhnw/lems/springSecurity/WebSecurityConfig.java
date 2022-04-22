@@ -21,9 +21,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
-import ch.fhnw.lems.dto.LoginHistory;
-import ch.fhnw.lems.dto.User;
-import ch.fhnw.lems.dto.UserRole;
+import ch.fhnw.lems.entity.LoginHistory;
+import ch.fhnw.lems.entity.User;
+import ch.fhnw.lems.entity.UserRole;
 import ch.fhnw.lems.persistence.LoginHistoryRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 

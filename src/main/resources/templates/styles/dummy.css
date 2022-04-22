@@ -1,0 +1,76 @@
+/*-- Eveline--*/
+body {
+  padding: 0;
+  margin: 0;
+  background: #f9f9f9;
+}
+/*-- Navigationsleiste --*/
+.navbar {
+  background:#c9c9c9;
+}
+.nav-link,
+.navbar-brand {
+  color: grey;
+  cursor: pointer;
+}
+.nav-link {
+  margin-right: 1em !important;
+}
+.nav-link:hover,
+.navbar-brand:hover {
+  color: grey;
+  text-decoration: underline;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+}
+.welcome{
+  left: 50%;
+  position: absolute;
+  top: 40%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+  font-size:2vw;
+}
+h1 {
+  color: #bdbdbd;
+  font-size:6vw;
+}
+.register, .logout, .successfulOrder{
+  text-align: center;
+  font-size:2vw;
+}
+.help, .adminView {
+	text-align: left;
+	margin-left: 5%;
+	font-size:2vw;
+}
+input, text{
+	border-radius: 5px;
+	color: #bdbdbd;
+	margin: 0.5%;
+}
+.register #fname{
+	width: 45%;
+}
+.register #lname{
+	width: 45%;
+}
+.register #address{
+	width: 35%;
+}
+.register #zip{
+	width: 9.5%;
+}
+.register #city{
+	width: 35%;
+}
+.register #country{
+	width: 9.5%;
+}
+.register #email{
+	width: 45%;
+}
+.register #password{
+	width: 45%;
+}
