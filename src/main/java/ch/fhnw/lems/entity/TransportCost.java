@@ -1,4 +1,4 @@
-package ch.fhnw.lems.dto;
+package ch.fhnw.lems.entity;
 
 
 
@@ -6,8 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-    // done by HiS
-
+ // done by HiS
 @Entity
 public class TransportCost {
 
@@ -27,10 +26,6 @@ public class TransportCost {
     private double pallet10;
     private double pallet11;
     private double pallet12;
-
-
-
-
 
 
     public Long getTransportcostId() {

@@ -16,10 +16,17 @@ public class SpaceCalculation {
 	private int testSumP3;
 	private int testSumP4;
 
-	private int weightMultiplicatorP1 = 20;
-	private int weightMultiplicatorP2 = 60;
-	private int weightMultiplicatorP3 = 58;
-	private int weightMultiplicatorP4 = 2;
+	private static int WEIGHT_MULTIPLICATOR_P1 = 20;
+	private static int weightMultiplicatorP2 = 60;
+	private static int weightMultiplicatorP3 = 58;
+	private static int weightMultiplicatorP4 = 2;
+	
+	//WEIGHT_MULTIPLICATOR_P2
+	
+	private double spaceMultiplicatorP1 = 0.0;
+	private double spaceMultiplicatorP2 = 0.0;
+	private double spaceMultiplicatorP3 = 0.0;
+	private double spaceMultiplicatorP4 = 0.0;
 
 	private int weightP1;
 	private int weightP2;
@@ -37,7 +44,7 @@ public class SpaceCalculation {
 	public double calculateWight() {
 
 		if (testSumP1 != 0) {
-			weightP1 = testSumP1 * weightMultiplicatorP1;
+			weightP1 = testSumP1 * WEIGHT_MULTIPLICATOR_P1;
 		}
 
 		if (testSumP2 != 0) {
@@ -66,7 +73,14 @@ public class SpaceCalculation {
 			palletSpaceP1 = 0.0;
 		}
 		
+		// p1/platz1 = 2 paletten
+		// ...
+		// = gesamt = 7.5 = 8.0
 		
+		
+		
+		
+		//summ of all pallets must be <= 12
 		
 		
 		
