@@ -79,7 +79,7 @@ public class SpaceCalculation {
 		
 		
 		
-		
+		//asdasda sdasd
 		//summ of all pallets must be <= 12
 		
 		
