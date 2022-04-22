@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ch.fhnw.lems.dto.TransportCost;
 import ch.fhnw.lems.entity.Language;
 import ch.fhnw.lems.entity.Role;
 import ch.fhnw.lems.entity.User;

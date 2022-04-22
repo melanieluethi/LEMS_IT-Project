@@ -54,7 +54,7 @@ public class SpaceCalculation {
 
 		totalWeight = weightP1 + weightP2 + weightP3 + weightP4;
 
-		return 0;
+		return totalWeight;
 
 	}
 
