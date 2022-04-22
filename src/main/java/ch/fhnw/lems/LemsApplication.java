@@ -55,9 +55,19 @@ public class LemsApplication {
 			admin.setEmail("administrator@lems.ch");
 			admin.setPassword("IAmAAdminOfLems2022");
 			admin.setLanguage(Language.GERMAN);
-			Role role = roleRepository.findByRole(UserRole.ADMIN);
-			admin.setRole(role);
-			userRepository.save(admin);
+			Role adminRole = roleRepository.findByRole(UserRole.ADMIN);
+			admin.setRole(adminRole);
+			userRepository.save(admin);			
+			User testUser1 = new User();
+			testUser1.setUsername("testUser1");
+			testUser1.setFirstname("Test");
+			testUser1.setLastname("User 1");
+			testUser1.setEmail("testUser1@lems.ch");
+			testUser1.setPassword("IAmATestUserOfLems2022");
+			testUser1.setLanguage(Language.GERMAN);
+			Role userRole = roleRepository.findByRole(UserRole.USER);
+			testUser1.setRole(userRole);
+			userRepository.save(testUser1);
 		}
 	}
 
