@@ -57,13 +57,13 @@ input, text{
 	width: 45%;
 }
 .register #address{
-	width: 35%;
+	width: 34%;
 }
 .register #zip{
 	width: 9.5%;
 }
 .register #city{
-	width: 35%;
+	width: 34%;
 }
 .register #country{
 	width: 9.5%;
@@ -73,4 +73,7 @@ input, text{
 }
 .register #password{
 	width: 45%;
+}
+nav .ul{
+	visibility: hidden;
 }
