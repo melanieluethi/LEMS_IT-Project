@@ -1,4 +1,4 @@
-package ch.fhnw.lems.dto;
+package ch.fhnw.lems.entity;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import javax.persistence.OneToMany;
 
 // LUM
 @Entity
-public class Card {
+public class CustomerOrder {
 	@Id
 	@GeneratedValue
-	private Long cardId;
+	private Long orderId;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -28,12 +28,12 @@ public class Card {
 	@JoinColumn(name = "shipping_id")
 	private Shipping shipping;
 
-	public Long getCardId() {
-		return cardId;
+	public Long getOrderId() {
+		return orderId;
 	}
 
-	public void setCardId(Long cardId) {
-		this.cardId = cardId;
+	public void setOrderId(Long orderId) {
+		this.orderId = orderId;
 	}
 
 	public User getUser() {

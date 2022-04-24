@@ -3,8 +3,8 @@ package ch.fhnw.lems.persistence;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ch.fhnw.lems.dto.Role;
-import ch.fhnw.lems.dto.UserRole;
+import ch.fhnw.lems.entity.Role;
+import ch.fhnw.lems.entity.UserRole;
 
 // LUM
 @Repository

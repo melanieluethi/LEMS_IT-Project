@@ -1,4 +1,4 @@
-package ch.fhnw.lems.dto;
+package ch.fhnw.lems.entity;
 
 public enum UserRole {
 	ADMIN,
