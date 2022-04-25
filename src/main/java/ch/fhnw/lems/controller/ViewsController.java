@@ -43,7 +43,7 @@ public class ViewsController {
 
 	@GetMapping("/loginView")
 	public String loginView() {
-		return "loginView";
+		return "LoginView.html";
 	}
 
 	@GetMapping("/logoutView")

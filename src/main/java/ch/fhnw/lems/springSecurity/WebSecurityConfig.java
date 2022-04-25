@@ -48,12 +48,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				.antMatchers("/", "/home").permitAll()
+				.antMatchers("/**").permitAll()
 				.antMatchers("/admin").hasRole(UserRole.ADMIN.name())
 				.antMatchers("/user").hasRole(UserRole.USER.name())
 				// rights for services
 				.antMatchers("api/createUser").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
-				.antMatchers("api//profileSettings/{userId}").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
+				.antMatchers("api/profileSettings/{userId}").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
 				.antMatchers("api/userProfileSettings").hasRole(UserRole.ADMIN.name())
 				.antMatchers("api/profileSettings").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
 				.antMatchers("api/changePassword").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
@@ -76,15 +76,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("cartView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())				
 				.antMatchers("helpView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())		
 				.antMatchers("homeView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
-				.antMatchers("loginView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())		
 				.antMatchers("logoutView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
 				.antMatchers("productChoiceView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())		
-				.antMatchers("registerView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
 				.antMatchers("successfulOrderView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())		
 				.antMatchers("userManagementView").hasAnyRole(UserRole.ADMIN.name(),UserRole.USER.name())
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
+			.loginPage("/loginView")
 				.successHandler(new AuthenticationSuccessHandler() {
 					@Override
 					public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -97,8 +96,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		                LoginHistory loginHistory = new LoginHistory();
 		                loginHistory.setLogin(timestamp);
 		                loginHistory.setUser(user);
-		                loginHistoryRepository.save(loginHistory);		                
-						response.sendRedirect(request.getContextPath());
+		                loginHistoryRepository.save(loginHistory);
+						//response.sendRedirect(request.getContextPath());
 					}
 				}).and().logout().logoutSuccessHandler(new LogoutSuccessHandler() {
 					@Override
@@ -113,7 +112,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		                history.setLogout(timestamp);
 		                loginHistoryRepository.save(history);		                
 						logger.info("Der User: " + username + " hat sich erfolgreich abgemeldet!");
-						response.sendRedirect(request.getContextPath());
+						//response.sendRedirect(request.getContextPath());
 					}
 				}).permitAll();
 			http.csrf().disable();
