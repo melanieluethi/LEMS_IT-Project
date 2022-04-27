@@ -8,37 +8,37 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ViewsController {
 	@GetMapping("/adminOrdersView")
 	public String adminOrdersView() {
-		return "adminOrdersView";
+		return "AdminOrdersView.html";
 	}
 
 	@GetMapping("/adminProductsView")
 	public String adminProductsView() {
-		return "adminProductsView";
+		return "AdminProductsView.html";
 	}
 
 	@GetMapping("/adminUsersView")
 	public String adminUsersView() {
-		return "adminUsersView";
+		return "AdminUsersView.html";
 	}
 
 	@GetMapping("/adminView")
 	public String adminView() {
-		return "adminView";
+		return "AdminView.html";
 	}
 
 	@GetMapping("/cartView")
 	public String cartView() {
-		return "cartView";
+		return "CartView.html";
 	}
 
 	@GetMapping("/helpView")
 	public String helpView() {
-		return "helpView";
+		return "HelpView.html";
 	}
 
 	@GetMapping("/homeView")
 	public String homeView() {
-		return "homeView";
+		return "HomeView.html";
 	}
 
 	@GetMapping("/loginView")
@@ -48,26 +48,26 @@ public class ViewsController {
 
 	@GetMapping("/logoutView")
 	public String logoutView() {
-		return "logoutView";
+		return "LogoutView.html";
 	}
 
 	@GetMapping("/productChoiceView")
 	public String productChoiceView() {
-		return "productChoiceView";
+		return "ProductChoiceView.html";
 	}
 
 	@GetMapping("/registerView")
 	public String registerView() {
-		return "registerView";
+		return "RegisterView.html";
 	}
 	
 	@GetMapping("/successfulOrderView")
 	public String successfulOrderView() {
-		return "successfulOrderView";
+		return "SuccessfulOrderView.html";
 	}
 
 	@GetMapping("/userManagementView")
 	public String userManagementView() {
-		return "userManagementView";
+		return "UserManagementView.html";
 	}
 }
