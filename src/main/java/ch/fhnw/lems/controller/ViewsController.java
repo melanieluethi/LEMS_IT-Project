@@ -6,67 +6,62 @@ import org.springframework.web.bind.annotation.GetMapping;
 // LUM
 @Controller
 public class ViewsController {
-	@GetMapping("/adminOrdersView")
-	public String adminOrdersView() {
+	@GetMapping("/adminOrders")
+	public String adminOrders() {
 		return "AdminOrdersView.html";
 	}
 
-	@GetMapping("/adminProductsView")
-	public String adminProductsView() {
+	@GetMapping("/adminProducts")
+	public String adminProducts() {
 		return "AdminProductsView.html";
 	}
 
-	@GetMapping("/adminUsersView")
-	public String adminUsersView() {
+	@GetMapping("/adminUsers")
+	public String adminUsers() {
 		return "AdminUsersView.html";
 	}
 
-	@GetMapping("/adminView")
-	public String adminView() {
+	@GetMapping("/admin")
+	public String admin() {
 		return "AdminView.html";
 	}
 
-	@GetMapping("/cartView")
-	public String cartView() {
+	@GetMapping("/cart")
+	public String cart() {
 		return "CartView.html";
 	}
 
-	@GetMapping("/helpView")
-	public String helpView() {
+	@GetMapping("/help")
+	public String help() {
 		return "HelpView.html";
 	}
 
-	@GetMapping("/homeView")
-	public String homeView() {
+	@GetMapping("/home")
+	public String home() {
 		return "HomeView.html";
 	}
 
-	@GetMapping("/loginView")
-	public String loginView() {
+	@GetMapping("/login")
+	public String login() {
 		return "LoginView.html";
 	}
 
-	@GetMapping("/logoutView")
-	public String logoutView() {
-		return "LogoutView.html";
-	}
-
-	@GetMapping("/productChoiceView")
-	public String productChoiceView() {
+	@GetMapping("/productChoice")
+	public String productChoice() {
 		return "ProductChoiceView.html";
 	}
 
-	@GetMapping("/registerView")
-	public String registerView() {
+	@GetMapping("/register")
+	public String register() {
 		return "RegisterView.html";
 	}
 	
-	@GetMapping("/successfulOrderView")
+	@GetMapping("/successfulOrder")
 	public String successfulOrderView() {
 		return "SuccessfulOrderView.html";
 	}
 
-	@GetMapping("/userManagementView")
+	@GetMapping("/userManagement")
 	public String userManagementView() {
 		return "UserManagementView.html";
 	}

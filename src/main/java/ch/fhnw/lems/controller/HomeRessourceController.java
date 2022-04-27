@@ -30,12 +30,12 @@ public class HomeRessourceController {
 		//
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			if (role.contains(UserRole.ADMIN.name())) {
-				return new RedirectView("/adminView");
+				return new RedirectView("/admin");
 			} else if (role.contains(UserRole.USER.name())) {
-				return new RedirectView("/homeView");
+				return new RedirectView("/home");
 			}
 		}
-		return new RedirectView("/loginView");
+		return new RedirectView("/login");
 	}
 	
 	//https://stackoverflow.com/questions/20848312/how-to-correctly-logout-user-in-spring-security
@@ -45,6 +45,6 @@ public class HomeRessourceController {
 	    if (auth != null){    
 	        new SecurityContextLogoutHandler().logout(request, response, auth);
 	    }
-	    return "redirect:/loginView?logout";
+	    return "redirect:/login?logout";
 	}
 }
