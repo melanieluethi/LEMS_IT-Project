@@ -33,8 +33,21 @@
 	</ul>
   </div>
 </nav>
+
+<!-- SCL -->
+
 <div class="admin">
 
+<h1>Admin</h1>
+<h2> Hello *name* & welcome to the administration view. </h2>
+<p> Here you can see all orders, products and users. <br />
+Just click on the desired button: </p>
+</div >
+
+<div class="admin">
+<button type="button" onclick="{controller.ViewsController.adminOrdersView()}">Orders</button>
+<button type="button" onclick="controller.ViewsController.adminProductsView();">Products</button>
+<button type="button" onclick="controller.ViewsController.adminUsersView();">Users</button>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

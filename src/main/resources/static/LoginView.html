@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<!-- SCL>
+
+<!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
 <html>
 <head>
     <title>Login</title>
@@ -12,6 +14,16 @@
 <nav class="navbar navbar-expand-md">
   <a class="navbar-brand" href="#">LEMS Shipping</a>
 </nav>
+<div class="login">
+<h1>Welcome!</h1>
+<input type ="text" id="email" name="email" value="Email"> 
+<input type ="text" id="pw" name="pw" value="Password"> 
+</div >
+
+<div class="login">
+<button type="button" onclick="{controller.ViewsController.homeView()}">Login</button>
+<button type="button" onclick="controller.ViewsController.registerView();">Register</button>
+</div >
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
