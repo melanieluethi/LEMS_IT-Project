@@ -20,9 +20,9 @@ public class SpaceCalculation {
 	private static int weightMultiplicatorP2 = 60;
 	private static int weightMultiplicatorP3 = 58;
 	private static int weightMultiplicatorP4 = 2;
-	
-	//WEIGHT_MULTIPLICATOR_P2
-	
+
+	// WEIGHT_MULTIPLICATOR_P2
+
 	private double spaceMultiplicatorP1 = 0.0;
 	private double spaceMultiplicatorP2 = 0.0;
 	private double spaceMultiplicatorP3 = 0.0;
@@ -34,13 +34,13 @@ public class SpaceCalculation {
 	private int weightP4;
 
 	private int totalWeight;
-	
+
 	private double palletSpaceP1;
 	private double palletSpaceP2;
 	private double palletSpaceP3;
 	private double palletSpaceP4;
 
-	//calculate the weight per Product
+	// calculate the weight per Product
 	public double calculateWight() {
 
 		if (testSumP1 != 0) {
@@ -65,26 +65,39 @@ public class SpaceCalculation {
 
 	}
 
-	//Calculate the needed space
+	// input Matthias:
+	// Start bei breitestem Produkt
+	// anschliessend nur noch die höhe relevant
+
+	// Calculate the needed space
 	// max weight = 300kg/palett
 	public double calculateSpace() {
 
-		if (testSumP1 != 0) {
-			palletSpaceP1 = 0.0;
+		if (testSumP2 != 0) {
+			int p = 0;
+			double h= 0.0;
+			
+			h = testSumP2/10;
+			
+			
+			palletSpaceP2 = 2 * p;
+
 		}
-		
+
 		// p1/platz1 = 2 paletten
 		// ...
 		// = gesamt = 7.5 = 8.0
-		
-		
-		
-		//asdasda sdasd
-		//summ of all pallets must be <= 12
-		
-		
-		
+
+		// asdasda sdasd
+		// summ of all pallets must be <= 12
+
 		return 0;
 	}
+
+	// max 300kg pro Palette
+	// P1 max Stack:25 Min Space:1.2 weight: 25pc = 500kg --> 20kg
+	// P2 max Stack:10 Min Space:2 weight: 10pc = 600kg --> 60kg
+	// P3 max Stack:15 Min Space:2.5 weight 15pc = 870kg --> 58kg
+	// P4 max Stack:100 Min Space:0.8 weight: 100pc = 200kg --> 2kg
 
 }
