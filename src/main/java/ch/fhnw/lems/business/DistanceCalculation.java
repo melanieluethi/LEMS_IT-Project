@@ -1,8 +1,12 @@
 package ch.fhnw.lems.business;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 // done by HIS
-// Source PLZ <--> Gemeinde-ID: https://dam-api.bfs.admin.ch/hub/api/dam/assets/7226419/master
-// Source Distance: https://opendata.swiss/de/dataset/reisezeit-und-distanz-2017 
+// Source PLZ <--> Gemeinde-ID (Raw Data - transformation done by HIS): https://dam-api.bfs.admin.ch/hub/api/dam/assets/7226419/master
+// Source Distance (Raw Data - transformation done by HIS): https://opendata.swiss/de/dataset/reisezeit-und-distanz-2017 
 
 public class DistanceCalculation {
 
@@ -24,6 +28,35 @@ public class DistanceCalculation {
 		// search for baseGdeNr
 		// search for inputGdeNr
 		// get distance
+	
+    // -define .csv file in app
+    String fileName = "Distance.CSV";
+    // -File class needed to turn stringName to actual file
+    File file = new File(fileName);
+
+    /*
+     * try{
+        
+        Scanner scanner = new Scanner(file);
+        while(scanner.hasNext()){
+            String data = inputStream.next();
+            System.out.println(data + "***");
+
+        }
+        scanner.close();
+    }catch (FileNotFoundException e){
+
+        e.printStackTrace();
+    }
+     * 
+     */
+    
+	
+    
+	
+	
+	
+	
 	
 	
 	

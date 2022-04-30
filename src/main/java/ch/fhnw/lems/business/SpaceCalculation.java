@@ -23,11 +23,26 @@ public class SpaceCalculation {
 
 	// WEIGHT_MULTIPLICATOR_P2
 
-	private double spaceMultiplicatorP1 = 0.0;
-	private double spaceMultiplicatorP2 = 0.0;
-	private double spaceMultiplicatorP3 = 0.0;
-	private double spaceMultiplicatorP4 = 0.0;
+	private double spaceMultiplicatorP1 = 0.04;
+	private double spaceMultiplicatorP2 = 0.1;
+	private double spaceMultiplicatorP3 = 0.0666666;
+	private double spaceMultiplicatorP4 = 0.01;
+	
+	private double totalHeightP1;
+	private double totalHeightP2;
+	private double totalHeightP3;
+	private double totalHeightP4;
+	
+	private double restHeightP1;
+	private double restHeightP2;
+	private double restHeightP3;
+	private double restHeightP4;
 
+	private double palletSpaceP1;
+	private double palletSpaceP2;
+	private double palletSpaceP3;
+	private double palletSpaceP4;
+	
 	private int weightP1;
 	private int weightP2;
 	private int weightP3;
@@ -35,46 +50,78 @@ public class SpaceCalculation {
 
 	private int totalWeight;
 
-	private double palletSpaceP1;
-	private double palletSpaceP2;
-	private double palletSpaceP3;
-	private double palletSpaceP4;
-
 	// calculate the weight per Product
 	public double calculateWight() {
-
 		if (testSumP1 != 0) {
 			weightP1 = testSumP1 * WEIGHT_MULTIPLICATOR_P1;
 		}
-
 		if (testSumP2 != 0) {
 			weightP2 = testSumP2 * weightMultiplicatorP2;
 		}
-
 		if (testSumP3 != 0) {
 			weightP3 = testSumP3 * weightMultiplicatorP3;
 		}
-
 		if (testSumP4 != 0) {
 			weightP4 = testSumP4 * weightMultiplicatorP4;
 		}
-
 		totalWeight = weightP1 + weightP2 + weightP3 + weightP4;
-
 		return totalWeight;
 
 	}
 
-	// input Matthias:
-	// Start bei breitestem Produkt
-	// anschliessend nur noch die höhe relevant
 
+
+	
+	private double calculateRestSpace() {
+		if(testSumP1 != 0) {
+			totalHeightP1 = testSumP1 * spaceMultiplicatorP1;
+			palletSpaceP1 = totalHeightP1;
+			totalHeightP1 = totalHeightP1 - palletSpaceP1;
+		}
+		
+		if(testSumP1 != 0) {
+			totalHeightP2 = testSumP2 * spaceMultiplicatorP2;
+			palletSpaceP2 = totalHeightP2;
+			totalHeightP2 = totalHeightP2 - palletSpaceP2;
+		}
+		
+		if(testSumP3 != 0) {
+			
+			totalHeightP3 = testSumP3 * spaceMultiplicatorP3; // 123.456
+			palletSpaceP3 = totalHeightP3; // 123 & 123.456
+			totalHeightP3 = totalHeightP3 - palletSpaceP3; // 123.456 - 123 = 0.456
+		}
+		
+		
+		return 0.0;
+	}
+	
+	private double useRestSpace() {
+		//start mit grösstem
+		if(totalHeightP3 != 0) {
+			//start mit nächst grösserem
+			if(totalHeightP2 != 0) {
+				
+				for(int i; totalHeightP3 <=1 || totalHeightP1 == 0;) {
+					
+				}
+				
+			}			
+		}
+		
+		return 0.0;
+	}
+	
+	
+	
+	
 	// Calculate the needed space
 	// max weight = 300kg/palett
-	public double calculateSpace() {
-
-		if (testSumP2 != 0) {
-			int p = 0;
+	public double calculateSpace() {		
+		
+		/*
+		 * if (testSumP2 != 0) {
+		 * int p = 0;
 			double h= 0.0;
 			
 			h = testSumP2/10;
@@ -83,6 +130,8 @@ public class SpaceCalculation {
 			palletSpaceP2 = 2 * p;
 
 		}
+		 */
+			
 
 		// p1/platz1 = 2 paletten
 		// ...
