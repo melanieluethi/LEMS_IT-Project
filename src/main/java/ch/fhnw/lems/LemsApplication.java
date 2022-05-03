@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import ch.fhnw.lems.entity.Language;
 import ch.fhnw.lems.entity.Role;
@@ -53,7 +54,7 @@ public class LemsApplication {
 			admin.setFirstname("LEMS");
 			admin.setLastname("Administrator");
 			admin.setEmail("administrator@lems.ch");
-			admin.setPassword("IAmAAdminOfLems2022");
+			admin.setPassword(BCrypt.hashpw("admin", BCrypt.gensalt(12)));
 			admin.setLanguage(Language.GERMAN);
 			Role adminRole = roleRepository.findByRole(UserRole.ADMIN);
 			admin.setRole(adminRole);
@@ -63,7 +64,7 @@ public class LemsApplication {
 			testUser1.setFirstname("Test");
 			testUser1.setLastname("User 1");
 			testUser1.setEmail("testUser1@lems.ch");
-			testUser1.setPassword("IAmATestUserOfLems2022");
+			testUser1.setPassword(BCrypt.hashpw("testUser1", BCrypt.gensalt(12)));
 			testUser1.setLanguage(Language.GERMAN);
 			Role userRole = roleRepository.findByRole(UserRole.USER);
 			testUser1.setRole(userRole);
@@ -260,5 +261,4 @@ public class LemsApplication {
 					transportCost10, transportCost11, transportCost12));
 		}
 	}
-
 }

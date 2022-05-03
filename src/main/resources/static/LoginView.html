@@ -2,6 +2,8 @@
 
 <!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
 <html>
+<!-- <head xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">-->
 <head>
     <title>Login</title>
     <meta charset="utf-8">
@@ -9,23 +11,30 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/dummy.css">
 
-</head>
+</head >
 <body>
 <nav class="navbar navbar-expand-md">
   <a class="navbar-brand" href="/home">LEMS Shipping</a>
 </nav>
 <div class="login">
 <h1>Welcome!</h1>
-<input type ="text" id="email" name="email" placeholder="Email" required> 
-<input type ="text" id="pw" name="pw" placeholder="Password" required> 
-</div >
 
-<div class="login">
-<button type="button" onclick= "window.location.href='/home'">Login</button> <!--Melanie-->
-<button type="button" onclick="window.location.href='/register'">Register</button>
-</div >
+<!-- <form th:action="@{/userLogin}" method="post"> -->
+<form action="login" method="post">
+  <div class="login">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+    
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    
+    <button type="button" onclick="window.location.href='/register'">Register</button>
+    <button type="submit">Login</button>
+  </div>
+</form>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html >
