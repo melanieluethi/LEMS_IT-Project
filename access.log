@@ -1,3 +1,3 @@
-2022-04-29 11:23:13.745  INFO 20948 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-05-03 14:42:44.591  WARN 23948 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1d4h6m28s716ms763µs600ns).
 
 2022-04-29 11:24:54.771  INFO 8160 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
