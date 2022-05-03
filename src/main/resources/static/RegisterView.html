@@ -30,6 +30,25 @@
 <button class="btn btn-outline-secondary btn-lg" margin-left=5% type="submit">Register</button>
 </form>
 
+<!--<script type="text/javascript">
+	$(document).ready(function(){
+		$getJSON("api/user").done(setCurrentUser);
+		
+		$("#locales").change(function{
+			var selectedOption = $('#locales').val();
+			if (selectedOption !=''){
+				window.location.replace('admin?lang=' + selectedOption)
+			}
+		})
+	})
+	function getDefaultLanguage(data){
+		console.log(data[0]);
+		var defaultLanguage = data[0];
+		if(data[0] == en){
+			window.language.replace('admin?lang=' + defaultLanguage)
+		}
+	}
+</script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
