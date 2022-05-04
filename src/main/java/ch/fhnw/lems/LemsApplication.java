@@ -38,8 +38,10 @@ public class LemsApplication {
 	public void createRole() {
 		if (roleRepository.findAll().isEmpty()) {
 			Role adminRole = new Role();
+			adminRole.setRoleId(1l);
 			adminRole.setRole(UserRole.ADMIN);
 			Role userRole = new Role();
+			userRole.setRoleId(2l);
 			userRole.setRole(UserRole.USER);
 			roleRepository.saveAll(Arrays.asList(adminRole, userRole));
 		}

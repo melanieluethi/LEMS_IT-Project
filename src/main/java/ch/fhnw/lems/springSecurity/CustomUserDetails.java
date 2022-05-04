@@ -1,9 +1,10 @@
 package ch.fhnw.lems.springSecurity;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import ch.fhnw.lems.entity.User;
@@ -17,9 +18,13 @@ public class CustomUserDetails implements UserDetails {
 		this.user = user;
 	}
 
+	// https://stackoverflow.com/questions/32276482/java-lang-classcastexception-org-springframework-security-core-userdetails-user
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return Collections.EMPTY_LIST;
+		SimpleGrantedAuthority role = new SimpleGrantedAuthority(user.getRole().getRole().toString());
+		ArrayList<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+		roles.add(role);
+		return roles;
 	}
 
 	@Override

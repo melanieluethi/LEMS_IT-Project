@@ -39,7 +39,7 @@ public class CardService {
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);				
 		Card card = cardRepository.findByUser(currentUser.getUserId());
-		Product product = productRepository.getById(msgAddToCard.getProductId());
+		Product product = productRepository.findById(msgAddToCard.getProductId()).get();
 		OrderItem orderItem = new OrderItem();
 		orderItem.setProduct(product);
 		orderItem.setQuantity(msgAddToCard.getQuantity());

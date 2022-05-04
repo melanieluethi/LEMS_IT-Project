@@ -32,7 +32,7 @@ public class OrderService {
 	@PostMapping (path = "/api/order", produces = "application/json")
 	public boolean createOrder(@RequestBody MessageAddOrder msgOrder) {
 		CustomerOrder order = new CustomerOrder();
-		User user = userRepository.getById(msgOrder.getUserId());
+		User user = userRepository.findById(msgOrder.getUserId()).get();
 		order.setUser(user);
 		order.setOrderItems(msgOrder.getOrderItems());
 		orderRepository.save(order);	
@@ -46,7 +46,7 @@ public class OrderService {
 		User currentUser = userRepository.findByUsername(username);		
 		if(currentUser.getRole().getRole().equals(UserRole.ADMIN)) {
 			CustomerOrder order = new CustomerOrder();
-			User user = userRepository.getById(msgOrder.getUserId());
+			User user = userRepository.findById(msgOrder.getUserId()).get();
 			order.setUser(user);
 			order.setOrderItems(msgOrder.getOrderItems());
 			orderRepository.save(order);
@@ -58,7 +58,7 @@ public class OrderService {
 	
 	@GetMapping(path= "api/order/{orderId}", produces = " application/json")
 	public MessageResultOrder getOrder(@PathVariable Long orderId){
-		CustomerOrder order = orderRepository.getById(orderId);		
+		CustomerOrder order = orderRepository.findById(orderId).get();		
 		MessageResultOrder msgResultOrder = new MessageResultOrder();
 		msgResultOrder.setId(orderId);
 		msgResultOrder.setOrderItems(order.getOrderItems());

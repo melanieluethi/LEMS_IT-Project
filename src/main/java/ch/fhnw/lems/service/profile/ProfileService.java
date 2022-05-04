@@ -3,9 +3,13 @@ package ch.fhnw.lems.service.profile;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -59,7 +63,7 @@ public class ProfileService {
 	
 	@GetMapping(path= "/api/profileSettings/{userId}", produces = " application/json")
 	public MessageResultProfileSetting getUser(@PathVariable Long userId){
-		User user = userRepository.getById(userId);		
+		User user = userRepository.findById(userId).get();		
 		MessageResultProfileSetting msgResult = new MessageResultProfileSetting();
 		if(user != null) {
 			msgResult.setSuccessful(true);
@@ -75,7 +79,7 @@ public class ProfileService {
 		return msgResult;
 	}
 	
-	@GetMapping(path= "/api/userProfileSettings", produces = " application/json")
+	@GetMapping(path= "/api/userProfileSettings", produces = "application/json")
 	public ArrayList<MessageResultProfileSetting> getUsers(){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
@@ -98,16 +102,25 @@ public class ProfileService {
 		return msgResults;
 	}
 	
+	@GetMapping(path= "/api/user", produces = "application/json")
+	public User getUser(HttpServletRequest request, HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) auth.getPrincipal();
+		String username = userDetails.getUsername();
+		User user = (User) userRepository.findByUsername(username);
+		return user;
+	}
+	
 	@PutMapping(path = "/api/profileSettings", produces = "application/json")
 	public boolean changeProfileSettings(@RequestBody MessageChangeProfileSetting msgProfileSetting) {
-		User user = userRepository.getById(msgProfileSetting.getUserId());
+		User user = userRepository.findById(msgProfileSetting.getUserId()).get();
 		if(user != null) {
 			user.setFirstname(msgProfileSetting.getFirstname());
 			user.setLastname(msgProfileSetting.getLastname());
 			user.setEmail(msgProfileSetting.getEmail());
 			user.setPassword(BCrypt.hashpw(msgProfileSetting.getPassword(), BCrypt.gensalt(12)));
 			user.setLanguage(Language.valueOf(msgProfileSetting.getLanguage()));
-			Role role = roleRepository.getById(msgProfileSetting.getRoleId());
+			Role role = roleRepository.findById(msgProfileSetting.getRoleId()).get();
 			user.setRole(role);
 			userRepository.save(user);
 			return true;
@@ -119,7 +132,7 @@ public class ProfileService {
 	@PutMapping(path = "/api/changePassword", produces = "application/json")
 	public boolean changePassword(@RequestBody MessageChangePassword msgPassword) {
 		// TODO LUM validate Password
-		User user = userRepository.getById(msgPassword.getUserId());
+		User user = userRepository.findById(msgPassword.getUserId()).get();
 		if(user != null) {
 			user.setPassword(BCrypt.hashpw(msgPassword.getNewPassword(), BCrypt.gensalt(12)));
 			userRepository.save(user);

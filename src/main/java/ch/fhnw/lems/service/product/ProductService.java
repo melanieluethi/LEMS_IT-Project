@@ -50,7 +50,7 @@ public class ProductService {
 	
 	@GetMapping(path= "/api/product/{productId}", produces = " application/json")
 	public MessageResultProduct getProduct(@PathVariable Long productId){
-		Product product = productRepository.getById(productId);		
+		Product product = productRepository.findById(productId).get();		
 		MessageResultProduct msgResult = new MessageResultProduct();
 		if (product != null) {
 			msgResult.setSuccessful(true);

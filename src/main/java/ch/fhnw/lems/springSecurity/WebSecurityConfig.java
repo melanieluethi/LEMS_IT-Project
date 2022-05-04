@@ -60,32 +60,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/admin").hasRole(UserRole.ADMIN.name())
 				.antMatchers("/user").hasRole(UserRole.USER.name())
 				// rights for services
-				.antMatchers("api/createUser").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/profileSettings/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/userProfileSettings").hasRole(UserRole.ADMIN.name())
-				.antMatchers("api/profileSettings").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/changePassword").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/products").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/product/{productId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/addProductToCard").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/shoppingCard/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("api/product").hasRole(UserRole.ADMIN.name()).antMatchers("api/changeProduct")
-				.hasRole(UserRole.ADMIN.name()).antMatchers("api/order/")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("api/order/{orderd}")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("api/orders/{userId}")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("api/orders")
-				.hasRole(UserRole.ADMIN.name()).antMatchers("api/order").hasRole(UserRole.ADMIN.name())
+				.antMatchers("/api/user").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/createUser").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/profileSettings/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/userProfileSettings").hasRole(UserRole.ADMIN.name())
+				.antMatchers("/api/profileSettings").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/changePassword").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/products").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/product/{productId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/addProductToCard").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/shoppingCard/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/product").hasRole(UserRole.ADMIN.name())
+				.antMatchers("/api/changeProduct").hasRole(UserRole.ADMIN.name())
+				.antMatchers("/api/order/").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/order/{orderd}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/orders/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/orders").hasRole(UserRole.ADMIN.name())
+				.antMatchers("/api/order").hasRole(UserRole.ADMIN.name())
 				// Rights for views
-				.antMatchers("/adminOrders").hasAnyRole(UserRole.ADMIN.name()).antMatchers("/adminProducts")
-				.hasAnyRole(UserRole.ADMIN.name()).antMatchers("/adminUsers").hasAnyRole(UserRole.ADMIN.name())
-				.antMatchers("/admin").hasAnyRole(UserRole.ADMIN.name()).antMatchers("/cart")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("/help")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("/home")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("/logout")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("/productChoice")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("/successfulOrder")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).antMatchers("/userManagement")
-				.hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name()).anyRequest().authenticated().and().formLogin()
+				.antMatchers("/adminOrders").hasAnyRole(UserRole.ADMIN.name())
+				.antMatchers("/adminProducts").hasAnyRole(UserRole.ADMIN.name())
+				.antMatchers("/adminUsers").hasAnyRole(UserRole.ADMIN.name())
+				.antMatchers("/admin").hasAnyRole(UserRole.ADMIN.name())
+				.antMatchers("/cart").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/help").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/home").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/logout").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/productChoice").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/successfulOrder").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/userManagement").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.anyRequest().authenticated().and().formLogin()
 				.loginPage("/login").successHandler(new AuthenticationSuccessHandler() {
 					@Override
 					public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -100,7 +104,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						loginHistory.setLogin(timestamp);
 						loginHistory.setUser(user);
 						loginHistoryRepository.save(loginHistory);
-
 						if (user.getRole().getRole().equals(UserRole.ADMIN)) {
 							response.sendRedirect("/admin");
 						} else {
@@ -116,7 +119,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						String username = userDetails.getUsername();
 						User user = (User) userRepository.findByUsername(username);
 						Long lastLoginHistoryId = loginHistoryRepository.lastUserLogin(user.getUserId());
-						LoginHistory history = loginHistoryRepository.getById(lastLoginHistoryId);
+						LoginHistory history = loginHistoryRepository.findById(lastLoginHistoryId).get();
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 						history.setLogout(timestamp);
 						loginHistoryRepository.save(history);
