@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/dummy.css">
+    <meta charset="utf-8">
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
@@ -33,8 +34,40 @@
 	</ul>
   </div>
 </nav>
-<div class="productChoice">
 
+<!--SCL-->
+<div class="productChoice">
+ 
+  <form name="product_selection"action="/cart">
+  <select id="products" name="products">
+  	<option value="Selection">Select Product</option>
+    <option value="Product 1">Product 1</option>
+    <option value="Product 2">Product 2</option>
+    <option value="Product 3">Product 3</option>
+    <option value="Product 4">Product 4</option>
+  </select>
+ 
+  <input type="submit" value="Add to cart">
+</form>
+
+<!--has to get chnaged with checkbox-->
+<h1> Product title </h1>
+
+
+<p> Description Product</p>
+	
+<img src=“https://www.flaticon.com/de/kostenloses-icon/produkt_1311144“>
+
+<!--- 
+<script>
+        var e = document.getElementById("products");
+		var strUser = e.value;
+    
+     </script>
+-->
+
+<button type="button" onclick="window.location.href='/cart'">Cart</button>
+</div>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
