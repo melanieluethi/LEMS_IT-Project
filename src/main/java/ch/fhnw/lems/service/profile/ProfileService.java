@@ -37,14 +37,14 @@ import ch.fhnw.lems.service.messages.MessageResultStandard;
 @RestController
 public class ProfileService {
 	Logger logger = LoggerFactory.getLogger(ProfileService.class);
-	
+
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private RoleRepository roleRepository;
-	
-	@PostMapping (path = "/api/createUser", produces = "application/json")
+
+	@PostMapping(path = "/api/createUser", produces = "application/json")
 	public MessageResultStandard createUser(@RequestBody MessageCreateUser msgUser) {
 		User user = new User();
 		user.setFirstname(msgUser.getFirstname());
@@ -55,9 +55,9 @@ public class ProfileService {
 		Role role = roleRepository.findByRole(UserRole.USER);
 		user.setRole(role);
 		User savedUser = userRepository.save(user);
-		
+
 		MessageResultStandard msgResult = new MessageResultStandard();
-		if(savedUser != null) {
+		if (savedUser != null) {
 			logger.info("Create User " + savedUser.getUsername() + " was successful.");
 			msgResult.setSuccessful(true);
 		} else {
@@ -66,35 +66,35 @@ public class ProfileService {
 		}
 		return msgResult;
 	}
-	
-	@GetMapping(path= "/api/profileSettings/{userId}", produces = " application/json")
-	public MessageResultProfileSetting getUser(@PathVariable Long userId){
-		User user = userRepository.findById(userId).get();		
+
+	@GetMapping(path = "/api/profileSettings/{userId}", produces = " application/json")
+	public MessageResultProfileSetting getUser(@PathVariable Long userId) {
+		User user = userRepository.findById(userId).get();
 		MessageResultProfileSetting msgResult = new MessageResultProfileSetting();
-		if(user != null) {
+		if (user != null) {
 			msgResult.setSuccessful(true);
 			msgResult.setId(user.getUserId());
 			msgResult.setFirstname(user.getFirstname());
 			msgResult.setLastname(user.getLastname());
 			msgResult.setEmail(user.getEmail());
-			msgResult.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));			
+			msgResult.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
 			msgResult.setRoleId(user.getRole().getRoleId());
 			logger.info("Get User " + user.getUsername() + " was successful.");
 		} else {
 			logger.info("User do not exist.");
-			msgResult.setSuccessful(false);			
+			msgResult.setSuccessful(false);
 		}
 		return msgResult;
 	}
-	
-	@GetMapping(path= "/api/userProfileSettings", produces = "application/json")
-	public ArrayList<MessageResultProfileSetting> getUsers(){
+
+	@GetMapping(path = "/api/userProfileSettings", produces = "application/json")
+	public ArrayList<MessageResultProfileSetting> getUsers() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
-		
+
 		ArrayList<MessageResultProfileSetting> msgResults = new ArrayList<>();
-		if(currentUser.getRole().getRole().equals(UserRole.ADMIN)) {
+		if (currentUser.getRole().getRole().equals(UserRole.ADMIN)) {
 			List<User> users = userRepository.findAll();
 			users.forEach(u -> {
 				MessageResultProfileSetting msgResultUser = new MessageResultProfileSetting();
@@ -102,16 +102,16 @@ public class ProfileService {
 				msgResultUser.setFirstname(u.getFirstname());
 				msgResultUser.setLastname(u.getLastname());
 				msgResultUser.setEmail(u.getEmail());
-				msgResultUser.setPassword(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));			
+				msgResultUser.setPassword(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));
 				msgResultUser.setRoleId(u.getRole().getRoleId());
 				msgResults.add(msgResultUser);
 				logger.info("Get User " + u.getUsername() + " was successful.");
-			});	
+			});
 		}
 		return msgResults;
 	}
-	
-	@GetMapping(path= "/api/user", produces = "application/json")
+
+	@GetMapping(path = "/api/user", produces = "application/json")
 	public User getUser(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
@@ -120,11 +120,11 @@ public class ProfileService {
 		logger.info("Get User " + user.getUsername() + " was successful.");
 		return user;
 	}
-	
+
 	@PutMapping(path = "/api/profileSettings", produces = "application/json")
 	public boolean changeProfileSettings(@RequestBody MessageChangeProfileSetting msgProfileSetting) {
 		User user = userRepository.findById(msgProfileSetting.getUserId()).get();
-		if(user != null) {
+		if (user != null) {
 			user.setFirstname(msgProfileSetting.getFirstname());
 			user.setLastname(msgProfileSetting.getLastname());
 			user.setEmail(msgProfileSetting.getEmail());
@@ -140,12 +140,12 @@ public class ProfileService {
 			return false;
 		}
 	}
-	
+
 	@PutMapping(path = "/api/changePassword", produces = "application/json")
 	public boolean changePassword(@RequestBody MessageChangePassword msgPassword) {
-		// TODO LUM validate Password
 		User user = userRepository.findById(msgPassword.getUserId()).get();
-		if(user != null) {
+		if (user != null && !(msgPassword.getNewPassword().equals(msgPassword.getOldPassword())
+				&& msgPassword.getNewPassword().length() >= 8)) {
 			user.setPassword(BCrypt.hashpw(msgPassword.getNewPassword(), BCrypt.gensalt(12)));
 			userRepository.save(user);
 
@@ -156,14 +156,13 @@ public class ProfileService {
 			return false;
 		}
 	}
-	
+
 	@PutMapping(path = "/api/changeLanguage", produces = "application/json")
 	public boolean changeLanguage(@RequestBody MessageChangeLanguage msgLanguage) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
-		
-		if(currentUser != null) {
+		if (currentUser != null) {
 			currentUser.setLanguage(Language.valueOf(msgLanguage.getLanguage()));
 			userRepository.save(currentUser);
 			logger.info("Change Language of" + currentUser.getUsername() + " was successful.");
@@ -172,5 +171,5 @@ public class ProfileService {
 			logger.info("Change Language was not successful.");
 			return false;
 		}
-	}	
+	}
 }
