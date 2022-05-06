@@ -9,3 +9,4 @@ target/
 !**/src/test/**/target/
 *.gz
 *.log
+access.log
