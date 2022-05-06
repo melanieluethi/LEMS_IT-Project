@@ -1,20 +1,19 @@
 // wae angelehnt an https://stackoverflow.com/questions/46008760/how-to-build-multiple-language-website-using-pure-html-js-jquery
-var language;
-function getLanguage(){
-	(localStorage.getItem('language')== null)? setLanguage('en'):false;
-	$ajax({
-		url:'/language/' + localStorage.getItem('language') + '.json',
-		dataType:'json', async:false, dataType:'json',
-		success:function(lang){language = lang}});
-	}
-	
 function setLanguage(){
 	localStorage.setItem('language', lang);
 }
-window.onload = function(){
-	getLanguage();
-}
 
-$(document).ready(function(){
-	$('#welcome'.text(language.date));
+/*
+window.onload = function(){
+
+}
+*/
+
+$(document).ready(function() {
+    $("#locales").change(function () {
+        var selectedOption = $('#locales').val();
+        if (selectedOption != ''){
+            window.location.replace('international?lang=' + selectedOption);
+        }
+    });
 });
