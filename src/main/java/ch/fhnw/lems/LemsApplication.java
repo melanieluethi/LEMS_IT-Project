@@ -1,5 +1,8 @@
 package ch.fhnw.lems;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
@@ -10,10 +13,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import ch.fhnw.lems.entity.Language;
+import ch.fhnw.lems.entity.Product;
 import ch.fhnw.lems.entity.Role;
 import ch.fhnw.lems.entity.TransportCost;
 import ch.fhnw.lems.entity.User;
 import ch.fhnw.lems.entity.UserRole;
+import ch.fhnw.lems.persistence.ProductRepository;
 import ch.fhnw.lems.persistence.RoleRepository;
 import ch.fhnw.lems.persistence.TransportCostRepository;
 import ch.fhnw.lems.persistence.UserRepository;
@@ -26,6 +31,9 @@ public class LemsApplication {
 
 	@Autowired
 	private RoleRepository roleRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 
 	@Autowired
 	private TransportCostRepository transportCostRepository;
@@ -50,7 +58,7 @@ public class LemsApplication {
 	// Vordefinierter Admin wird erstellt.
 	@PostConstruct
 	public void creatAdmin() {
-		if (userRepository.findAll().isEmpty()) {
+		if (userRepository.findByUsername("admin") == null) {
 			User admin = new User();
 			admin.setUsername("admin");
 			admin.setFirstname("LEMS");
@@ -60,7 +68,13 @@ public class LemsApplication {
 			admin.setLanguage(Language.GERMAN);
 			Role adminRole = roleRepository.findByRole(UserRole.ADMIN);
 			admin.setRole(adminRole);
-			userRepository.save(admin);			
+			userRepository.save(admin);
+		}
+	}
+	
+	@PostConstruct
+	public void createTestUser() {	
+		if (userRepository.findByUsername("testUser1") == null) {
 			User testUser1 = new User();
 			testUser1.setUsername("testUser1");
 			testUser1.setFirstname("Test");
@@ -70,10 +84,49 @@ public class LemsApplication {
 			testUser1.setLanguage(Language.GERMAN);
 			Role userRole = roleRepository.findByRole(UserRole.USER);
 			testUser1.setRole(userRole);
-			userRepository.save(testUser1);
+			userRepository.save(testUser1);	
 		}
 	}
-
+	
+	@PostConstruct
+	public void createProducts() throws IOException {
+		if (productRepository.findAll().isEmpty()) {
+			Product p1 = new Product();
+			p1.setProductName("HPE Server ProLiant DL385 Gen10 Plus AMD EPYC 7262 Entry");
+			p1.setDescription("Prozessorfamilie: AMD EPYC, Unterstützte Netzteile: 2, Anzahl Laufwerkschächte: 8 ×, Netzteil Nennleistung: 500 W, Tiefe: 711 mm, Verbauter Arbeitsspeicher: 16 GB.");
+			p1.setPrice(3499.00);
+			p1.setDiscount(0);
+			File imageP1 = new File("src/main/resources/static/productImages/server.png");
+			p1.setProductImg(Files.readAllBytes(imageP1.toPath()));
+			
+			Product p2 = new Product();
+			p2.setProductName("Firewall");
+			p2.setDescription("Firewall");
+			p2.setPrice(1499.00);
+			p2.setDiscount(0);
+			File imageP2 = new File("src/main/resources/static/productImages/firewall.png");
+			p2.setProductImg(Files.readAllBytes(imageP2.toPath()));
+			
+			Product p3 = new Product();
+			p3.setProductName("Switch");
+			p3.setDescription("Switch");
+			p3.setPrice(999.00);
+			p3.setDiscount(0);
+			File imageP3 = new File("src/main/resources/static/productImages/switch.jpeg");
+			p3.setProductImg(Files.readAllBytes(imageP3.toPath()));
+			
+			Product p4 = new Product();
+			p4.setProductName("Serverschrank");
+			p4.setDescription("Serverschrank");
+			p4.setPrice(7899.00);
+			p4.setDiscount(0);
+			File imageP4 = new File("src/main/resources/static/productImages/serverschrank.jpg");
+			p4.setProductImg(Files.readAllBytes(imageP4.toPath()));
+			
+			productRepository.saveAll(Arrays.asList(p1, p2, p3, p4));			
+		}
+	}
+	
 	// method for HiS (Claculation Stuff)
 	@PostConstruct
 	public void createTransportCost() {
