@@ -1,4 +1,7 @@
-<!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
+<!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden 
+wae
+-->
+
 <html>
 <head>
     <title>Home</title>
@@ -7,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/dummy.css">
     <script language="javascript" type="text/javascript" src="scripts/UserProfile.js"></script>
+    <script language="javascript" type="text/javascript" src="scripts/language.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
@@ -24,6 +28,8 @@
 	  </li>
 	  <li class="nav-item">
 		<a class="nav-link" href="#">Language</a>
+		<a href="#" onclick="setLanguage('en')">English</a>
+		<a href="#" onclick="setLanguage('de')">Deutsch</a>
 	  </li>
 	  	  <li class="nav-item">
 		<a class="nav-link" href="/logout">Logout</a>
@@ -34,8 +40,8 @@
 
 <!-- SCL -->
 <div class="welcome">
-<h1 id="titleFullName">Welcome fullname</h1 >
-<button type="button" onclick="window.location.href='/productChoice'">Find Products</button>
+<h1 id="titleFullName">welcome fullname</h1 >
+<button type="button" onclick="window.location.href='/productChoice'">find products</button>
 </div>
 
 

@@ -1,5 +1,7 @@
 package ch.fhnw.lems.service.order;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,6 +23,8 @@ import ch.fhnw.lems.service.messages.MessageResultShoppingCard;
 // LUM
 @RestController
 public class CardService {
+	Logger logger = LoggerFactory.getLogger(CardService.class);
+	
 	@Autowired
 	private CardRepository cardRepository;
 	
@@ -37,15 +41,20 @@ public class CardService {
 	public boolean addProductToCard(@RequestBody MessageAddToCard msgAddToCard) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
-		User currentUser = userRepository.findByUsername(username);				
+		User currentUser = userRepository.findByUsername(username);		
+		
 		Card card = cardRepository.findByUser(currentUser.getUserId());
 		Product product = productRepository.findById(msgAddToCard.getProductId()).get();
+		
 		OrderItem orderItem = new OrderItem();
 		orderItem.setProduct(product);
 		orderItem.setQuantity(msgAddToCard.getQuantity());
+		
 		OrderItem savedOrderItem = orderItemRepository.save(orderItem);
 		card.getOrderItems().add(savedOrderItem);
 		cardRepository.save(card);
+		
+		logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Card.");
 		return true;
 	}
 	
@@ -54,10 +63,14 @@ public class CardService {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);		
+		
 		Card card = cardRepository.findByUser(currentUser.getUserId());
+		
 		MessageResultShoppingCard msgResult = new MessageResultShoppingCard();
 		msgResult.setOrderItems(card.getOrderItems());
 		msgResult.setShipping(card.getShipping());
+		
+		logger.info("Get Card of: " + card.getUser().getUsername());
 		return msgResult;
 	}
 }

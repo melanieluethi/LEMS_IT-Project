@@ -3,6 +3,8 @@ package ch.fhnw.lems.service.product;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +27,8 @@ import ch.fhnw.lems.service.messages.MessageResultProduct;
 //LUM
 @RestController
 public class ProductService {
+	Logger logger = LoggerFactory.getLogger(ProductService.class);
+	
 	@Autowired
 	private ProductRepository productRepository;
 	
@@ -44,6 +48,7 @@ public class ProductService {
 			msgProduct.setPrice(p.getPrice());
 			msgProduct.setProductImg(p.getProductImg());
 			results.add(msgProduct);
+			logger.info("Get product: " + p.getProductName());
 		});
 		return results;
 	}
@@ -53,6 +58,7 @@ public class ProductService {
 		Product product = productRepository.findById(productId).get();		
 		MessageResultProduct msgResult = new MessageResultProduct();
 		if (product != null) {
+			logger.info("Get product: " + product.getProductName());
 			msgResult.setSuccessful(true);
 			msgResult.setId(product.getProductId());
 			msgResult.setDescription(product.getDescription());
@@ -60,6 +66,7 @@ public class ProductService {
 			msgResult.setPrice(product.getPrice());
 			msgResult.setProductImg(product.getProductImg());
 		} else {
+			logger.info("Get product was not successful.");
 			msgResult.setSuccessful(true);
 		}
 		return msgResult;
@@ -73,6 +80,8 @@ public class ProductService {
 		product.setPrice(msgProduct.getPrice());
 		product.setProductImg(msgProduct.getProductImg());
 		productRepository.save(product);
+
+		logger.info("Create product: " + product.getProductName());
 		return true;
 	}
 	
@@ -89,8 +98,11 @@ public class ProductService {
 			product.setPrice(msgProduct.getPrice());
 			product.setProductImg(msgProduct.getProductImg());
 			productRepository.save(product);
+
+			logger.info("Change product " + product.getProductName() + " was succesful.");
 			return true;
 		} else {
+			logger.info("Change product was not succesful.");
 			return false;
 		}
 	}

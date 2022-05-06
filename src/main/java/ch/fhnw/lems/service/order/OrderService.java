@@ -2,6 +2,8 @@ package ch.fhnw.lems.service.order;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +25,8 @@ import ch.fhnw.lems.service.messages.MessageResultOrder;
 //LUM
 @RestController
 public class OrderService {
+	Logger logger = LoggerFactory.getLogger(OrderService.class);
+	
 	@Autowired
 	private OrderRepository orderRepository;
 	
@@ -36,6 +40,7 @@ public class OrderService {
 		order.setUser(user);
 		order.setOrderItems(msgOrder.getOrderItems());
 		orderRepository.save(order);	
+		logger.info("Create order " + order.getOrderId() + " was successful.");
 		return true;
 	}
 	
@@ -50,15 +55,18 @@ public class OrderService {
 			order.setUser(user);
 			order.setOrderItems(msgOrder.getOrderItems());
 			orderRepository.save(order);
+			logger.info("Change order " + order.getOrderId() + " was successful.");
 			return true;
 		} else {
+			logger.info("Change order was not successful.");
 			return false;
 		}
 	}
 	
 	@GetMapping(path= "api/order/{orderId}", produces = " application/json")
 	public MessageResultOrder getOrder(@PathVariable Long orderId){
-		CustomerOrder order = orderRepository.findById(orderId).get();		
+		CustomerOrder order = orderRepository.findById(orderId).get();
+		logger.info("Search for order: " + order.getOrderId());		
 		MessageResultOrder msgResultOrder = new MessageResultOrder();
 		msgResultOrder.setId(orderId);
 		msgResultOrder.setOrderItems(order.getOrderItems());
@@ -77,6 +85,7 @@ public class OrderService {
 			msgResultOrder.setOrderItems(o.getOrderItems());
 			msgResultOrder.setShipping(o.getShipping());
 			results.add(msgResultOrder);
+			logger.info("Get order " + o.getOrderId());
 		});			
 		return results;
 	}
@@ -95,6 +104,7 @@ public class OrderService {
 				msgResultOrder.setOrderItems(o.getOrderItems());
 				msgResultOrder.setShipping(o.getShipping());
 				results.add(msgResultOrder);
+				logger.info("Get order of " + o.getOrderId());
 			});				
 		}
 		return results;
