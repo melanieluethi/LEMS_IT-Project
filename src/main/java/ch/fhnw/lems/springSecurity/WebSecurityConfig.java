@@ -98,7 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 						String username = userDetails.getUsername();
 						User user = (User) userRepository.findByUsername(username);
-						logger.info("Der User: " + username + " hat sich erfolgreich eingeloggt!");
+						logger.info("User: " + username + " has been successfully logged in.");
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 						LoginHistory loginHistory = new LoginHistory();
 						loginHistory.setLogin(timestamp);
@@ -123,7 +123,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 						history.setLogout(timestamp);
 						loginHistoryRepository.save(history);
-						logger.info("Der User: " + username + " hat sich erfolgreich abgemeldet!");
+						logger.info("User: " + username + " has been successfully logget out.");
 						response.sendRedirect("/login");
 					}
 				}).permitAll();

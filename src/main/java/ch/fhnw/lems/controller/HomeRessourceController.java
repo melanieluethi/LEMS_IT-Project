@@ -27,14 +27,18 @@ public class HomeRessourceController {
 		// Übernommen von Spring 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String role = auth.getAuthorities().toString();
-		//
+
+		logger.info("Show correct Page");
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 			if (role.contains(UserRole.ADMIN.name())) {
+				logger.info("Show Admin Page");
 				return new RedirectView("/admin");
 			} else if (role.contains(UserRole.USER.name())) {
+				logger.info("Show Home Page");
 				return new RedirectView("/home");
 			}
 		}
+		logger.info("User is not logged in. That is why Login Page is shown.");
 		return new RedirectView("/login");
 	}
 	
@@ -44,6 +48,7 @@ public class HomeRessourceController {
 	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	    if (auth != null){    
 	        new SecurityContextLogoutHandler().logout(request, response, auth);
+	        logger.info("Logout was successful.");
 	    }
 	    return "redirect:/login?logout";
 	}

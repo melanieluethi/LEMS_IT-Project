@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,6 +36,8 @@ import ch.fhnw.lems.service.messages.MessageResultStandard;
 //LUM
 @RestController
 public class ProfileService {
+	Logger logger = LoggerFactory.getLogger(ProfileService.class);
+	
 	@Autowired
 	private UserRepository userRepository;
 	
@@ -54,8 +58,10 @@ public class ProfileService {
 		
 		MessageResultStandard msgResult = new MessageResultStandard();
 		if(savedUser != null) {
+			logger.info("Create User " + savedUser.getUsername() + " was successful.");
 			msgResult.setSuccessful(true);
 		} else {
+			logger.info("Create User was not successful.");
 			msgResult.setSuccessful(false);
 		}
 		return msgResult;
@@ -73,7 +79,9 @@ public class ProfileService {
 			msgResult.setEmail(user.getEmail());
 			msgResult.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));			
 			msgResult.setRoleId(user.getRole().getRoleId());
+			logger.info("Get User " + user.getUsername() + " was successful.");
 		} else {
+			logger.info("User do not exist.");
 			msgResult.setSuccessful(false);			
 		}
 		return msgResult;
@@ -97,8 +105,9 @@ public class ProfileService {
 				msgResultUser.setPassword(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));			
 				msgResultUser.setRoleId(u.getRole().getRoleId());
 				msgResults.add(msgResultUser);
+				logger.info("Get User " + u.getUsername() + " was successful.");
 			});	
-		} 
+		}
 		return msgResults;
 	}
 	
@@ -108,6 +117,7 @@ public class ProfileService {
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
 		String username = userDetails.getUsername();
 		User user = (User) userRepository.findByUsername(username);
+		logger.info("Get User " + user.getUsername() + " was successful.");
 		return user;
 	}
 	
@@ -123,8 +133,10 @@ public class ProfileService {
 			Role role = roleRepository.findById(msgProfileSetting.getRoleId()).get();
 			user.setRole(role);
 			userRepository.save(user);
+			logger.info("Change User Settings of" + user.getUsername() + " were successful.");
 			return true;
 		} else {
+			logger.info("Change User Settings were not successful.");
 			return false;
 		}
 	}
@@ -136,8 +148,11 @@ public class ProfileService {
 		if(user != null) {
 			user.setPassword(BCrypt.hashpw(msgPassword.getNewPassword(), BCrypt.gensalt(12)));
 			userRepository.save(user);
+
+			logger.info("Change Password of" + user.getUsername() + " was successful.");
 			return true;
 		} else {
+			logger.info("Change Password was not successful.");
 			return false;
 		}
 	}
@@ -151,8 +166,10 @@ public class ProfileService {
 		if(currentUser != null) {
 			currentUser.setLanguage(Language.valueOf(msgLanguage.getLanguage()));
 			userRepository.save(currentUser);
+			logger.info("Change Language of" + currentUser.getUsername() + " was successful.");
 			return true;
 		} else {
+			logger.info("Change Language was not successful.");
 			return false;
 		}
 	}	

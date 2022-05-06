@@ -2,6 +2,7 @@ package ch.fhnw.lems.service.messages;
 
 // LUM
 public class MessageProduct {
+	private String productName;
 	private String description;
 	private Double price;
 	private Integer discount;
@@ -37,5 +38,13 @@ public class MessageProduct {
 
 	public void setProductImg(Byte[] productImg) {
 		this.productImg = productImg;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 }

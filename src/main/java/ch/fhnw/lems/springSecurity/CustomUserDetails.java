@@ -12,6 +12,7 @@ import ch.fhnw.lems.entity.User;
 // LUM
 // https://www.codejava.net/frameworks/spring-boot/user-registration-and-login-tutorial
 public class CustomUserDetails implements UserDetails {
+	private static final long serialVersionUID = -4927368631753405266L;
 	private User user;
 
 	public CustomUserDetails(User user) {

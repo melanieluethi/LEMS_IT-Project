@@ -11,7 +11,8 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private Long productId;
-	private String Description;
+	private String productName;
+	private String description;
 	private Double price;
 	private Integer discount;
 	@Lob
@@ -27,11 +28,11 @@ public class Product {
 	}
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 
 	public Double getPrice() {
@@ -56,5 +57,13 @@ public class Product {
 
 	public void setProductImg(Byte[] productImg) {
 		this.productImg = productImg;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 }
