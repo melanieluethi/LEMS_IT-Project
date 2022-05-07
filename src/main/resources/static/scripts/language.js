@@ -1,5 +1,4 @@
 // wae angelehnt an https://stackoverflow.com/questions/46008760/how-to-build-multiple-language-website-using-pure-html-js-jquery
-var language;
 function getLanguage(){
 	(localStorage.getItem('language')== null)? setLanguage('en'):false;
 	$ajax({
@@ -14,7 +13,3 @@ function setLanguage(){
 window.onload = function(){
 	getLanguage();
 }
-
-$(document).ready(function(){
-	$('#welcome'.text(language.date));
-});
