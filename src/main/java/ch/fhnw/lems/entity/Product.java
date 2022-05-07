@@ -16,7 +16,7 @@ public class Product {
 	private Double price;
 	private Integer discount;
 	@Lob
-	private Byte[] productImg;
+	private byte[] productImg;
 	
 
 	public Long getProductId() {
@@ -51,11 +51,11 @@ public class Product {
 		this.discount = discount;
 	}
 
-	public Byte[] getProductImg() {
+	public byte[] getProductImg() {
 		return productImg;
 	}
 
-	public void setProductImg(Byte[] productImg) {
+	public void setProductImg(byte[] productImg) {
 		this.productImg = productImg;
 	}
 
