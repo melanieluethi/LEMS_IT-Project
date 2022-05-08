@@ -49,14 +49,20 @@
   </tr> 
  </table>
 
-<div class="dropdown">
-	<button class="dropbtn">Select Shipping 
-      	<i class="fa fa-caret-down"></i>
-    	</button>
-  <div class="dropdown-content">
-    <a href="#">Regular</a>
-    <a href="#">Express</a>
-  </div>
+
+
+<form class="dropdown" name="Select Shipping">
+  <select id="sipping" name="shipping" onchange="getShipping()">
+  	<option value="Selection">Select Shipping</option>
+    <option value="Product 1">Express</option>
+    <option value="Product 1">Standard</option>
+  </select>
+ 
+  <input type="submit" value="Order">
+</form>
+
+
+
 
 
 </div>

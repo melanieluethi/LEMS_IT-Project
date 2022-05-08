@@ -39,8 +39,8 @@
 <!--SCL-->
 <div class="productChoice">
  
-  <form name="product_selection" action="/cart">
-  <select id="products" name="products" onchange="getProduct()">
+  <form name="product_selection" action="getProduct()">
+  <select class="dropdown" id="products" name="products" onchange="getProduct()">
   	<option value="Selection">Select Product</option>
     <option value="Product 1">Product 1</option>
     <option value="Product 2">Product 2</option>
@@ -52,12 +52,16 @@
 </form>
 
 <!--has to get chnaged with checkbox-->
-<h1> Product title </h1>
+<h1 id="productname"> pName </h1>
 
 
 <p> Description Product</p>
 	
-<img src=“https://www.flaticon.com/de/kostenloses-icon/produkt_1311144“>
+<img class="image" src="scripts/Images/Firewall.webp" alt="Firewall">
+<img class="image" src="scripts/Images/Server.webp" alt="Server">
+<img class="image" src="scripts/Images/Servergestell (Rack).avif" alt="Servergestell">
+<img class="image" src="scripts/Images/swich.jpg" alt="swich">
+
 
 <!--- 
 <script>
