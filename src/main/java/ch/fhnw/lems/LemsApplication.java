@@ -1,8 +1,6 @@
 package ch.fhnw.lems;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.util.Arrays;
 
 import javax.annotation.PostConstruct;
@@ -92,36 +90,32 @@ public class LemsApplication {
 	public void createProducts() throws IOException {
 		if (productRepository.findAll().isEmpty()) {
 			Product p1 = new Product();
-			p1.setProductName("HPE Server ProLiant DL385 Gen10 Plus AMD EPYC 7262 Entry");
-			p1.setDescription("Prozessorfamilie: AMD EPYC, Unterstützte Netzteile: 2, Anzahl Laufwerkschächte: 8 ×, Netzteil Nennleistung: 500 W, Tiefe: 711 mm, Verbauter Arbeitsspeicher: 16 GB.");
-			p1.setPrice(3499.00);
+			p1.setProductName("Firewall");
+			p1.setDescription("Firewall");
+			p1.setPrice(1499.00);
 			p1.setDiscount(0);
-			File imageP1 = new File("src/main/resources/static/productImages/server.png");
-			p1.setProductImg(Files.readAllBytes(imageP1.toPath()));
+			p1.setProductImg("productImages/firewall.png");
 			
 			Product p2 = new Product();
-			p2.setProductName("Firewall");
-			p2.setDescription("Firewall");
-			p2.setPrice(1499.00);
+			p2.setProductName("Serverschrank");
+			p2.setDescription("Serverschrank");
+			p2.setPrice(7899.00);
 			p2.setDiscount(0);
-			File imageP2 = new File("src/main/resources/static/productImages/firewall.png");
-			p2.setProductImg(Files.readAllBytes(imageP2.toPath()));
+			p2.setProductImg("productImages/serverschrank.jpg");
 			
 			Product p3 = new Product();
-			p3.setProductName("Switch");
-			p3.setDescription("Switch");
-			p3.setPrice(999.00);
+			p3.setProductName("HPE Server ProLiant DL385 Gen10 Plus AMD EPYC 7262 Entry");
+			p3.setDescription("Prozessorfamilie: AMD EPYC, Unterstützte Netzteile: 2, Anzahl Laufwerkschächte: 8 ×, Netzteil Nennleistung: 500 W, Tiefe: 711 mm, Verbauter Arbeitsspeicher: 16 GB.");
+			p3.setPrice(3499.00);
 			p3.setDiscount(0);
-			File imageP3 = new File("src/main/resources/static/productImages/switch.jpeg");
-			p3.setProductImg(Files.readAllBytes(imageP3.toPath()));
+			p3.setProductImg("productImages/server.png");
 			
 			Product p4 = new Product();
-			p4.setProductName("Serverschrank");
-			p4.setDescription("Serverschrank");
-			p4.setPrice(7899.00);
+			p4.setProductName("Switch");
+			p4.setDescription("Switch");
+			p4.setPrice(999.00);
 			p4.setDiscount(0);
-			File imageP4 = new File("src/main/resources/static/productImages/serverschrank.jpg");
-			p4.setProductImg(Files.readAllBytes(imageP4.toPath()));
+			p4.setProductImg("productImages/switch.jpeg");
 			
 			productRepository.saveAll(Arrays.asList(p1, p2, p3, p4));			
 		}

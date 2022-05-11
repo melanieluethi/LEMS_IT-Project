@@ -43,6 +43,7 @@ public class ProductService {
 		products.forEach(p -> {
 			MessageResultProduct msgProduct = new MessageResultProduct();
 			msgProduct.setId(p.getProductId());
+			msgProduct.setProductName(p.getProductName());
 			msgProduct.setDescription(p.getDescription());
 			msgProduct.setDiscount(p.getDiscount());
 			msgProduct.setPrice(p.getPrice());

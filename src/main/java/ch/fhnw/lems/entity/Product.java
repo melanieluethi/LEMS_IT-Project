@@ -3,7 +3,6 @@ package ch.fhnw.lems.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 // LUM
 @Entity
@@ -15,8 +14,7 @@ public class Product {
 	private String description;
 	private Double price;
 	private Integer discount;
-	@Lob
-	private byte[] productImg;
+	private String productImg;
 	
 
 	public Long getProductId() {
@@ -51,11 +49,11 @@ public class Product {
 		this.discount = discount;
 	}
 
-	public byte[] getProductImg() {
+	public String getProductImg() {
 		return productImg;
 	}
 
-	public void setProductImg(byte[] productImg) {
+	public void setProductImg(String productImg) {
 		this.productImg = productImg;
 	}
 

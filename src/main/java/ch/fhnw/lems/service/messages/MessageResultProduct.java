@@ -6,7 +6,7 @@ public class MessageResultProduct extends MessageResultStandard {
 	private String description;
 	private Double price;
 	private Integer discount;
-	private byte[] productImg;
+	private String productImg;
 
 	public String getDescription() {
 		return description;
@@ -32,11 +32,11 @@ public class MessageResultProduct extends MessageResultStandard {
 		this.discount = discount;
 	}
 
-	public byte[] getProductImg() {
+	public String getProductImg() {
 		return productImg;
 	}
 
-	public void setProductImg(byte[] productImg) {
+	public void setProductImg(String productImg) {
 		this.productImg = productImg;
 	}
 

@@ -10,10 +10,9 @@ function getProducts() {
 		success: function (data) {
 			//get dropdown element
 			var productname = document.getElementById('products');	
-			debugger;
 			for (var i = 0; i < data.length; ++i) {
     			// Append the element to the end of Array list
-    			productname[productname.length] = new Option(data[i], productname[i]);
+    			productname[productname.length] = new Option(data[i].productName, productname[i]);
 			}
         	
         }, error: function(e) {
