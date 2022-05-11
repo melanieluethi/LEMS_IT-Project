@@ -39,17 +39,11 @@
 <!--SCL-->
 <div class="productChoice">
  
-  <form name="product_selection" action="getProduct()">
-  <select class="dropdown" id="products" name="products" onchange="getProduct()">
-  	<option value="Selection">Select Product</option>
-    <option value="Product 1">Product 1</option>
-    <option value="Product 2">Product 2</option>
-    <option value="Product 3">Product 3</option>
-    <option value="Product 4">Product 4</option>
-  </select>
- 
-  <input type="submit" value="Add to cart">
-</form>
+
+  <select class="dropdown" id="products" name="products">	</select>
+  
+  <input type="submit" value="Add to cart" onclick"addToCart">
+
 
 <!--has to get chnaged with checkbox-->
 <h1 id="productname"> pName </h1>

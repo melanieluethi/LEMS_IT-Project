@@ -1,11 +1,21 @@
 // SCL
-function getProduct() {
+function getProducts() {
 	
-    
-	const productname = document.getElementById('products');	
+    //holt eine Liste von allen Produkten
+	
 	 $.ajax({
+		type: "GET",
+		 url: "/api/products",
+		 //Data ist eine Liste der Produkte
 		success: function (data) {
-        productname.innerHTML = productname.innerHTML.replace('pName');
+			//get dropdown element
+			var productname = document.getElementById('products');	
+			debugger;
+			for (var i = 0; i < data.length; ++i) {
+    			// Append the element to the end of Array list
+    			productname[productname.length] = new Option(data[i], productname[i]);
+			}
+        	
         }, error: function(e) {
 			console.log(e);
 	  	}
@@ -14,5 +24,5 @@ function getProduct() {
 
 // lum
 window.onload = function() {
-  getProduct();
+  getProducts();
 };

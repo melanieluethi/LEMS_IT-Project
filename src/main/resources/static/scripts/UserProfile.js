@@ -3,7 +3,7 @@ function getUserFullName() {
 	const titleFullName = document.getElementById('titleFullName');	
 	 $.ajax({
         type: "GET",
-        url: "/api/user",
+		 url: "/api/user",
         success: function (data) {
 			titleFullName.innerHTML = titleFullName.innerHTML.replace('fullname', data.firstname + ' ' + data.lastname);
         }, error: function(e) {
