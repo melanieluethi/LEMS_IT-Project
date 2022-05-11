@@ -65,4 +65,9 @@ public class ViewsController {
 	public String userManagementView() {
 		return "UserManagementView.html";
 	}
+	
+	@GetMapping("/international")
+    public String getInternationalPage() {
+        return "international";
+    }
 }
