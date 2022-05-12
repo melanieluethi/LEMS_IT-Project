@@ -11,7 +11,6 @@ function getShipping() {
 	});
 }
 
-// lum
 window.onload = function() {
   getUserFullName();
 };
