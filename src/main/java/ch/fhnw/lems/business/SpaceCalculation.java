@@ -23,10 +23,18 @@ public class SpaceCalculation {
 
 	// WEIGHT_MULTIPLICATOR_P2
 
+	// Grössen Multiplikator --> X Stück pro Palettenplatz
 	private double spaceMultiplicatorP1 = 0.04;
 	private double spaceMultiplicatorP2 = 0.1;
 	private double spaceMultiplicatorP3 = 0.0666666;
 	private double spaceMultiplicatorP4 = 0.01;
+	
+	// Grösse von Palettenplatz
+	private double spaceP1 = 1.2;
+	private double spaceP2 = 2.0;
+	private double spaceP3 = 2.5;
+	private double spaceP4 = 0.8;
+	
 
 	private double totalHeightP1;
 	private double totalHeightP2;
@@ -38,10 +46,16 @@ public class SpaceCalculation {
 	private double restHeightP3;
 	private double restHeightP4;
 
-	private double palletSpaceP1;
-	private double palletSpaceP2;
-	private double palletSpaceP3;
-	private double palletSpaceP4;
+	private int palletSpaceP1;
+	private int palletSpaceP2;
+	private int palletSpaceP3;
+	private int palletSpaceP4;
+	
+	private double shippingSpaceP1;
+	private double shippingSpaceP2;
+	private double shippingSpaceP3;
+	private double shippingSpaceP4;
+	private double shippingSpaceTotal;
 
 	private int weightP1;
 	private int weightP2;
@@ -72,25 +86,25 @@ public class SpaceCalculation {
 	private double calculateRestSpace() {
 		if (testSumP1 != 0) {
 			totalHeightP1 = testSumP1 * spaceMultiplicatorP1;
-			palletSpaceP1 = totalHeightP1;
+			palletSpaceP1 = (int) totalHeightP1;
 			totalHeightP1 = totalHeightP1 - palletSpaceP1;
 		}
 
 		if (testSumP1 != 0) {
 			totalHeightP2 = testSumP2 * spaceMultiplicatorP2;
-			palletSpaceP2 = totalHeightP2;
+			palletSpaceP2 = (int) totalHeightP2;
 			totalHeightP2 = totalHeightP2 - palletSpaceP2;
 		}
 
 		if (testSumP3 != 0) {
 			totalHeightP3 = testSumP3 * spaceMultiplicatorP3; // 123.456
-			palletSpaceP3 = totalHeightP3; // 123 & 123.456
+			palletSpaceP3 = (int) totalHeightP3; // 123 & 123.456
 			totalHeightP3 = totalHeightP3 - palletSpaceP3; // 123.456 - 123 = 0.456
 		}
 
 		if (testSumP4 != 0) {
 			totalHeightP4 = testSumP4 * spaceMultiplicatorP4; // 123.456
-			palletSpaceP4 = totalHeightP4; // 123 & 123.456
+			palletSpaceP4 = (int) totalHeightP4; // 123 & 123.456
 			totalHeightP4 = totalHeightP4 - palletSpaceP4; // 123.456 - 123 = 0.456
 		}
 
@@ -156,25 +170,45 @@ public class SpaceCalculation {
 	// max weight = 300kg/palett
 	public double calculateSpace() {
 
-		/*
-		 * if (testSumP2 != 0) { int p = 0; double h= 0.0;
-		 * 
-		 * h = testSumP2/10;
-		 * 
-		 * 
-		 * palletSpaceP2 = 2 * p;
-		 * 
-		 * }
-		 */
+		totalHeightP1 = totalHeightP1 + palletSpaceP1;
+		totalHeightP2 = totalHeightP2 + palletSpaceP2;
+		totalHeightP3 = totalHeightP3 + palletSpaceP3;
+		totalHeightP4 = totalHeightP4 + palletSpaceP4;
+		
+		
+		
+		// Volle Höhen * Platzbedaf Palettenplatz
+		shippingSpaceP1 = palletSpaceP1 * spaceP1;
+		shippingSpaceP2 = palletSpaceP2 * spaceP2;
+		shippingSpaceP3 = palletSpaceP3 * spaceP3;
+		shippingSpaceP4 = palletSpaceP4 * spaceP4;
+		
+		if(totalHeightP1 != 0) {
+			shippingSpaceP1 += spaceP1;
+			totalHeightP1 = 0;
+		}
+		
+		if(totalHeightP2 != 0) {
+			shippingSpaceP2 += spaceP2;
+			totalHeightP2 = 0;
+		}
+		
+		if(totalHeightP3 != 0) {
+			shippingSpaceP3 += spaceP3;
+			totalHeightP3 = 0;
+		}
+		
+		if(totalHeightP4 != 0) {
+			shippingSpaceP4 += spaceP4;
+			totalHeightP4 = 0;
+		}
 
-		// p1/platz1 = 2 paletten
-		// ...
-		// = gesamt = 7.5 = 8.0
-
-		// asdasda sdasd
-		// summ of all pallets must be <= 12
-
-		return 0;
+		
+		shippingSpaceTotal = shippingSpaceP1 + shippingSpaceP2 + shippingSpaceP3 + shippingSpaceP4;
+		
+		
+		
+		return shippingSpaceTotal;
 	}
 
 	// max 300kg pro Palette
