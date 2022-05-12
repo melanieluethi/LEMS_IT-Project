@@ -1,7 +1,7 @@
-package ch.fhnw.lems.service.messages;
+package ch.fhnw.lems.controller.messages;
 
 //LUM
-public class MessageUser {
+public class MessageResultProfileSetting extends MessageResultStandard {
 	private String username;
 	private String firstname;
 	private String lastname;

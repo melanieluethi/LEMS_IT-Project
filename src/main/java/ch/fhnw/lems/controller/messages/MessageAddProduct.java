@@ -1,4 +1,4 @@
-package ch.fhnw.lems.service.messages;
+package ch.fhnw.lems.controller.messages;
 
 //LUM
 public class MessageAddProduct extends MessageProduct {

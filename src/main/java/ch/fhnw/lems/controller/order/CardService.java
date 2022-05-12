@@ -1,4 +1,4 @@
-package ch.fhnw.lems.service.order;
+package ch.fhnw.lems.controller.order;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.fhnw.lems.controller.messages.MessageAddToCard;
+import ch.fhnw.lems.controller.messages.MessageResultShoppingCard;
 import ch.fhnw.lems.entity.Card;
 import ch.fhnw.lems.entity.OrderItem;
 import ch.fhnw.lems.entity.Product;
@@ -17,8 +19,6 @@ import ch.fhnw.lems.persistence.CardRepository;
 import ch.fhnw.lems.persistence.OrderItemRepository;
 import ch.fhnw.lems.persistence.ProductRepository;
 import ch.fhnw.lems.persistence.UserRepository;
-import ch.fhnw.lems.service.messages.MessageAddToCard;
-import ch.fhnw.lems.service.messages.MessageResultShoppingCard;
 
 // LUM
 @RestController

@@ -1,7 +1,7 @@
-package ch.fhnw.lems.service.messages;
+package ch.fhnw.lems.controller.messages;
 
-//LUM
-public class MessageResultProduct extends MessageResultStandard {
+// LUM
+public class MessageProduct {
 	private String productName;
 	private String description;
 	private Double price;
