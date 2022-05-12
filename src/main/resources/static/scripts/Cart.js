@@ -1,4 +1,3 @@
-// lum
 function getShipping() {
 	const titleFullName = document.getElementById('titleFullName');	
 	 $.ajax({
