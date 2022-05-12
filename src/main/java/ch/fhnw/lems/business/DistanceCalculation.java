@@ -15,31 +15,40 @@ public class DistanceCalculation {
 	private int basePlz = 4600; // PLZ from Olten
 	private int baseGdeNr = 2581; // GdeNr from Olten
 	private double deliveryDistance;
-	
-	
-	// please fill in the distance calculation
-	
-	
-	// 1. get Input
-	// 2. get gdeNr for input
-	
-	// 3. get distanze from file
-		// read file
-		// search for baseGdeNr
-		// search for inputGdeNr
-		// get distance
-	
-    // -define .csv file in app
-    String fileName = "Distance.CSV";
-    // -File class needed to turn stringName to actual file
-    File file = new File(fileName);
 
-    /*
-     * try{
+    public static double calculateDistance() {
+
+    	
+    	
+    	// please fill in the distance calculation
+    	
+    	
+    	// 1. get Input
+    	// 2. get gdeNr for input
+    	
+    	// 3. get distanze from file
+    		// read file
+    		// search for baseGdeNr
+    		// search for inputGdeNr
+    		// get distance
+    	
+        // -define .csv file in app
+        String fileName = "Distance.CSV";
+        // -File class needed to turn stringName to actual file
+        File file = new File(fileName);
+    	
+    	
+		return 0;
+    	
+    }
+
+    
+    //
+    /*try{
         
         Scanner scanner = new Scanner(file);
         while(scanner.hasNext()){
-            String data = inputStream.next();
+            String data = scanner.next();
             System.out.println(data + "***");
 
         }
@@ -48,9 +57,10 @@ public class DistanceCalculation {
 
         e.printStackTrace();
     }
+     
      * 
      */
-    
+     
 	
     
 	
