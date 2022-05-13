@@ -1,35 +1,56 @@
 <!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <b>
-	<title th:text="#{register.title}"></title>
+    <title>Register</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/dummy.css">
 	<script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
   <a class="navbar-brand" href="/home">LEMS Shipping</a>
 </nav>
 <div class="register">
-<h1 th:text="#{register.greeting}"></h1 >
+<h1 th:text="#{register.greeting}">Welcome, please fill out</h1 >
 <input type="text" id="fname" name="fname" placeholder="First Name" required>
 <input type="text" id="lname" name="lname" placeholder="Last Name" required>
 </div>
 <div class="register">
 <input type="text" id="address" name="address" placeholder="Address" required>
-<input type="text" id="zip" name="zip" placeholder="ZIP Code" required>
+<input type="text" id="zip" name="zip" placeholder="ZIP Code" type="number" min="1000" max="9999" required>
 <input type="text" id="city" name="city" placeholder="City" required>
-<input type="text" id="country" name="country" placeholder="CH" required>
+<input type="text" id="country" name="country" placeholder="CH" readonly required>
 <input type="text" id="mail" name="mail" placeholder="mail" required>
 </div >
 <div class="register">
-<button type="button" onclick="window.location.href='/login'" th:text="#{register.register}">Register</button>
+<button type="button" onclick="window.location.href='/login'">Register</button>
 <input type="text" id="password" name="password" placeholder="Password" required> <br>
 <input type="text" id="username" name="username" placholder="Username" required>
 </div class="register">
 <button class="btn btn-outline-secondary btn-lg" style=margin-left:5%>Register</button>
+
+<!--<script type="text/javascript">
+	$(document).ready(function(){
+		$getJSON("api/user").done(setCurrentUser);
+		
+		$("#locales").change(function{
+			var selectedOption = $('#locales').val();
+			if (selectedOption !=''){
+				window.location.replace('admin?lang=' + selectedOption)
+			}
+		})
+	})
+	function getDefaultLanguage(data){
+		console.log(data[0]);
+		var defaultLanguage = data[0];
+		if(data[0] == en){
+			window.language.replace('admin?lang=' + defaultLanguage)
+		}
+	}
+</script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
