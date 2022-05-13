@@ -44,19 +44,19 @@ WAE-->
 <div class="productChoice">
  
 
-  <select class="dropdown" id="products" name="products">	</select>
+  <select class="dropdown" id="products" name="products" onchange="getSpecificProduct()">	</select>
   
   <input type="submit" value="Add to cart" onclick"addToCart">
 
 
 <!--Shows Productname you have choosed-->
-<h1 id="productname"> onchange="getProduct" </h1>
-<h1 id="productname" th:text="#{login.greeting}"></h1>
+<h1 id="productname"></h1>
+<h1 id="description"></h1>
 
 
-<p> Description Product</p>
+<p id="description"> </p>
 	
-<img class="image" th:src="@{productImages/firewall.png}" alt="Firewall"/>
+<img id="productImg" class="image" th:src="@{productImages/firewall.png}"/>
 <img class="image" th:src="@{productImages/server.png}" alt="Server"/>
 <img class="image" th:src="@{productImages/serverschrank.jpg}" alt="Servergestell"/>
 <img class="image" th:src="@{productImages/switch.jpeg}" alt="Swich"/>

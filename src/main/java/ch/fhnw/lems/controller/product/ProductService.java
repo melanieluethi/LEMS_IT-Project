@@ -54,14 +54,15 @@ public class ProductService {
 		return results;
 	}
 	
-	@GetMapping(path= "/api/product/{productId}", produces = " application/json")
-	public MessageResultProduct getProduct(@PathVariable Long productId){
-		Product product = productRepository.findById(productId).get();		
+	@GetMapping(path= "/api/product/{productName}", produces = " application/json")
+	public MessageResultProduct getProduct(@PathVariable String productName){
+		Product product = productRepository.findByProductName(productName);		
 		MessageResultProduct msgResult = new MessageResultProduct();
 		if (product != null) {
 			logger.info("Get product: " + product.getProductName());
 			msgResult.setSuccessful(true);
 			msgResult.setId(product.getProductId());
+			msgResult.setProductName(product.getProductName());
 			msgResult.setDescription(product.getDescription());
 			msgResult.setDiscount(product.getDiscount());
 			msgResult.setPrice(product.getPrice());
