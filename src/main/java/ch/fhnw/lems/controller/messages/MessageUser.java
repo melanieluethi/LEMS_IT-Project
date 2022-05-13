@@ -1,7 +1,7 @@
-package ch.fhnw.lems.service.messages;
+package ch.fhnw.lems.controller.messages;
 
 //LUM
-public class MessageCreateUser extends MessageUser {
+public class MessageUser {
 	private String username;
 	private String firstname;
 	private String lastname;
@@ -101,5 +101,4 @@ public class MessageCreateUser extends MessageUser {
 	public void setLanguage(String language) {
 		this.language = language;
 	}
-
 }

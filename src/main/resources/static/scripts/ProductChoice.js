@@ -21,7 +21,6 @@ function getProducts() {
 	  	});
 }
 
-// lum
 window.onload = function() {
   getProducts();
 };

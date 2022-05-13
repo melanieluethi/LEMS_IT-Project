@@ -63,7 +63,7 @@ public class LemsApplication {
 			admin.setLastname("Administrator");
 			admin.setEmail("administrator@lems.ch");
 			admin.setPassword(BCrypt.hashpw("admin", BCrypt.gensalt(12)));
-			admin.setLanguage(Language.GERMAN);
+			admin.setLanguage(Language.DE);
 			Role adminRole = roleRepository.findByRole(UserRole.ADMIN);
 			admin.setRole(adminRole);
 			userRepository.save(admin);
@@ -79,7 +79,7 @@ public class LemsApplication {
 			testUser1.setLastname("User 1");
 			testUser1.setEmail("testUser1@lems.ch");
 			testUser1.setPassword(BCrypt.hashpw("testUser1", BCrypt.gensalt(12)));
-			testUser1.setLanguage(Language.GERMAN);
+			testUser1.setLanguage(Language.DE);
 			Role userRole = roleRepository.findByRole(UserRole.USER);
 			testUser1.setRole(userRole);
 			userRepository.save(testUser1);	

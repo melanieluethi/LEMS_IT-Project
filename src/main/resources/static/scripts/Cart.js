@@ -1,4 +1,3 @@
-// lum
 function getShipping() {
 	const titleFullName = document.getElementById('titleFullName');	
 	 $.ajax({
@@ -12,7 +11,6 @@ function getShipping() {
 	});
 }
 
-// lum
 window.onload = function() {
   getUserFullName();
 };

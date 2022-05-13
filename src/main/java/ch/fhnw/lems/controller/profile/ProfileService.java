@@ -1,4 +1,4 @@
-package ch.fhnw.lems.service.profile;
+package ch.fhnw.lems.controller.profile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +20,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.fhnw.lems.controller.messages.MessageChangeLanguage;
+import ch.fhnw.lems.controller.messages.MessageChangePassword;
+import ch.fhnw.lems.controller.messages.MessageChangeProfileSetting;
+import ch.fhnw.lems.controller.messages.MessageCreateUser;
+import ch.fhnw.lems.controller.messages.MessageResultLanguage;
+import ch.fhnw.lems.controller.messages.MessageResultProfileSetting;
+import ch.fhnw.lems.controller.messages.MessageResultStandard;
 import ch.fhnw.lems.entity.Language;
 import ch.fhnw.lems.entity.Role;
 import ch.fhnw.lems.entity.User;
 import ch.fhnw.lems.entity.UserRole;
 import ch.fhnw.lems.persistence.RoleRepository;
 import ch.fhnw.lems.persistence.UserRepository;
-import ch.fhnw.lems.service.messages.MessageChangeLanguage;
-import ch.fhnw.lems.service.messages.MessageChangePassword;
-import ch.fhnw.lems.service.messages.MessageChangeProfileSetting;
-import ch.fhnw.lems.service.messages.MessageCreateUser;
-import ch.fhnw.lems.service.messages.MessageResultProfileSetting;
-import ch.fhnw.lems.service.messages.MessageResultStandard;
 
 //LUM
 @RestController
@@ -157,6 +158,23 @@ public class ProfileService {
 		}
 	}
 
+	@GetMapping(path = "/api/language", produces = "application/json")
+	public MessageResultLanguage getLanguage() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		User currentUser = userRepository.findByUsername(username);
+		MessageResultLanguage msgResult = new MessageResultLanguage();
+		if (currentUser != null) {
+			msgResult.setSuccessful(true);
+			msgResult.setLanguage(currentUser.getLanguage().name().toLowerCase());
+			logger.info("Get Language of" + currentUser.getUsername() + " was successful.");
+		} else {
+			msgResult.setSuccessful(false);
+			logger.info("Get Language was not successful. User is not logged in or not exists.");
+		}
+		return msgResult;
+	}
+	
 	@PutMapping(path = "/api/changeLanguage", produces = "application/json")
 	public boolean changeLanguage(@RequestBody MessageChangeLanguage msgLanguage) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
