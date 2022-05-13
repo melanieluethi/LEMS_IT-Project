@@ -6,5 +6,5 @@ import ch.fhnw.lems.entity.Product;
 
 // LUM
 public interface ProductRepository extends JpaRepository<Product, Long> {
-
+	Product findByProductName(String productName);
 }
