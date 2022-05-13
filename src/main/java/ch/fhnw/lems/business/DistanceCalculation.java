@@ -10,18 +10,17 @@ import java.util.Scanner;
 
 public class DistanceCalculation {
 
-	private int inputPlz = 3097; // 3097 as a Test-Value
-	private int inputGdeNr;
-	private int basePlz = 4600; // PLZ from Olten
-	private int baseGdeNr = 2581; // GdeNr from Olten
-	private double deliveryDistance;
+	
 
     public static double calculateDistance() {
-
     	
+    	int inputPlz = 3097; // 3097 as a Test-Value
+    	int inputGdeNr;
+    	int basePlz = 4600; // PLZ from Olten
+    	int baseGdeNr = 2581; // GdeNr from Olten
+    	double deliveryDistance = 0.0;
     	
     	// please fill in the distance calculation
-    	
     	
     	// 1. get Input
     	// 2. get gdeNr for input
@@ -37,38 +36,40 @@ public class DistanceCalculation {
         // -File class needed to turn stringName to actual file
         File file = new File(fileName);
     	
+        
+        try{
+        	Scanner scanner = new Scanner(file);
+            while(scanner.hasNext()){
+                String data = scanner.next();
+                System.out.println(data + "***");
+
+            }
+            scanner.close();
+        	
+        }catch (FileNotFoundException e){
+
+            e.printStackTrace();
+        }
+        
+        
     	
-		return 0;
+		return deliveryDistance;
     	
     }
 
     
-    //
+    
     /*try{
-        
         Scanner scanner = new Scanner(file);
         while(scanner.hasNext()){
             String data = scanner.next();
             System.out.println(data + "***");
-
         }
         scanner.close();
     }catch (FileNotFoundException e){
 
         e.printStackTrace();
     }
-     
      * 
-     */
-     
-	
-    
-	
-	
-	
-	
-	
-	
-	
-	
+     */	
 }

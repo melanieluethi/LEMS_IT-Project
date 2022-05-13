@@ -23,8 +23,9 @@ public class PriceCalculationExpress {
 
     public double calculateExpressPrice() {
     	
-    	//add fancy calculations
+    	// Formula developed by HIS --> Goal: Higher Prices than normal Fee Structure + exponential penallty for more palletts
     	
+    	expressPrice = distance * priceFactor + Math.pow(pallett, exponentialWeighting) + expressFee;
     	
     	return 0.0;
     }
