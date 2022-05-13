@@ -1,7 +1,12 @@
 package ch.fhnw.lems.business;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 // done by HIS
@@ -10,15 +15,13 @@ import java.util.Scanner;
 
 public class DistanceCalculation {
 
-	
-
     public static double calculateDistance() {
     	
     	int inputPlz = 3097; // 3097 as a Test-Value
     	int inputGdeNr;
     	int basePlz = 4600; // PLZ from Olten
     	int baseGdeNr = 2581; // GdeNr from Olten
-    	double deliveryDistance = 0.0;
+    	double deliveryDistance = 999.999;
     	
     	// please fill in the distance calculation
     	
@@ -32,25 +35,28 @@ public class DistanceCalculation {
     		// get distance
     	
         // -define .csv file in app
-        String fileName = "Distance.CSV";
+        String fileName = "static/data/DistancePLZ.CSV";
         // -File class needed to turn stringName to actual file
         File file = new File(fileName);
-    	
+        Map <Integer, Double> distanceMap = new HashMap<Integer, Double>();
         
-        try{
-        	Scanner scanner = new Scanner(file);
-            while(scanner.hasNext()){
-                String data = scanner.next();
-                System.out.println(data + "***");
-
+        
+        
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(";");
+                distanceMap.put(Integer.valueOf(values[0]), Double.valueOf(values[0]));
             }
-            scanner.close();
-        	
-        }catch (FileNotFoundException e){
-
-            e.printStackTrace();
-        }
+        } catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
         
+  
+        deliveryDistance = distanceMap.get(inputPlz);
         
     	
 		return deliveryDistance;
@@ -59,17 +65,5 @@ public class DistanceCalculation {
 
     
     
-    /*try{
-        Scanner scanner = new Scanner(file);
-        while(scanner.hasNext()){
-            String data = scanner.next();
-            System.out.println(data + "***");
-        }
-        scanner.close();
-    }catch (FileNotFoundException e){
-
-        e.printStackTrace();
-    }
-     * 
-     */	
+    
 }
