@@ -2,39 +2,37 @@
 WAE-->
 <html>
 <head>
-    <title>Product Choice</title>
+    <title th:text="#{productChoice.title}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles/dummy.css">
-    <link rel="shortcut icon" href="#" />
-   	<script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" th:href="@{/styles/dummy.css}" />
+	<link rel="shortcut icon" href="#" />
+	<script th:src="@{/scripts/Language.js}"></script>
+	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script language="javascript" type="text/javascript" src="scripts/ProductChoice.js"></script>
-    
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
-  <a class="navbar-brand" href="/home">LEMS Shipping</a>
+   <a class="navbar-brand" th:href="@{/home}" th:text="#{login.firma}"></a>
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="main-navigation">
 	<ul class="navbar-nav">
-	<li class="nav-item">
-		<a class="nav-link" href="/home">Home</a>
-	  </li>
 	  	  <li class="nav-item">
-		<a class="nav-link" href="/userManagement">Profil</a>
+		<a class="nav-link" href="/userManagement" th:text="#{menu.profil}"></a>
 	  </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="/help">Help</a>
+		<a class="nav-link" href="/help" th:text="#{menu.help}"></a>
 	  </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="#">Language</a>
+		<a class="nav-link" href="#" th:text="#{menu.language}"></a>
+		<a onclick="setLanguage('en')" th:text="#{menu.english}"></a>
+		<a onclick="setLanguage('de')" th:text="#{menu.german}"></a>
 	  </li>
 	  	  <li class="nav-item">
-		<a class="nav-link" href="/logout">Logout</a>
+		<a class="nav-link" href="/logout" th:text="#{menu.logout}"></a>
 	  </li>
 	</ul>
   </div>
