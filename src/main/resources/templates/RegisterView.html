@@ -1,39 +1,41 @@
 <!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden 
 WAE-->
 <html>
-<b>
-    <title>Register</title>
+<head>
+    <title th:text="#{register.title}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/dummy.css">
+	<link rel="shortcut icon" href="#" />
+	<script th:src="@{/scripts/Language.js}"></script>
 	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
-  <a class="navbar-brand" href="/home">LEMS Shipping</a>
+  <a class="navbar-brand" th:href="@{/home}" th:text="#{login.firma}"></a>
 </nav>
 <form action="register" method="POST">
 <div class="register">
-<h1 th:text="#{register.greeting}">Welcome, please fill out</h1 >
-<input type="text" id="fname" name="fname" placeholder="First Name" required>
-<input type="text" id="lname" name="lname" placeholder="Last Name" required>
+<h1 th:text="#{register.greeting}"></h1 >
+<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
+<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
 </div>
 <div class="register">
-<input type="text" id="address" name="address" placeholder="Address" required>
-<input type="text" id="zip" name="zip" placeholder="ZIP Code" type="number" max="9999" min="1000" required>
-<input type="text" id="city" name="city" placeholder="City" required>
+<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
+<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" required>
 <input type="text" id="country" name="country" value="CH" required readonly>
-<input type="text" id="mail" name="mail" placeholder="mail" required>
+<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" required>
 </div >
 <div class="register">
-<button type="button" onclick="window.location.href='/login'">Register</button>
-<input type="text" id="password" name="password" placeholder="Password" required> <br>
-<input type="text" id="username" name="username" placholder="Username" required>
-</div class="register">
-<button class="btn btn-outline-secondary btn-lg" style=margin-left:5% type="submit">Register</button>
+<button type="button" onclick="window.location.href='/login'" th:text="#{login.register}"></button>
+<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" required> <br>
+<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" required>
+</div >
+<button class="btn btn-outline-secondary btn-lg" style=margin-left:5% type="submit" th:text="#{login.register}"></button>
 </form>
 </body>
 </html>

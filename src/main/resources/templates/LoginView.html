@@ -23,10 +23,10 @@
 	<form th:action="@{/login}" method="post">
 	  <div class="login">
 	    <label for="username" th:text="#{login.username}"></label>
-	    <input type="text" placeholder="Enter Username" name="username" required>
+	    <input type="text" th:attr="placeholder=#{login.enterUsername}" name="username" required>
 	    
 	    <label for="password" th:text="#{login.password}"></label>
-	    <input type="password" placeholder="Enter Password" name="password" required> <br>
+	    <input type="password" th:attr="placeholder=#{login.enterPassword}" name="password" required> <br>
 	    
 	    <button type="button" onclick="window.location.href='/register'" th:text="#{login.register}"></button>
 	    <button type="submit" th:text="#{login.login}"></button>
