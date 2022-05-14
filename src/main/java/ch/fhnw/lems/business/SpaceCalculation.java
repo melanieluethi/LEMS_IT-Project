@@ -170,10 +170,15 @@ public class SpaceCalculation {
 	// max weight = 300kg/palett
 	public double calculateSpace() {
 
-		totalHeightP1 = totalHeightP1 + palletSpaceP1;
-		totalHeightP2 = totalHeightP2 + palletSpaceP2;
-		totalHeightP3 = totalHeightP3 + palletSpaceP3;
-		totalHeightP4 = totalHeightP4 + palletSpaceP4;
+		
+		/*
+		 * 
+		 * totalHeightP1 = totalHeightP1 + palletSpaceP1;
+		 * 		totalHeightP2 = totalHeightP2 + palletSpaceP2;
+		 * 		totalHeightP3 = totalHeightP3 + palletSpaceP3;
+		 * 		totalHeightP4 = totalHeightP4 + palletSpaceP4;
+		 */
+		
 		
 		
 		
@@ -183,6 +188,7 @@ public class SpaceCalculation {
 		shippingSpaceP3 = palletSpaceP3 * spaceP3;
 		shippingSpaceP4 = palletSpaceP4 * spaceP4;
 		
+		// Hinzufügen voller Palettenplatz pro angefangene höhe
 		if(totalHeightP1 != 0) {
 			shippingSpaceP1 += spaceP1;
 			totalHeightP1 = 0;
@@ -203,9 +209,11 @@ public class SpaceCalculation {
 			totalHeightP4 = 0;
 		}
 
-		
+		// Kombinieren aller Palettenplätze
 		shippingSpaceTotal = shippingSpaceP1 + shippingSpaceP2 + shippingSpaceP3 + shippingSpaceP4;
 		
+		// Aufrunden auf ganze Paletten
+		shippingSpaceTotal = Math.ceil(shippingSpaceTotal);
 		
 		
 		return shippingSpaceTotal;
