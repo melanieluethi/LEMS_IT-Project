@@ -39,6 +39,9 @@ import ch.fhnw.lems.persistence.UserRepository;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	Logger logger = LoggerFactory.getLogger(WebSecurityConfig.class);
 
+	private final static String USER_ROLE_ADMIN = UserRole.ADMIN.name();;
+	private final static String USER_ROLE_USER = UserRole.USER.name();
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -56,41 +59,40 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/**").permitAll()
-				.antMatchers("/admin").hasRole(UserRole.ADMIN.name())
-				.antMatchers("/user").hasRole(UserRole.USER.name())
 				// rights for services
-				.antMatchers("/api/user").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/createUser").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/profileSettings/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/userProfileSettings").hasRole(UserRole.ADMIN.name())
-				.antMatchers("/api/profileSettings").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/changePassword").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/products").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/product/{productId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/addProductToCard").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/shoppingCard/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/product").hasRole(UserRole.ADMIN.name())
-				.antMatchers("/api/changeProduct").hasRole(UserRole.ADMIN.name())
-				.antMatchers("/api/order/").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/order/{orderd}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/orders/{userId}").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/api/orders").hasRole(UserRole.ADMIN.name())
-				.antMatchers("/api/order").hasRole(UserRole.ADMIN.name())
-				.antMatchers("/api/changeLanguage").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/api/user").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/createUser").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/profileSettings/{userId}").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/userProfileSettings").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/api/profileSettings").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/changePassword").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/products").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/product/{productId}").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/addProductToCard").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/shoppingCard/{userId}").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/product").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/api/changeProduct").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/api/order/").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/order/{orderd}").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/orders/{userId}").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/orders").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/api/order").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/api/changeLanguage").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				.antMatchers("/api/language").permitAll()
 				// Rights for views
-				.antMatchers("/adminOrders").hasAnyRole(UserRole.ADMIN.name())
-				.antMatchers("/adminProducts").hasAnyRole(UserRole.ADMIN.name())
-				.antMatchers("/adminUsers").hasAnyRole(UserRole.ADMIN.name())
-				.antMatchers("/admin").hasAnyRole(UserRole.ADMIN.name())
-				.antMatchers("/cart").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/help").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/home").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/logout").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/productChoice").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/successfulOrder").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
-				.antMatchers("/userManagement").hasAnyRole(UserRole.ADMIN.name(), UserRole.USER.name())
+				.antMatchers("/adminOrders").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/adminProducts").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/adminUsers").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/admin").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/user").hasRole(USER_ROLE_USER)				
+				.antMatchers("/cart").hasRole(USER_ROLE_USER)
+				.antMatchers("/help").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/home").hasRole(USER_ROLE_USER)
+				.antMatchers("/logout").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/productChoice").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/successfulOrder").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/userManagement").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/**").permitAll()
 				.anyRequest().authenticated().and().formLogin()
 				.loginPage("/login").successHandler(new AuthenticationSuccessHandler() {
 					@Override
@@ -112,7 +114,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 							response.sendRedirect("/home");
 						}
 					}
-				}).and().logout().logoutSuccessHandler(new LogoutSuccessHandler() {
+				}).and().logout().deleteCookies("JSESSIONID").logoutSuccessHandler(new LogoutSuccessHandler() {
 					@Override
 					public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response,
 							Authentication authentication) throws IOException, ServletException {

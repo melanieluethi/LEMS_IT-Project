@@ -13,16 +13,20 @@ import ch.fhnw.lems.entity.User;
 // https://www.codejava.net/frameworks/spring-boot/user-registration-and-login-tutorial
 public class CustomUserDetails implements UserDetails {
 	private static final long serialVersionUID = -4927368631753405266L;
-	private User user;
+	private String username;
+	private String password;
+	private String role;
 
 	public CustomUserDetails(User user) {
-		this.user = user;
+		this.username = user.getUsername();
+		this.password = user.getPassword();
+		this.role = user.getRole().getRole().name();
 	}
 
 	// https://stackoverflow.com/questions/32276482/java-lang-classcastexception-org-springframework-security-core-userdetails-user
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		SimpleGrantedAuthority role = new SimpleGrantedAuthority(user.getRole().getRole().toString());
+		SimpleGrantedAuthority role = new SimpleGrantedAuthority("ROLE_" + this.role);
 		ArrayList<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
 		roles.add(role);
 		return roles;
@@ -30,12 +34,12 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return user.getPassword();
+		return this.password;
 	}
 
 	@Override
 	public String getUsername() {
-		return user.getUsername();
+		return this.username;
 	}
 
 	@Override
