@@ -50,6 +50,6 @@ public class HomeRessourceController {
 	        new SecurityContextLogoutHandler().logout(request, response, auth);
 	        logger.info("Logout was successful.");
 	    }
-	    return "redirect:/login?logout";
+	    return "redirect:/logoutView";
 	}
 }

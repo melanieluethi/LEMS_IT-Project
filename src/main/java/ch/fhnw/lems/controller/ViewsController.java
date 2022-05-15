@@ -45,6 +45,11 @@ public class ViewsController {
 	public String login() {
 		return "LoginView.html";
 	}
+	
+	@GetMapping("/logoutView")
+	public String logout() {
+		return "LogoutView.html";
+	}
 
 	@GetMapping("/productChoice")
 	public String productChoice() {

@@ -88,7 +88,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/cart").hasRole(USER_ROLE_USER)
 				.antMatchers("/help").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				.antMatchers("/home").hasRole(USER_ROLE_USER)
-				.antMatchers("/logout").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				.antMatchers("/productChoice").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				.antMatchers("/successfulOrder").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				.antMatchers("/userManagement").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
@@ -128,7 +127,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 						history.setLogout(timestamp);
 						loginHistoryRepository.save(history);
 						logger.info("User: " + username + " has been successfully logget out.");
-						response.sendRedirect("/login");
+						response.sendRedirect("/logoutView");
 					}
 				}).permitAll();
 		http.csrf().disable();
