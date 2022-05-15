@@ -27,6 +27,8 @@ public class CustomerOrder {
 	@ManyToOne
 	@JoinColumn(name = "shipping_id")
 	private Shipping shipping;
+	
+	private Double totalPrice;
 
 	public Long getOrderId() {
 		return orderId;
@@ -58,5 +60,19 @@ public class CustomerOrder {
 
 	public void setShipping(Shipping shipping) {
 		this.shipping = shipping;
+	}
+
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice() {
+		double sumOrder = 0;
+		
+		for (OrderItem o : orderItems) {
+			sumOrder += o.getQuantity() * (o.getProduct().getPrice() * o.getProduct().getDiscount());
+		}
+		
+		this.totalPrice = sumOrder + this.shipping.getShippingCost();
 	}
 }

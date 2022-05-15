@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles/dummy.css">
     <link rel="shortcut icon" href="#" />
     <script th:src="@{/scripts/Language.js}"></script>
+    <script th:src="@{/scripts/AdminOrders.js}"></script>
 	<script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -42,20 +43,15 @@
 
 <div class="adminOrder">
 <h1>Admin Orders</h1>
-<table style="width:50%">
-  <tr>
-    <th>Name</th>
-    <th>Order Number</th>
-    <th>Price</th>
-  </tr>
-  <tr>
-    <td> - </td>
-    <td> - </td>
-    <td> - </td>
-  </tr>
-  
-</table> <br>
-
+<table style="width:50%" id="adminOrderTable">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Order Number</th>
+			<th>Price</th>
+		</tr>
+	</thead>
+</table>
 <button type="button" >Edit</button>
 
 </div>

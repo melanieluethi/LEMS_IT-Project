@@ -39,6 +39,7 @@ public class OrderService {
 		User user = userRepository.findById(msgOrder.getUserId()).get();
 		order.setUser(user);
 		order.setOrderItems(msgOrder.getOrderItems());
+		order.setTotalPrice();
 		orderRepository.save(order);	
 		logger.info("Create order " + order.getOrderId() + " was successful.");
 		return true;
@@ -54,6 +55,7 @@ public class OrderService {
 			User user = userRepository.findById(msgOrder.getUserId()).get();
 			order.setUser(user);
 			order.setOrderItems(msgOrder.getOrderItems());
+			order.setTotalPrice();
 			orderRepository.save(order);
 			logger.info("Change order " + order.getOrderId() + " was successful.");
 			return true;
@@ -69,8 +71,10 @@ public class OrderService {
 		logger.info("Search for order: " + order.getOrderId());		
 		MessageResultOrder msgResultOrder = new MessageResultOrder();
 		msgResultOrder.setId(orderId);
+		msgResultOrder.setOrder(order);
 		msgResultOrder.setOrderItems(order.getOrderItems());
 		msgResultOrder.setShipping(order.getShipping());
+		msgResultOrder.setTotalPrice(order.getTotalPrice());
 		msgResultOrder.setSuccessful(true);
 		return msgResultOrder;
 	}
@@ -82,8 +86,10 @@ public class OrderService {
 		orders.forEach(o -> {
 			MessageResultOrder msgResultOrder = new MessageResultOrder();
 			msgResultOrder.setId(o.getOrderId());
+			msgResultOrder.setOrder(o);
 			msgResultOrder.setOrderItems(o.getOrderItems());
 			msgResultOrder.setShipping(o.getShipping());
+			msgResultOrder.setTotalPrice(o.getTotalPrice());
 			results.add(msgResultOrder);
 			logger.info("Get order " + o.getOrderId());
 		});			
@@ -101,8 +107,10 @@ public class OrderService {
 			orders.forEach(o -> {
 				MessageResultOrder msgResultOrder = new MessageResultOrder();
 				msgResultOrder.setId(o.getOrderId());
-				msgResultOrder.setOrderItems(o.getOrderItems());
+				msgResultOrder.setUser(o.getUser());
+				msgResultOrder.setOrder(o);
 				msgResultOrder.setShipping(o.getShipping());
+				msgResultOrder.setTotalPrice(o.getTotalPrice());
 				results.add(msgResultOrder);
 				logger.info("Get order of " + o.getOrderId());
 			});				
