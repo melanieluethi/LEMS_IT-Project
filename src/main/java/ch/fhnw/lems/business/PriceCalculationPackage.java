@@ -34,7 +34,7 @@ public class PriceCalculationPackage {
 	//if size & weight smaller than 1 Pallet-Stack & 550 KG --> offer Package price.
     //if not applicaple return false / "not applicable"
 		
-	private boolean packageOffer() {
+	public boolean packageOffer() {
 		spaceOfDelivery = testSumP1 * spaceMultiplicatorP1 + testSumP2 * spaceMultiplicatorP2 + testSumP3 * spaceMultiplicatorP3 + testSumP4 * spaceMultiplicatorP4;
 		weightOfDelivery = testSumP1 * WEIGHT_MULTIPLICATOR_P1 + testSumP2 * WEIGHT_MULTIPLICATOR_P2 + testSumP3 * WEIGHT_MULTIPLICATOR_P3 + testSumP4 * WEIGHT_MULTIPLICATOR_P4;
 		
