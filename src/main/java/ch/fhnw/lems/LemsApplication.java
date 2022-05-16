@@ -139,7 +139,8 @@ public class LemsApplication {
 	public void createTransportCost() {
 		if (transportCostRepository.findAll().isEmpty()) {
 			TransportCost transportCost1 = new TransportCost();
-			transportCost1.setTransportcostId(30l);
+			transportCost1.setTransportcostId(1l);
+			transportCost1.setDistance(30l);
 			transportCost1.setPallet1(58.65);
 			transportCost1.setPallet2(87.00);
 			transportCost1.setPallet3(114.50);
@@ -154,7 +155,8 @@ public class LemsApplication {
 			transportCost1.setPallet12(286.55);
 
 			TransportCost transportCost2 = new TransportCost();
-			transportCost2.setTransportcostId(60l);
+			transportCost2.setTransportcostId(2l);
+			transportCost2.setDistance(60l);
 			transportCost2.setPallet1(67.00);
 			transportCost2.setPallet2(99.40);
 			transportCost2.setPallet3(130.85);
@@ -169,7 +171,8 @@ public class LemsApplication {
 			transportCost2.setPallet12(327.50);
 
 			TransportCost transportCost3 = new TransportCost();
-			transportCost3.setTransportcostId(90l);
+			transportCost3.setTransportcostId(3l);
+			transportCost3.setDistance(90l);
 			transportCost3.setPallet1(75.40);
 			transportCost3.setPallet2(111.90);
 			transportCost3.setPallet3(147.15);
@@ -184,7 +187,8 @@ public class LemsApplication {
 			transportCost3.setPallet12(368.40);
 
 			TransportCost transportCost4 = new TransportCost();
-			transportCost4.setTransportcostId(120l);
+			transportCost4.setTransportcostId(4l);
+			transportCost4.setDistance(120l);
 			transportCost4.setPallet1(83.75);
 			transportCost4.setPallet2(124.30);
 			transportCost4.setPallet3(163.50);
@@ -199,7 +203,8 @@ public class LemsApplication {
 			transportCost4.setPallet12(409.40);
 
 			TransportCost transportCost5 = new TransportCost();
-			transportCost5.setTransportcostId(150l);
+			transportCost5.setTransportcostId(5l);
+			transportCost5.setDistance(150l);
 			transportCost5.setPallet1(92.15);
 			transportCost5.setPallet2(136.70);
 			transportCost5.setPallet3(179.80);
@@ -214,7 +219,8 @@ public class LemsApplication {
 			transportCost5.setPallet12(450.35);
 
 			TransportCost transportCost6 = new TransportCost();
-			transportCost6.setTransportcostId(180l);
+			transportCost6.setTransportcostId(6l);
+			transportCost6.setDistance(180l);
 			transportCost6.setPallet1(100.55);
 			transportCost6.setPallet2(149.20);
 			transportCost6.setPallet3(196.15);
@@ -229,7 +235,8 @@ public class LemsApplication {
 			transportCost6.setPallet12(491.25);
 
 			TransportCost transportCost7 = new TransportCost();
-			transportCost7.setTransportcostId(210l);
+			transportCost7.setTransportcostId(7l);
+			transportCost7.setDistance(210l);
 			transportCost7.setPallet1(108.95);
 			transportCost7.setPallet2(161.55);
 			transportCost7.setPallet3(212.50);
@@ -244,7 +251,8 @@ public class LemsApplication {
 			transportCost7.setPallet12(532.15);
 
 			TransportCost transportCost8 = new TransportCost();
-			transportCost8.setTransportcostId(240l);
+			transportCost8.setTransportcostId(8l);
+			transportCost8.setDistance(240l);
 			transportCost8.setPallet1(117.30);
 			transportCost8.setPallet2(174.05);
 			transportCost8.setPallet3(228.90);
@@ -259,7 +267,8 @@ public class LemsApplication {
 			transportCost8.setPallet12(573.15);
 
 			TransportCost transportCost9 = new TransportCost();
-			transportCost9.setTransportcostId(270l);
+			transportCost9.setTransportcostId(9l);
+			transportCost9.setDistance(270l);
 			transportCost9.setPallet1(125.65);
 			transportCost9.setPallet2(186.45);
 			transportCost9.setPallet3(245.30);
@@ -274,7 +283,8 @@ public class LemsApplication {
 			transportCost9.setPallet12(614.05);
 		
 			TransportCost transportCost10 = new TransportCost();
-			transportCost10.setTransportcostId(300l);
+			transportCost10.setTransportcostId(10l);
+			transportCost10.setDistance(300l);
 			transportCost10.setPallet1(134.05);
 			transportCost10.setPallet2(198.85);
 			transportCost10.setPallet3(261.60);
@@ -289,7 +299,8 @@ public class LemsApplication {
 			transportCost10.setPallet12(655.05);
 			
 			TransportCost transportCost11 = new TransportCost();
-			transportCost11.setTransportcostId(330l);
+			transportCost11.setTransportcostId(11l);
+			transportCost11.setDistance(330l);
 			transportCost11.setPallet1(142.40);
 			transportCost11.setPallet2(211.30);
 			transportCost11.setPallet3(277.95);
@@ -304,7 +315,8 @@ public class LemsApplication {
 			transportCost11.setPallet12(695.95);
 			
 			TransportCost transportCost12 = new TransportCost();
-			transportCost12.setTransportcostId(360l);
+			transportCost12.setTransportcostId(12l);
+			transportCost12.setDistance(360l);
 			transportCost12.setPallet1(150.75);
 			transportCost12.setPallet2(223.80);
 			transportCost12.setPallet3(294.30);

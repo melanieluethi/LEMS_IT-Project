@@ -12,9 +12,9 @@ public class PriceCalculationExpress {
     private double exponentialWeighting = 2;
     private double expressFee = 80;
 
-    public double calculateExpressPrice(int plz, double pallett) {    	
+    public double calculateExpressPrice(double distance, double pallett) {    	
     	// Formula developed by HIS --> Goal: Higher Prices than normal Fee Structure + exponential penalty for more palletts
-    	expressPrice = DistanceCalculation.calculateDistance(plz) * priceFactor + Math.pow(pallett, exponentialWeighting) + expressFee;
+    	expressPrice = distance * priceFactor + Math.pow(pallett, exponentialWeighting) + expressFee;
     	return expressPrice;
     }
 
