@@ -2,22 +2,22 @@ package ch.fhnw.lems.controller.messages;
 
 // lum
 public class MessageResultTransportCost extends MessageResultStandard {
-	private String transportCostStandard;
-	private String transportCostExpress;
+	private Double transportCostStandard;
+	private Double transportCostExpress;
 
-	public String getTransportCostStandard() {
+	public Double getTransportCostStandard() {
 		return transportCostStandard;
 	}
 
-	public void setTransportCostStandard(String transportCostStandard) {
+	public void setTransportCostStandard(Double transportCostStandard) {
 		this.transportCostStandard = transportCostStandard;
 	}
 
-	public String getTransportCostExpress() {
+	public Double getTransportCostExpress() {
 		return transportCostExpress;
 	}
 
-	public void setTransportCostExpress(String transportCostExpress) {
+	public void setTransportCostExpress(Double transportCostExpress) {
 		this.transportCostExpress = transportCostExpress;
 	}
 }

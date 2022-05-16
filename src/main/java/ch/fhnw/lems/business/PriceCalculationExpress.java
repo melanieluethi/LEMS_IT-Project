@@ -1,9 +1,6 @@
 package ch.fhnw.lems.business;
 
-public class PriceCalculationExpress {
-
-	
-	
+public class PriceCalculationExpress {	
 	//done by HiS
     //Preiskalulation EXPRESS
 
@@ -15,31 +12,10 @@ public class PriceCalculationExpress {
     private double exponentialWeighting = 2;
     private double expressFee = 80;
 
-    //justForTesting -->pls delete befor handing in
-    private double distance;
-    private double pallett;
-
-
-
-    public double calculateExpressPrice() {
-    	
+    public double calculateExpressPrice(int plz, double pallett) {    	
     	// Formula developed by HIS --> Goal: Higher Prices than normal Fee Structure + exponential penalty for more palletts
-    	
-    	expressPrice = distance * priceFactor + Math.pow(pallett, exponentialWeighting) + expressFee;
-    	
-    	return 0.0;
-    }
-
-
-
-
-
-    public double getExpressPrice() {
-        return expressPrice;
-    }
-
-    public void setExpressPrice(double expressPrice) {
-        this.expressPrice = expressPrice;
+    	expressPrice = DistanceCalculation.calculateDistance(plz) * priceFactor + Math.pow(pallett, exponentialWeighting) + expressFee;
+    	return expressPrice;
     }
 
     public double getPriceFactor() {
@@ -65,6 +41,4 @@ public class PriceCalculationExpress {
     public void setExpressFee(double expressFee) {
         this.expressFee = expressFee;
     }
-
-
 }
