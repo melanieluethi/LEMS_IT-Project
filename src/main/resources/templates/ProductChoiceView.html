@@ -9,6 +9,7 @@ WAE-->
 	<link rel="stylesheet" th:href="@{/styles/dummy.css}" />
 	<link rel="shortcut icon" href="#" />
 	<script th:src="@{/scripts/Language.js}"></script>
+	<script th:src="@{/scripts/UserProfile.js}"></script>
 	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -25,19 +26,20 @@ WAE-->
 	  </li>
 	  <li class="nav-item">
 		<a class="nav-link" href="/help" th:text="#{menu.help}"></a>
-	  </li>
+	  </li>	  
+	  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" onclick="setLanguage('eng')" th:text="#{menu.english}"></a>
+          <a class="dropdown-item" href="#" onclick="setLanguage('de')" th:text="#{menu.german}"></a>
+        </div>
+      </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="#" th:text="#{menu.language}"></a>
-		<a onclick="setLanguage('en')" th:text="#{menu.english}"></a>
-		<a onclick="setLanguage('de')" th:text="#{menu.german}"></a>
-	  </li>
-	  	  <li class="nav-item">
 		<a class="nav-link" href="/logout" th:text="#{menu.logout}"></a>
 	  </li>
 	</ul>
   </div>
 </nav>
-
 <!--SCL-->
 <div class="productChoice">
  
