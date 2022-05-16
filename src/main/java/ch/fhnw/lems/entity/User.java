@@ -22,6 +22,11 @@ public class User {
 	@Column(unique = true, nullable = false)
 	private String email;
 	private String password;
+	private String address;
+	private Integer postalCode;
+	private String city;
+	@Enumerated(EnumType.STRING)
+	private Country country;
 	@ManyToOne
 	@JoinColumn(name = "role_id")
 	private Role role;
@@ -74,6 +79,38 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(Integer postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	public Role getRole() {

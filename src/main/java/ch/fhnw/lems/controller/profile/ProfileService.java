@@ -27,6 +27,7 @@ import ch.fhnw.lems.controller.messages.MessageCreateUser;
 import ch.fhnw.lems.controller.messages.MessageResultLanguage;
 import ch.fhnw.lems.controller.messages.MessageResultProfileSetting;
 import ch.fhnw.lems.controller.messages.MessageResultStandard;
+import ch.fhnw.lems.entity.Country;
 import ch.fhnw.lems.entity.Language;
 import ch.fhnw.lems.entity.Role;
 import ch.fhnw.lems.entity.User;
@@ -53,6 +54,10 @@ public class ProfileService {
 		user.setEmail(msgUser.getEmail());
 		user.setPassword(BCrypt.hashpw(msgUser.getPassword(), BCrypt.gensalt(12)));
 		user.setLanguage(Language.valueOf(msgUser.getLanguage()));
+		user.setAddress(msgUser.getAddress());
+		user.setPostalCode(msgUser.getPostalCode());
+		user.setCity(msgUser.getCity());
+		user.setCountry(Country.valueOf(msgUser.getCountry().toUpperCase()));
 		Role role = roleRepository.findByRole(UserRole.USER);
 		user.setRole(role);
 		User savedUser = userRepository.save(user);
@@ -80,6 +85,10 @@ public class ProfileService {
 			msgResult.setEmail(user.getEmail());
 			msgResult.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
 			msgResult.setRoleId(user.getRole().getRoleId());
+			msgResult.setAddress(user.getAddress());
+			msgResult.setPostalCode(user.getPostalCode());
+			msgResult.setCity(user.getCity());
+			msgResult.setCountry(user.getCountry().name());			
 			logger.info("Get User " + user.getUsername() + " was successful.");
 		} else {
 			logger.info("User do not exist.");
@@ -104,6 +113,10 @@ public class ProfileService {
 				msgResultUser.setLastname(u.getLastname());
 				msgResultUser.setEmail(u.getEmail());
 				msgResultUser.setPassword(BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));
+				msgResultUser.setAddress(u.getAddress());
+				msgResultUser.setPostalCode(u.getPostalCode());
+				msgResultUser.setCity(u.getCity());
+				msgResultUser.setCountry(u.getCountry().name());	
 				msgResultUser.setRoleId(u.getRole().getRoleId());
 				msgResults.add(msgResultUser);
 				logger.info("Get User " + u.getUsername() + " was successful.");
@@ -131,6 +144,10 @@ public class ProfileService {
 			user.setEmail(msgProfileSetting.getEmail());
 			user.setPassword(BCrypt.hashpw(msgProfileSetting.getPassword(), BCrypt.gensalt(12)));
 			user.setLanguage(Language.valueOf(msgProfileSetting.getLanguage()));
+			user.setAddress(msgProfileSetting.getAddress());
+			user.setPostalCode(msgProfileSetting.getPostalCode());
+			user.setCity(msgProfileSetting.getCity());
+			user.setCountry(Country.valueOf(msgProfileSetting.getCountry().toUpperCase()));
 			Role role = roleRepository.findById(msgProfileSetting.getRoleId()).get();
 			user.setRole(role);
 			userRepository.save(user);

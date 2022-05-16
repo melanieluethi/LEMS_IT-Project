@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import ch.fhnw.lems.entity.Country;
 import ch.fhnw.lems.entity.Language;
 import ch.fhnw.lems.entity.Product;
 import ch.fhnw.lems.entity.Role;
@@ -64,6 +65,10 @@ public class LemsApplication {
 			admin.setEmail("administrator@lems.ch");
 			admin.setPassword(BCrypt.hashpw("admin", BCrypt.gensalt(12)));
 			admin.setLanguage(Language.DE);
+			admin.setAddress("Marzilli 2");
+			admin.setPostalCode(3000);
+			admin.setCity("Bern");
+			admin.setCountry(Country.CH);
 			Role adminRole = roleRepository.findByRole(UserRole.ADMIN);
 			admin.setRole(adminRole);
 			userRepository.save(admin);
@@ -80,6 +85,10 @@ public class LemsApplication {
 			testUser1.setEmail("testUser1@lems.ch");
 			testUser1.setPassword(BCrypt.hashpw("testUser1", BCrypt.gensalt(12)));
 			testUser1.setLanguage(Language.DE);
+			testUser1.setAddress("Marzilli 2");
+			testUser1.setPostalCode(3000);
+			testUser1.setCity("Bern");
+			testUser1.setCountry(Country.CH);
 			Role userRole = roleRepository.findByRole(UserRole.USER);
 			testUser1.setRole(userRole);
 			userRepository.save(testUser1);	

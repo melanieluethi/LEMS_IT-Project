@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.fhnw.lems.business.PriceCalculationExpress;
 import ch.fhnw.lems.controller.messages.MessageAddToCard;
 import ch.fhnw.lems.controller.messages.MessageResultShoppingCard;
+import ch.fhnw.lems.controller.messages.MessageResultTransportCost;
+import ch.fhnw.lems.controller.messages.MessageTransportCost;
 import ch.fhnw.lems.entity.Card;
 import ch.fhnw.lems.entity.OrderItem;
 import ch.fhnw.lems.entity.Product;
@@ -71,6 +74,24 @@ public class CardService {
 		msgResult.setShipping(card.getShipping());
 		
 		logger.info("Get Card of: " + card.getUser().getUsername());
+		return msgResult;
+	}
+	
+	// The Transportcost need a cardId or a orderId to Calculate the transport cost
+	@GetMapping(path = "/api/transportCost", produces = " application/json")
+	public MessageResultTransportCost getTransportCost(@RequestBody MessageTransportCost msgTransportCost) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		User currentUser = userRepository.findByUsername(username);	
+		
+		MessageResultTransportCost msgResult = new MessageResultTransportCost();
+		// TODO LUM/HIS getTransportCost
+		msgResult.setTransportCostStandard(120d);
+		
+		PriceCalculationExpress express = new PriceCalculationExpress();		
+		double expressPrice = express.calculateExpressPrice(currentUser.getPostalCode(), 0);
+		msgResult.setTransportCostExpress(expressPrice);
+		
 		return msgResult;
 	}
 }
