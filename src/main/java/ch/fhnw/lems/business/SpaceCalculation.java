@@ -90,7 +90,7 @@ public class SpaceCalculation {
 			totalHeightP1 = totalHeightP1 - palletSpaceP1;
 		}
 
-		if (testSumP1 != 0) {
+		if (testSumP2 != 0) {
 			totalHeightP2 = testSumP2 * spaceMultiplicatorP2;
 			palletSpaceP2 = (int) totalHeightP2;
 			totalHeightP2 = totalHeightP2 - palletSpaceP2;
@@ -169,19 +169,7 @@ public class SpaceCalculation {
 	// Calculate the needed space
 	// max weight = 300kg/palett
 	public double calculateSpace() {
-
-		
-		/*
-		 * 
-		 * totalHeightP1 = totalHeightP1 + palletSpaceP1;
-		 * 		totalHeightP2 = totalHeightP2 + palletSpaceP2;
-		 * 		totalHeightP3 = totalHeightP3 + palletSpaceP3;
-		 * 		totalHeightP4 = totalHeightP4 + palletSpaceP4;
-		 */
-		
-		
-		
-		
+	
 		// Volle Höhen * Platzbedaf Palettenplatz
 		shippingSpaceP1 = palletSpaceP1 * spaceP1;
 		shippingSpaceP2 = palletSpaceP2 * spaceP2;
@@ -225,4 +213,16 @@ public class SpaceCalculation {
 	// P3 max Stack:15 Min Space:2.5 weight 15pc = 870kg --> 58kg
 	// P4 max Stack:100 Min Space:0.8 weight: 100pc = 200kg --> 2kg
 
+	
+	public double totalPalletts() {
+		calculateRestSpace();
+		useRestSpace();
+		double palletts = calculateSpace();
+		
+		return palletts;
+	}
+	
+	
+	
+	
 }
