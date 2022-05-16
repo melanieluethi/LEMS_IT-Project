@@ -43,41 +43,13 @@ WAE-->
 </nav>
 <div class="help">
 <h1 id="titleFullName" th:text="#{help.welcome}"></h1 >
-<p id="help"><br>You have reached the help page. Here you will find a short description of how to use our website and how to change the language.<br><br>
-From the home menu you can go directly to ordering products. In your profile you can change your personal data and view your orders.<br><br>
-We hope we could help you!<br>
-Your LEMS Team
-</p >
+<br>
+<p id="help" th:text="#{help.text1}"></p >
+<p id="help" th:text="#{help.text2}"></p >
+<p id="help" th:text="#{help.text3}"></p >
+<p id="help" th:text="#{help.greeting}"></p >
 
 </div>
-<script>
-// define language reload anchers
-var dataReload = document.querySelectorAll("[data-reload]")
 
-//Language translations
-var language = {
-	en: {
-		greeting: "Hello + name +, can we help you?",
-		help: "You have reached the help page. Here you will find a short description of how to use our website and how to change the language.From the home menu you can go directly to ordering products. In your profile you can change your personal data and view your orders. We hope we could help you! Your LEMS Team"
-	},
-	de: {
-		greeting: "Hallo + name +, k�nnen wir dir helfen?", 
-		help: "Du hast die Hilfeseite erreicht. Hier findest du eine kurze Beschreibung, wie du unsere Website benutzen und die Sprache �ndern kannst. Von der Startseite kannst du sofort Produkte bestellen. In deinem Profil kannst du deine pers�nlichen Daten �ndern und deine Bestellungen einsehen. Wir hoffen, dass wir dir geholfen haben! Dein LEMS Team"
-	}
-};
-//define language via window hash
-if(window.location.hash) {
-	if(window.location.hash ==="#de"){
-		greeting.textContent = language.de.greeting;
-		help.textContent = language.de.help;
-	}
-}
-for(i=0;i<=dataReload.length;i++){
-	dataReload[i].onclick = function(){
-		location.reload(true);
-	}
-}
-
-</script>
 </body>
 </html >
