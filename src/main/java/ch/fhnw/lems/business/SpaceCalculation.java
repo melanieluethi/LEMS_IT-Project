@@ -214,7 +214,12 @@ public class SpaceCalculation {
 	// P4 max Stack:100 Min Space:0.8 weight: 100pc = 200kg --> 2kg
 
 	
-	public double totalPalletts() {
+	public double totalPalletts(int sumP1, int sumP2, int sumP3, int sumP4) {
+		testSumP1 = sumP1;
+		testSumP2 = sumP2;
+		testSumP3 = sumP3;
+		testSumP4 = sumP4;
+		
 		calculateRestSpace();
 		useRestSpace();
 		double palletts = calculateSpace();
