@@ -181,7 +181,7 @@ public class ProfileService {
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
 		if (currentUser != null) {
-			currentUser.setLanguage(Language.valueOf(msgLanguage.getLanguage()));
+			currentUser.setLanguage(Language.valueOf(msgLanguage.getLanguage().toUpperCase()));
 			userRepository.save(currentUser);
 			logger.info("Change Language of" + currentUser.getUsername() + " was successful.");
 			return true;
