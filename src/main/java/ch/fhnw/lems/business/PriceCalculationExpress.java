@@ -17,6 +17,15 @@ public class PriceCalculationExpress {
     	expressPrice = DistanceCalculation.calculateDistance(plz) * priceFactor + Math.pow(pallett, exponentialWeighting) + expressFee;
     	return expressPrice;
     }
+    
+    public boolean expressOffer(double pallett) {
+    	if (pallett <= 12) {
+    		return true;
+    	}else {
+    		return false;
+    	}
+    }
+    
 
     public double getPriceFactor() {
         return priceFactor;
