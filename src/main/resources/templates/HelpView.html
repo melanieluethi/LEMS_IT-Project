@@ -1,9 +1,9 @@
 <!DOCTYPE html> <!--  angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden und
 https://www.youtube.com/watch?v=PaJrDAmrOB4
 WAE-->
-<html lang="en">
+<html>
 <head>
-    <title th:text="#{help.title}"></title>
+    <title th:text="#{home.title}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
@@ -26,11 +26,16 @@ WAE-->
 		<a class="nav-link" href="/userManagement" th:text="#{menu.profil}"></a>
 	  </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="#" th:text="#{menu.language}"></a>
-		<a onclick="setLanguage('en')" th:text="#{menu.english}"></a>
-		<a onclick="setLanguage('de')" th:text="#{menu.german}"></a>
-	  </li>
-	  	  <li class="nav-item">
+		<a class="nav-link" href="/help" th:text="#{menu.help}"></a>
+	  </li>	  
+	  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" onclick="setLanguage('eng')" th:text="#{menu.english}"></a>
+          <a class="dropdown-item" href="#" onclick="setLanguage('de')" th:text="#{menu.german}"></a>
+        </div>
+      </li>
+	  <li class="nav-item">
 		<a class="nav-link" href="/logout" th:text="#{menu.logout}"></a>
 	  </li>
 	</ul>
