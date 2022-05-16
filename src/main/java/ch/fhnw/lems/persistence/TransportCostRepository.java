@@ -8,6 +8,5 @@ import ch.fhnw.lems.entity.TransportCost;
 
 //done by HiS
 @Repository
-public interface TransportCostRepository extends JpaRepository<TransportCost, Long> {
-	
+public interface TransportCostRepository extends JpaRepository<TransportCost, Long> {	
 }
