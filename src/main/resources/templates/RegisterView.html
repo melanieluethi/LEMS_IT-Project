@@ -1,4 +1,5 @@
 <!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden 
+pattern Email: https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute
 WAE-->
 <html>
 <head>
@@ -27,14 +28,14 @@ WAE-->
 <div class="register">
 <input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
 <input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
-<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" required>
+<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
 <input type="text" id="country" name="country" value="CH" required readonly>
-<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" required>
+<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 </div >
 <div class="register">
 <button type="button" onclick="window.location.href='/login'" th:text="#{login.register}"></button>
-<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" required> <br>
-<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" required>
+<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
+<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
 </div >
 <button class="btn btn-outline-secondary btn-lg" style=margin-left:5% type="submit" th:text="#{login.register}"></button>
 </form>

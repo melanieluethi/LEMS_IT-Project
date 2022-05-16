@@ -4,13 +4,28 @@ function setUserData(){
 	const titleUserData = document.getElementById(titleUserData);
 	$.ajax({
 		type:"PUT",
-		url: "/api/register",
-		data:{
-			username: '',
-			
-		},
-		success: function (data){
-			titleUserData.innerHTML = titleUserData
-		}
-	})
+		url: "/api/createUser",
+		data: JSON.stringify ({
+			firstname: fname,
+			lastname: lname,
+			email: mail,
+			password: password,
+			language: language,
+			address: address,
+			postalCode: zip,
+			city: city,
+			country: country,
+			role: role,
+						
+		}),
+		dataType: 'json',
+    	contentType: 'application/json',
+        success: function (data) {
+			if(data === true) {
+				window.location.replace('?lang=' + userLang);	
+			} 
+        }, error: function(e) {
+			console.log(e);
+	  	}
+	});
 }
