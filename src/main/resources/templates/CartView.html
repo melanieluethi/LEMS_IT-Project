@@ -41,12 +41,12 @@
   </div>
 </nav>
 <div class="cart">
-<h1> Cart </h1> <br>
+<h1 th:text="#{cart.title}"></h1 > <br>
 <table style="width:50%">
   <tr>
-    <th>Product</th>
-    <th> Qty </th>
-    <th>Price CHF</th>
+    <th th:text="#{cart.product}"></th >
+    <th th:text="#{cart.quantity}"></th >
+    <th th:text="#{cart.price}"></th >
     
   </tr>
   <tr>
@@ -60,9 +60,9 @@
 
 <form class="dropdown" name="Select Shipping">
   <select id="sipping" name="shipping" onchange="getShipping()">
-  	<option value="Selection">Select Shipping</option>
-    <option value="Product 1">Express</option>
-    <option value="Product 1">Standard</option>
+  	<option value="Selection" th:text="#{cart.shipping}"></option>
+    <option value="Product 1" th:text="#{cart.express}"></option>
+    <option value="Product 1" th:text="#{cart.standard}"></option>
   </select>
  
   <input type="submit" value="Order">

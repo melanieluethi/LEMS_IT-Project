@@ -50,7 +50,7 @@ WAE-->
   <input type="submit" value="Add to cart" onclick"addToCart">
 
 
-<!--Shows Productname you have choosed-->
+<!--Shows Productname you have chosen-->
 <h1 id="productname"></h1>
 
 <p id="description"> </p>
@@ -59,7 +59,7 @@ WAE-->
 	
 <img id="productImg" class="image" th:src="@{productImg}"/>
 
-<button type="button" onclick="window.location.href='/cart'">Cart</button>
+<button type="button" onclick="window.location.href='/cart'" th:text="#{productChoice.cart}"></button>
 </div>
 
 </div>

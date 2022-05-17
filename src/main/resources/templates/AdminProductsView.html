@@ -43,12 +43,12 @@
 <!-- SCL -->
 
 <div class="adminProducts">
-<h1>Admin Products </h1>
+<h1 th:text="#{adminProducts.text}"></h1 >
 <table style="width:50%" id= "productAdminTable" >
   <tr>
-    <th>Product</th>
-    <th>Description</th>
-    <th>Discount % </th>
+    <th th:text="#{adminProducts.product}"></th >
+    <th th:text="#{adminProducts.description}"></th >
+    <th th:text="#{adminProducts.discount}"></th >
   </tr>
    
 </table>

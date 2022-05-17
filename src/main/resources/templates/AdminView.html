@@ -45,16 +45,16 @@
 
 <div class="admin">
 
-<h1>Admin</h1>
-<h2 id="titleFullName"> Hello fullname & welcome to the administration view. </h2 >
-<p> Here you can see all orders, products and users. <br />
-Just click on the desired button: </p>
+<h1 th:text="#{admin.title}"></h1 >
+<h2 id="titleFullName" th:text="#{admin.greeting}"></h2 >
+<p th:text="#{admin.advice}"></p>
+<p th:text="#{admin.click}"></p >
 </div >
 
 <div class="admin">
-<button type="button" onclick="window.location.href='/adminOrders'">Orders</button>
-<button type="button" onclick="window.location.href='/adminProducts'">Products</button>
-<button type="button" onclick="window.location.href='/adminUsers'">Users</button>
+<button type="button" onclick="window.location.href='/adminOrders'" th:text="#{admin.orders}"></button>
+<button type="button" onclick="window.location.href='/adminProducts'" th:text="#{admin.products}"></button>
+<button type="button" onclick="window.location.href='/adminUsers'" th:text="#{admin.users}"></button>
 
 </div>
 </body>
