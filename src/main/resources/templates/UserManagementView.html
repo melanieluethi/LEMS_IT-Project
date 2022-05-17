@@ -41,26 +41,26 @@
 </nav>
 
 <!--SCL - muss noch Userdaten ziehen-->
-<h1>Profil</h1>
+<h1 th:text="#{userManagement.title}"></h1>
 <form action="/action_page.php">
-  <input type="text" id="fname" name="fname" value="First Name">
-  <input type="text" id="lname" name="lname" value="Last name"><br>
-  <input type="text" id="adress" name="lname" value="adress"><br> 
-  <input type="text" id="zip" name="zip" value="ZIP Code" required>
-  <input type="text" id="city" name="city" value="City" required><br>
-  <input type="text" id="country" name="country" value="CH" required>
-  <input type="text" id="mail" name="mail" value="mail" required><br>
-  <input type="text" id="username" name="username" placholder="Username" required>
-  <input type="text" id="password" name="password" placeholder="Password" required> <br>
+<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
+<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
+<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
+<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
+<input type="text" id="country" name="country" value="CH" required readonly>
+<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
+<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
   <input type="submit" value="Save changes">
 </form>
 
 <div class="UserMangement">
-<h1>Order</h1>
+<h1 th:text="#{userManagement.order}"></h1 >
 <table style="width:50%">
   <tr>
-    <th>Order Number </th>
-    <th> Price </th>
+    <th th:text="#{userManagement.orderNumber}"></th >
+    <th th:text="#{userManagement.price}"></th >
   </tr>
   <tr>
     <td> - </td>
@@ -68,7 +68,7 @@
   </tr> 
   
 </table>
-<button type="button" onclick="window.location.href='/cart'">Cart</button>
+<button type="button" onclick="window.location.href='/cart'" th:text="#{userManagement.cart}"></button>
 
 
 </div> 
