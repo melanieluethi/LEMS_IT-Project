@@ -3,7 +3,7 @@
 function setUserData(){
 	const titleUserData = document.getElementById(titleUserData);
 	$.ajax({
-		type:"PUT",
+		type:"POST",
 		url: "/api/createUser",
 		data: JSON.stringify ({
 			firstname: fname,
