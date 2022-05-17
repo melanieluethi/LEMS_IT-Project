@@ -19,7 +19,7 @@ WAE-->
 <nav class="navbar navbar-expand-md">
   <a class="navbar-brand" th:href="@{/home}" th:text="#{login.firma}"></a>
 </nav>
-<form action="register" method="POST">
+<form th:action="@{/api/createUser}" th:object="${MessageCreateUser}" method="POST">
 <div class="register">
 <h1 th:text="#{register.greeting}"></h1 >
 <input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>

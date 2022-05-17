@@ -52,6 +52,7 @@ public class ProfileService {
 		user.setFirstname(msgUser.getFirstname());
 		user.setLastname(msgUser.getLastname());
 		user.setEmail(msgUser.getEmail());
+		user.setUsername(msgUser.getUsername());
 		user.setPassword(BCrypt.hashpw(msgUser.getPassword(), BCrypt.gensalt(12)));
 		user.setLanguage(Language.valueOf(msgUser.getLanguage()));
 		user.setAddress(msgUser.getAddress());
