@@ -8,7 +8,7 @@
 	<link rel="stylesheet" th:href="@{/styles/dummy.css}" />
 	<link rel="shortcut icon" href="#" />
 	<script th:src="@{/scripts/Language.js}"></script>
-	<script th:src="@{/scripts/UserProfile.js}"></script>
+	<script th:src="@{/scripts/AdminProducts.js}"></script>
 	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -44,13 +44,12 @@
 
 <div class="adminProducts">
 <h1 th:text="#{adminProducts.text}"></h1 >
-<table style="width:50%" id= "productAdminTable" >
+<table style="width:50%" id="productAdminTable">
   <tr>
     <th th:text="#{adminProducts.product}"></th >
     <th th:text="#{adminProducts.description}"></th >
     <th th:text="#{adminProducts.discount}"></th >
   </tr>
-   
 </table>
 
 </div>
