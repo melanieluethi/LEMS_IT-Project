@@ -93,3 +93,7 @@ img {
     background-color: brown;
     color: #FFF;
 }
+
+#adminProductsId {
+	display: none;
+}
