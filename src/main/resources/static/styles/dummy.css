@@ -87,3 +87,9 @@ img {
     height:30px;
     width:30px;
 }
+
+/* LUM */
+#productAdminTable tr.selected {
+    background-color: brown;
+    color: #FFF;
+}

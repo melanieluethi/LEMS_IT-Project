@@ -1,20 +1,21 @@
-<!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
+<!DOCTYPE html> 
 <html>
 <head>
-    <title th:text="#{adminProducts.title}"></title>
+    <title th:text="#{productDetail.title}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 	<link rel="stylesheet" th:href="@{/styles/dummy.css}" />
 	<link rel="shortcut icon" href="#" />
 	<script th:src="@{/scripts/Language.js}"></script>
-	<script th:src="@{/scripts/AdminProducts.js}"></script>
+	<script th:src="@{/scripts/ProductChoice.js}"></script>
+	<script th:src="@{/scripts/AdminProductDetail.js}"></script>
 	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
-   <a class="navbar-brand" th:href="@{/admin}" th:text="#{login.firma}"></a>
+   <a class="navbar-brand" th:href="@{/home}" th:text="#{login.firma}"></a>
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
@@ -39,23 +40,19 @@
 	</ul>
   </div>
 </nav>
-
-<!-- SCL -->
-
-<div class="adminProducts">
-<h1 th:text="#{adminProducts.text}"></h1 >
-<table style="width:50%" id="productAdminTable">
-  <tr>
-    <th th:text="id"></th >
-    <th th:text="#{adminProducts.product}"></th >
-    <th th:text="#{adminProducts.description}"></th >
-    <th th:text="#{adminProducts.discount}"></th >
-  </tr>
-</table>
-
+<!--LUM-->
+<div class="productDetail">
+	<h1 th:text="#{productDetail.title}"/>
+	<input type="hidden" id="productId" name="productId">
+	<label id="productname" th:text="#{productDetail.title}"/>
+ 	<input type="text" id="productname" name="productname">
+	<label id="description" th:text="#{productDetail.description}"/>
+	<input type="text" id="description" name="description">
+	<label id="discount" th:text="#{productDetail.discount}"/>
+	<input type="text" id="discount" name="discount">
+	<label id="productImg" th:text="#{productDetail.productImg}"></label>
+	<button type="button" onclick="save()" th:text="#{productDetail.save}"></button>
 </div>
-
-<button type="button" onclick="editProduct()">Edit</button>
 
 </div>
 </body>
