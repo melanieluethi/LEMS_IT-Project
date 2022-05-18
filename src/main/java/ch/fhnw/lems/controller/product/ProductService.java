@@ -54,7 +54,27 @@ public class ProductService {
 		return results;
 	}
 	
-	@GetMapping(path= "/api/product/{productName}", produces = " application/json")
+	@GetMapping(path= "/api/productById/{productId}", produces = " application/json")
+	public MessageResultProduct getProduct(@PathVariable Long productId){
+		Product product = productRepository.findById(productId).get();		
+		MessageResultProduct msgResult = new MessageResultProduct();
+		if (product != null) {
+			logger.info("Get product: " + product.getProductName());
+			msgResult.setSuccessful(true);
+			msgResult.setId(product.getProductId());
+			msgResult.setProductName(product.getProductName());
+			msgResult.setDescription(product.getDescription());
+			msgResult.setDiscount(product.getDiscount());
+			msgResult.setPrice(product.getPrice());
+			msgResult.setProductImg(product.getProductImg());
+		} else {
+			logger.info("Get product was not successful.");
+			msgResult.setSuccessful(true);
+		}
+		return msgResult;
+	}
+	
+	@GetMapping(path= "/api/productByName/{productName}", produces = " application/json")
 	public MessageResultProduct getProduct(@PathVariable String productName){
 		Product product = productRepository.findByProductName(productName);		
 		MessageResultProduct msgResult = new MessageResultProduct();
@@ -94,11 +114,10 @@ public class ProductService {
 		User currentUser = userRepository.findByUsername(username);
 		
 		if(currentUser.getRole().getRole().equals(UserRole.ADMIN)) {
-			Product product = new Product();
+			Product product = productRepository.findById(msgProduct.getProductId()).get();
+			product.setProductName(msgProduct.getProductName());
 			product.setDescription(msgProduct.getDescription());
 			product.setDiscount(msgProduct.getDiscount());
-			product.setPrice(msgProduct.getPrice());
-			product.setProductImg(msgProduct.getProductImg());
 			productRepository.save(product);
 
 			logger.info("Change product " + product.getProductName() + " was succesful.");

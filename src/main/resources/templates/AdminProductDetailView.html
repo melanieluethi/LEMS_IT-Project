@@ -44,13 +44,13 @@
 <div class="productDetail">
 	<h1 th:text="#{productDetail.title}"/>
 	<input type="hidden" id="productId" name="productId">
-	<label id="productname" th:text="#{productDetail.title}"/>
+	<label th:text="#{productDetail.title}"/>
  	<input type="text" id="productname" name="productname">
-	<label id="description" th:text="#{productDetail.description}"/>
+	<label th:text="#{productDetail.description}"/>
 	<input type="text" id="description" name="description">
-	<label id="discount" th:text="#{productDetail.discount}"/>
+	<label th:text="#{productDetail.discount}"/>
 	<input type="text" id="discount" name="discount">
-	<label id="productImg" th:text="#{productDetail.productImg}"></label>
+	<img id="productImg" class="image"/>
 	<button type="button" onclick="save()" th:text="#{productDetail.save}"></button>
 </div>
 

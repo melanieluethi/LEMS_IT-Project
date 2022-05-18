@@ -30,7 +30,7 @@ function getSpecificProduct() {
     let selectedProductName = document.getElementById('products').value;
 	 $.ajax({
 		type: "GET",
-		url: "/api/product/" + selectedProductName,	
+		url: "/api/productByName/" + selectedProductName,	
 		dataType: 'json',
 		contentType: 'application/json',	
 		success: function (data) {
