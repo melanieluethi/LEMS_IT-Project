@@ -41,7 +41,7 @@ function getSpecificProduct() {
 			description.textContent = data.description;
 			
 			let productImg = document.getElementById('productImg');
-			productImg.setIcon = data.productImg;
+			productImg.src = data.productImg;
 			
 			let discount = document.getElementById('discount');
 			discount.textContent = data.discount;
