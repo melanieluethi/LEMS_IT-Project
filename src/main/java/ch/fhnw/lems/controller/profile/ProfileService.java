@@ -23,10 +23,10 @@ import org.springframework.web.bind.annotation.RestController;
 import ch.fhnw.lems.controller.messages.MessageChangeLanguage;
 import ch.fhnw.lems.controller.messages.MessageChangePassword;
 import ch.fhnw.lems.controller.messages.MessageChangeProfileSetting;
-import ch.fhnw.lems.controller.messages.MessageCreateUser;
 import ch.fhnw.lems.controller.messages.MessageResultLanguage;
 import ch.fhnw.lems.controller.messages.MessageResultProfileSetting;
 import ch.fhnw.lems.controller.messages.MessageResultStandard;
+import ch.fhnw.lems.controller.messages.MessageUser;
 import ch.fhnw.lems.entity.Country;
 import ch.fhnw.lems.entity.Language;
 import ch.fhnw.lems.entity.Role;
@@ -47,14 +47,14 @@ public class ProfileService {
 	private RoleRepository roleRepository;
 
 	@PostMapping(path = "/api/createUser", produces = "application/json")
-	public MessageResultStandard createUser(@RequestBody MessageCreateUser msgUser) {
+	public MessageResultStandard createUser(@RequestBody MessageUser msgUser) {
 		User user = new User();
 		user.setFirstname(msgUser.getFirstname());
 		user.setLastname(msgUser.getLastname());
 		user.setEmail(msgUser.getEmail());
 		user.setUsername(msgUser.getUsername());
 		user.setPassword(BCrypt.hashpw(msgUser.getPassword(), BCrypt.gensalt(12)));
-		user.setLanguage(Language.valueOf(msgUser.getLanguage()));
+		user.setLanguage(Language.valueOf(msgUser.getLanguage().toUpperCase()));
 		user.setAddress(msgUser.getAddress());
 		user.setPostalCode(msgUser.getPostalCode());
 		user.setCity(msgUser.getCity());
