@@ -82,6 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Rights for views
 				.antMatchers("/adminOrders").hasRole(USER_ROLE_ADMIN)
 				.antMatchers("/adminProducts").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/adminOrderDetail").hasRole(USER_ROLE_ADMIN)
 				.antMatchers("/adminUsers").hasRole(USER_ROLE_ADMIN)
 				.antMatchers("/admin").hasRole(USER_ROLE_ADMIN)
 				.antMatchers("/adminProductDetail").hasRole(USER_ROLE_ADMIN)

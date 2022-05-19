@@ -15,7 +15,7 @@ function getProducts() {
 				// Creating and adding data to second row of the table
 				let row = document.createElement('tr');
 				let rowData = document.createElement('td');
-				rowData.setAttribute('id', 'adminProductsId')
+				rowData.setAttribute('class', 'idColumn');
 				rowData.innerHTML = d.id;				
 				let rowData2 = document.createElement('td');
 				rowData2.innerHTML = d.productName;

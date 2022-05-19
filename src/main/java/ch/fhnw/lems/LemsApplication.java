@@ -1,7 +1,9 @@
 package ch.fhnw.lems;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -10,15 +12,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
+import ch.fhnw.lems.entity.CustomerOrder;
 import ch.fhnw.lems.entity.Country;
 import ch.fhnw.lems.entity.Language;
+import ch.fhnw.lems.entity.OrderItem;
 import ch.fhnw.lems.entity.Product;
 import ch.fhnw.lems.entity.Role;
+import ch.fhnw.lems.entity.Shipping;
 import ch.fhnw.lems.entity.TransportCost;
 import ch.fhnw.lems.entity.User;
 import ch.fhnw.lems.entity.UserRole;
+import ch.fhnw.lems.persistence.OrderItemRepository;
+import ch.fhnw.lems.persistence.OrderRepository;
 import ch.fhnw.lems.persistence.ProductRepository;
 import ch.fhnw.lems.persistence.RoleRepository;
+import ch.fhnw.lems.persistence.ShippingRepository;
 import ch.fhnw.lems.persistence.TransportCostRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 
@@ -33,6 +41,15 @@ public class LemsApplication {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	@Autowired
+	private ShippingRepository shippingRepository;
+	
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 
 	@Autowired
 	private TransportCostRepository transportCostRepository;
@@ -132,6 +149,42 @@ public class LemsApplication {
 			
 			productRepository.saveAll(Arrays.asList(p1, p2, p3, p4));			
 		}
+	}
+	
+	@PostConstruct
+	public void createDummyOrder() {
+		CustomerOrder order = new CustomerOrder();
+		User user = userRepository.findByUsername("testUser1");
+		order.setUser(user);
+		Shipping s = new Shipping();
+		s.setShippingCost(120d);
+		s.setShippingMethod("express");
+		order.setShipping(s);
+		shippingRepository.save(s);
+		
+		List<OrderItem> items = new ArrayList<OrderItem>();
+		OrderItem orderItem = new OrderItem();
+		Product p = productRepository.findByProductName("Firewall");
+		orderItem.setProduct(p);
+		orderItem.setQuantity(2);
+		items.add(orderItem);
+		orderItemRepository.save(orderItem);
+		
+		OrderItem orderItem2 = new OrderItem();
+		Product p2 = productRepository.findByProductName("Switch");
+		orderItem2.setProduct(p2);
+		orderItem2.setQuantity(1);
+		items.add(orderItem2);		
+		order.setOrderItems(items);
+		orderItemRepository.save(orderItem2);
+		order.setTotalPrice();
+		
+		CustomerOrder order2 = new CustomerOrder();
+		order2.setUser(user);
+		order2.setShipping(s);
+		order2.setOrderItems(items);
+		order2.setTotalPrice();
+		orderRepository.saveAll(Arrays.asList(order, order2));	
 	}
 	
 	// method for HiS (Claculation Stuff)

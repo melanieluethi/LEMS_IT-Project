@@ -26,6 +26,11 @@ public class ViewsController {
 		return "AdminProductDetailView.html";
 	}
 	
+	@GetMapping("/adminOrderDetail")
+	public String adminOrderDetail() {
+		return "AdminOrderDetailView.html";
+	}
+	
 	@GetMapping("/admin")
 	public String admin() {
 		return "AdminView.html";

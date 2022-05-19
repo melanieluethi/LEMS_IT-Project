@@ -1,14 +1,14 @@
-<!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
+<!DOCTYPE html> 
 <html>
 <head>
-    <title th:text="#{adminOrder.title}"></title>
+    <title th:text="#{orderDetail.title}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 	<link rel="stylesheet" th:href="@{/styles/dummy.css}" />
 	<link rel="shortcut icon" href="#" />
 	<script th:src="@{/scripts/Language.js}"></script>
-	<script th:src="@{/scripts/AdminOrders.js}"></script>
+	<script th:src="@{/scripts/AdminOrderDetail.js}"></script>
 	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
@@ -39,21 +39,43 @@
 	</ul>
   </div>
 </nav>
-
-<!-- SCL -->
-
-<div class="adminOrder">
-<h1 th:text="#{adminOrder.text}"></h1 >
-<table style="width:50%" id="adminOrderTable" class="editableTable">
-	<thead>
-		<tr>
-			<th th:text="#{adminOrder.name}"></th >
-			<th th:text="#{adminOrder.orderNumber}"></th >
-			<th th:text="#{adminOrder.price}"></th >
-		</tr>
-	</thead>
-</table>
-<button type="button" onclick="editOrder()" th:text="#{adminOrder.edit}"></button>
+<!--LUM-->
+<div class="orderDetail">
+	<h1 th:text="#{orderDetail.title}"/>
+	<label th:text="#{orderDetail.orderId}"/>
+	<input type="text" id="orderId" name="orderId" disabled>	
+	<label th:text="#{orderDetail.username}"/>
+ 	<input type="text" id="username" name="username">
+	<label th:text="#{orderDetail.firstname}"/>
+	<input type="text" id="firstname" name="firstname">
+	<label th:text="#{orderDetail.lastname}"/>
+	<input type="text" id="lastname" name="lastname">	
+	<label th:text="#{orderDetail.address}"/>
+ 	<input type="text" id="address" name="address"> 	
+	<label th:text="#{orderDetail.postalCode}"/>
+	<input type="text" id="postalCode" name="postalCode">
+	<label th:text="#{orderDetail.city}"/>
+	<input type="text" id="city" name="city">
+	<label th:text="#{orderDetail.country}"/>
+	<input type="text" id="country" name="country">	
+	<table style="width:50%" id="orderItemIdTable">
+		<thead>
+			<tr>
+				<th th:text="#{adminOrderDetail.productName}"></th >
+				<th th:text="#{adminOrderDetail.price}"></th >
+				<th th:text="#{adminOrderDetail.discount}"></th >
+				<th th:text="#{adminOrderDetail.quantity}"></th >
+			</tr>
+		</thead>
+	</table>
+	<label th:text="#{orderDetail.shippingMethod}"/>
+ 	<input type="text" id="shippingMethod" name="shippingMethod">
+	<label th:text="#{orderDetail.shippingCost}"/>
+	<input type="text" id="shippingCost" name="shippingCost">
+	<label th:text="#{orderDetail.totalPrice}"/>
+	<input type="text" id="totalPrice" name="totalPrice">
+	<button type="button" onclick="save()" th:text="#{orderDetail.save}"></button>
+</div>
 
 </div>
 </body>

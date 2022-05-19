@@ -89,11 +89,11 @@ img {
 }
 
 /* LUM */
-#productAdminTable tr.selected {
+.editableTable tr.selected {
     background-color: brown;
     color: #FFF;
 }
 
-#adminProductsId {
+.idColumn {
 	display: none;
 }

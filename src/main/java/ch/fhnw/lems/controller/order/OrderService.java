@@ -46,7 +46,7 @@ public class OrderService {
 	}
 	
 	@PutMapping(path = "/api/order", produces = "application/json")
-	public boolean changeProduct(@RequestBody MessageAddOrder msgOrder) {
+	public boolean changeOrder(@RequestBody MessageAddOrder msgOrder) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);		
@@ -72,9 +72,6 @@ public class OrderService {
 		MessageResultOrder msgResultOrder = new MessageResultOrder();
 		msgResultOrder.setId(orderId);
 		msgResultOrder.setOrder(order);
-		msgResultOrder.setOrderItems(order.getOrderItems());
-		msgResultOrder.setShipping(order.getShipping());
-		msgResultOrder.setTotalPrice(order.getTotalPrice());
 		msgResultOrder.setSuccessful(true);
 		return msgResultOrder;
 	}
@@ -87,9 +84,6 @@ public class OrderService {
 			MessageResultOrder msgResultOrder = new MessageResultOrder();
 			msgResultOrder.setId(o.getOrderId());
 			msgResultOrder.setOrder(o);
-			msgResultOrder.setOrderItems(o.getOrderItems());
-			msgResultOrder.setShipping(o.getShipping());
-			msgResultOrder.setTotalPrice(o.getTotalPrice());
 			results.add(msgResultOrder);
 			logger.info("Get order " + o.getOrderId());
 		});			
@@ -107,10 +101,7 @@ public class OrderService {
 			orders.forEach(o -> {
 				MessageResultOrder msgResultOrder = new MessageResultOrder();
 				msgResultOrder.setId(o.getOrderId());
-				msgResultOrder.setUser(o.getUser());
 				msgResultOrder.setOrder(o);
-				msgResultOrder.setShipping(o.getShipping());
-				msgResultOrder.setTotalPrice(o.getTotalPrice());
 				results.add(msgResultOrder);
 				logger.info("Get order of " + o.getOrderId());
 			});				
