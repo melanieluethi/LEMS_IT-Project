@@ -9,11 +9,9 @@ function getOrder() {
 		url: "/api/order/" + orderId,	
 		dataType: 'json',
 		contentType: 'application/json',	
-		success: function (data) {
-			debugger;
-			
+		success: function (data) {			
 			let orderId = document.getElementById('orderId');
-			orderId.value = data.orderId;
+			orderId.value = data.order.orderId;
 			let username = document.getElementById('username');
 			username.value = data.order.user.username;
 			let firstname = document.getElementById('firstname');
