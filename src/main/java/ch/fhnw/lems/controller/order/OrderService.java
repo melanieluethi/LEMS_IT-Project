@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.fhnw.lems.controller.messages.MessageAddOrder;
 import ch.fhnw.lems.controller.messages.MessageChangeOrder;
+import ch.fhnw.lems.controller.messages.MessageOrder;
 import ch.fhnw.lems.controller.messages.MessageResultOrder;
 import ch.fhnw.lems.entity.CustomerOrder;
 import ch.fhnw.lems.entity.User;
@@ -35,7 +35,7 @@ public class OrderService {
 	private UserRepository userRepository;
 	
 	@PostMapping (path = "/api/order", produces = "application/json")
-	public boolean createOrder(@RequestBody MessageAddOrder msgOrder) {
+	public boolean createOrder(@RequestBody MessageOrder msgOrder) {
 		CustomerOrder order = new CustomerOrder();
 		User user = userRepository.findById(msgOrder.getUserId()).get();
 		order.setUser(user);

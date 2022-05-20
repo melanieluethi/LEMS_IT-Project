@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.fhnw.lems.controller.messages.MessageAddProduct;
 import ch.fhnw.lems.controller.messages.MessageChangeProduct;
+import ch.fhnw.lems.controller.messages.MessageProduct;
 import ch.fhnw.lems.controller.messages.MessageResultProduct;
 import ch.fhnw.lems.entity.Product;
 import ch.fhnw.lems.entity.User;
@@ -44,7 +44,9 @@ public class ProductService {
 			MessageResultProduct msgProduct = new MessageResultProduct();
 			msgProduct.setId(p.getProductId());
 			msgProduct.setProductName(p.getProductName());
+			msgProduct.setProductNameEng(p.getProductNameEng());
 			msgProduct.setDescription(p.getDescription());
+			msgProduct.setDescriptionEng(p.getDescriptionEng());
 			msgProduct.setDiscount(p.getDiscount());
 			msgProduct.setPrice(p.getPrice());
 			msgProduct.setProductImg(p.getProductImg());
@@ -63,7 +65,9 @@ public class ProductService {
 			msgResult.setSuccessful(true);
 			msgResult.setId(product.getProductId());
 			msgResult.setProductName(product.getProductName());
+			msgResult.setProductNameEng(product.getProductNameEng());
 			msgResult.setDescription(product.getDescription());
+			msgResult.setDescriptionEng(product.getDescriptionEng());
 			msgResult.setDiscount(product.getDiscount());
 			msgResult.setPrice(product.getPrice());
 			msgResult.setProductImg(product.getProductImg());
@@ -83,7 +87,9 @@ public class ProductService {
 			msgResult.setSuccessful(true);
 			msgResult.setId(product.getProductId());
 			msgResult.setProductName(product.getProductName());
+			msgResult.setProductNameEng(product.getProductNameEng());
 			msgResult.setDescription(product.getDescription());
+			msgResult.setDescriptionEng(product.getDescriptionEng());
 			msgResult.setDiscount(product.getDiscount());
 			msgResult.setPrice(product.getPrice());
 			msgResult.setProductImg(product.getProductImg());
@@ -95,9 +101,12 @@ public class ProductService {
 	}
 	
 	@PostMapping (path = "/api/createProduct", produces = "application/json")
-	public boolean createProduct(@RequestBody MessageAddProduct msgProduct) {
+	public boolean createProduct(@RequestBody MessageProduct msgProduct) {
 		Product product = new Product();
+		product.setProductName(msgProduct.getProductName());
+		product.setProductNameEng(msgProduct.getProductNameEng());
 		product.setDescription(msgProduct.getDescription());
+		product.setDescriptionEng(msgProduct.getDescriptionEng());
 		product.setDiscount(msgProduct.getDiscount());
 		product.setPrice(msgProduct.getPrice());
 		product.setProductImg(msgProduct.getProductImg());
@@ -116,7 +125,9 @@ public class ProductService {
 		if(currentUser.getRole().getRole().equals(UserRole.ADMIN)) {
 			Product product = productRepository.findById(msgProduct.getProductId()).get();
 			product.setProductName(msgProduct.getProductName());
+			product.setProductNameEng(msgProduct.getProductNameEng());
 			product.setDescription(msgProduct.getDescription());
+			product.setDescriptionEng(msgProduct.getDescriptionEng());
 			product.setDiscount(msgProduct.getDiscount());
 			productRepository.save(product);
 

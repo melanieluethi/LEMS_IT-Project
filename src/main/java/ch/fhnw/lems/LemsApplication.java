@@ -101,7 +101,9 @@ public class LemsApplication {
 			Product p1 = new Product();
 			p1.setProductId(1l);
 			p1.setProductName("Firewall");
+			p1.setProductNameEng("Firewall");
 			p1.setDescription("Firewall");
+			p1.setDescriptionEng("Firewall");
 			p1.setPrice(1499.00);
 			p1.setDiscount(0);
 			p1.setProductImg("productImages/firewall.png");
@@ -109,7 +111,9 @@ public class LemsApplication {
 			Product p2 = new Product();
 			p2.setProductId(2l);
 			p2.setProductName("Serverschrank");
+			p2.setProductNameEng("Rack");
 			p2.setDescription("Serverschrank");
+			p2.setDescriptionEng("Rack");
 			p2.setPrice(7899.00);
 			p2.setDiscount(0);
 			p2.setProductImg("productImages/serverschrank.jpg");
@@ -117,7 +121,9 @@ public class LemsApplication {
 			Product p3 = new Product();
 			p3.setProductId(3l);
 			p3.setProductName("HPE Server ProLiant DL385 Gen10 Plus AMD EPYC 7262 Entry");
+			p3.setProductNameEng("Server");
 			p3.setDescription("Prozessorfamilie: AMD EPYC, Unterstützte Netzteile: 2, Anzahl Laufwerkschächte: 8 ×, Netzteil Nennleistung: 500 W, Tiefe: 711 mm, Verbauter Arbeitsspeicher: 16 GB.");
+			p3.setDescriptionEng("Server Description");
 			p3.setPrice(3499.00);
 			p3.setDiscount(0);
 			p3.setProductImg("productImages/server.png");
@@ -125,7 +131,9 @@ public class LemsApplication {
 			Product p4 = new Product();
 			p4.setProductId(4l);
 			p4.setProductName("Switch");
+			p4.setProductNameEng("Switch");
 			p4.setDescription("Switch");
+			p4.setDescriptionEng("Switch");
 			p4.setPrice(999.00);
 			p4.setDiscount(0);
 			p4.setProductImg("productImages/switch.jpeg");
