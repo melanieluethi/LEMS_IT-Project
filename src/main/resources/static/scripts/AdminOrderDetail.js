@@ -33,8 +33,8 @@ function getOrder() {
 					
 			let shippingId = document.getElementById('shippingId');	
 			shippingId.value = data.order.shipping.shippingId;	
-			let shippingMethod = document.getElementById('shippingMethod');
-			shippingMethod.value = data.order.shipping.shippingMethod;
+			let shippingMethod = document.getElementById('shippingMethod');			
+			shippingMethod.selectedIndex = data.order.shipping.shippingMethod;			
 			let shippingCost = document.getElementById('shippingCost');	
 			shippingCost.value = data.order.shipping.shippingCost;		
 			let totalPrice = document.getElementById('totalPrice');

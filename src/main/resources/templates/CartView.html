@@ -58,10 +58,10 @@
 
 
 <form class="dropdown" name="Select Shipping">
+<label th:text="#{cart.shipping}"/>
   <select id="sipping" name="shipping" onchange="getShipping()">
-  	<option value="Selection" th:text="#{cart.shipping}"></option>
-    <option value="Product 1" th:text="#{cart.express}"></option>
-    <option value="Product 1" th:text="#{cart.standard}"></option>
+    <option value="express" th:text="#{cart.express}"></option>
+    <option value="standard" th:text="#{cart.standard}"></option>
   </select>
  
   <input type="submit" value="Order">
