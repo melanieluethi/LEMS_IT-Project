@@ -90,10 +90,7 @@ function save() {
 	let shippingCost = document.getElementById('shippingCost').value;			
 	let totalPrice = document.getElementById('totalPrice').value;
 	
-	debugger;
-	//let orderItemIdTable = document.getElementById('orderItemTable');
-	
-	
+	// https://www.tutorialspoint.com/convert-html-table-to-array-in-javascript
 	let orderItems = [];
    	$("#orderItemTable tr").each(function() {
 	    let rowDataArray = [];

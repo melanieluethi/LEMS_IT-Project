@@ -31,6 +31,16 @@ public class ViewsController {
 		return "AdminOrderDetailView.html";
 	}
 	
+	@GetMapping("/adminUserManagement")
+	public String adminUserManagement() {
+		return "AdminUserManagementView.html";
+	}
+	
+	@GetMapping("/adminHelp")
+	public String adminHelp() {
+		return "AdminHelpView.html";
+	}
+	
 	@GetMapping("/admin")
 	public String admin() {
 		return "AdminView.html";
