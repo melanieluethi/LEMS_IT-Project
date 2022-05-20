@@ -58,7 +58,7 @@ function save() {
         }, 
         error: function(e) {
 			console.log(e);
-			if(language === 'eng'){
+			if(window.location.search.includes('eng')){
 				alert('Something went wrong.');
 			} else{
 				alert('Etwas ist schief gelaufen');

@@ -107,14 +107,13 @@ function save() {
 	     }
    	});
 	
-	debugger;
 	$.ajax({
 		type: 'PUT',
 		url: '/api/order',
 		data: JSON.stringify ({
 			orderId: orderId,
 			userId: userId,
-			orderItem: orderItems,
+			orderItems: orderItems,
 			shipping: {
 					shippingId: shippingId,
 					shippingMethod: shippingMethod,
@@ -128,7 +127,7 @@ function save() {
 			if(data) {
 				window.location.href='/adminOrders';	
 			} else {
-				if(language === 'eng'){
+				if(window.location.search.includes('eng')){
 					alert('Something went wrong.');
 				} else{
 					alert('Etwas ist schief gelaufen');
