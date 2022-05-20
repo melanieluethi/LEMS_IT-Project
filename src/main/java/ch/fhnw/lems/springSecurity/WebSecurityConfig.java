@@ -90,7 +90,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/adminHelp").hasRole(USER_ROLE_ADMIN)
 				.antMatchers("/user").hasRole(USER_ROLE_USER)				
 				.antMatchers("/cart").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
-				.antMatchers("/help").hasRole(USER_ROLE_ADMIN)
+				.antMatchers("/help").hasRole(USER_ROLE_USER)
 				.antMatchers("/home").hasRole(USER_ROLE_USER)
 				.antMatchers("/productChoice").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				.antMatchers("/successfulOrder").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
