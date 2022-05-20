@@ -26,10 +26,9 @@ function getOrder() {
 			city.value = data.order.user.city;
 			let country = document.getElementById('country');
 			country.value = data.order.user.country;
-			let orderItemIdTable = document.getElementById('orderItemIdTable');
 			
-			// TODO LUM: FILL TABLE
-			
+			fillOrderItemTable(data);
+						
 			let shippingMethod = document.getElementById('shippingMethod');
 			shippingMethod.value = data.order.shipping.shippingMethod;
 			let shippingCost = document.getElementById('shippingCost');	
@@ -40,6 +39,41 @@ function getOrder() {
         error: function(e) {
 			console.log(e);
 	  	}
+	});
+}
+
+function fillOrderItemTable(data) {
+	let table = document.getElementById('orderItemTable');	
+	let tbody = document.createElement('tbody');
+			
+	table.appendChild(tbody);
+			
+	data.order.orderItems.forEach(d => {
+		// Creating and adding data to second row of the table
+		let row = document.createElement('tr');
+		let rowData = document.createElement('td');
+		rowData.setAttribute('class', 'idColumn');
+		rowData.innerHTML = d.id;				
+		let rowData2 = document.createElement('td');
+		rowData2.innerHTML = d.product.productName;
+		let rowData3 = document.createElement('td');
+		rowData3.innerHTML = d.product.price;
+		let rowData4 = document.createElement('td');
+		let inputDiscountField = document.createElement("input");
+		inputDiscountField.value = d.product.discount;
+		rowData4.appendChild(inputDiscountField);
+		let rowData5 = document.createElement('td');
+		let inputQuantityField = document.createElement("input");
+		inputQuantityField.value = d.quantity;
+		rowData5.appendChild(inputQuantityField);
+						
+		row.appendChild(rowData);
+		row.appendChild(rowData2);
+		row.appendChild(rowData3);
+		row.appendChild(rowData4);
+		row.appendChild(rowData5);
+
+		tbody.appendChild(row);
 	});
 }
 
