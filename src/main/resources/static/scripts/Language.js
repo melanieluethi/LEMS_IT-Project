@@ -31,7 +31,7 @@ function getLanguage(){
 				// get browser language - https://stackoverflow.com/questions/8199760/how-to-get-the-browser-language-using-javascript				
 				userLang = navigator.language || navigator.userLanguage; 
 			}
-			if(!window.location.href.includes(userLang)) {
+			if(!window.location.search.includes(userLang)) {
 				window.location.replace('?lang=' + userLang);	
 			}
         }, error: function(e) {
@@ -40,7 +40,6 @@ function getLanguage(){
 	});
 }
 
-// lum
-window.onload = function(){
-	getLanguage();
-}
+(function () {
+    getLanguage();
+})();

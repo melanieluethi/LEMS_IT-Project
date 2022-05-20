@@ -12,5 +12,5 @@ function getShipping() {
 }
 
 window.onload = function() {
-  getUserFullName();
+  getShipping();
 };

@@ -46,8 +46,18 @@ function handlingSelectedTableRow() {
 }
 
 function editOrder() {
+	let lang = window.location.search
 	let id = $("#adminOrderTable tr.selected td:first").html();
-	window.location.href='/adminOrderDetail?id=' + id;
+	if(id !== undefined) {
+		window.location.href='/adminOrderDetail' + lang + '&id=' + id;	
+	} else {
+		if(lang.includes('eng')){
+			alert('No element is selected! Please select an Order!');	
+		} else {
+			alert('Kein Element selektiert! Bitte einen Auftrag selektieren.');			
+		}
+	}
+	
 }
 
 window.onload = function() {

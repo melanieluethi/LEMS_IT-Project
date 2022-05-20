@@ -46,8 +46,17 @@ function handlingSelectedTableRow() {
 }
 
 function editProduct() {
+	let lang = window.location.search
 	let id = $("#productAdminTable tr.selected td:first").html();
-	window.location.href='/adminProductDetail?id=' + id;
+	if(id !== undefined) {
+		window.location.href='/adminProductDetail' + lang + '&id=' + id;
+	} else {
+		if(lang.includes('eng')){
+			alert('No element is selected! Please select a Product!');	
+		} else {
+			alert('Kein Element selektiert! Bitte ein Produkt selektieren.');			
+		}
+	}
 }
 
 window.onload = function() {
