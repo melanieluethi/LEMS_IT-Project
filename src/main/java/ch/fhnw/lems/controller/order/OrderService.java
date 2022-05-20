@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.lems.controller.messages.MessageAddOrder;
+import ch.fhnw.lems.controller.messages.MessageChangeOrder;
 import ch.fhnw.lems.controller.messages.MessageResultOrder;
 import ch.fhnw.lems.entity.CustomerOrder;
 import ch.fhnw.lems.entity.User;
@@ -46,7 +47,7 @@ public class OrderService {
 	}
 	
 	@PutMapping(path = "/api/order", produces = "application/json")
-	public boolean changeOrder(@RequestBody MessageAddOrder msgOrder) {
+	public boolean changeOrder(@RequestBody MessageChangeOrder msgOrder) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);		

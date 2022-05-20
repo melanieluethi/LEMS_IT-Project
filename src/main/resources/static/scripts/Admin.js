@@ -1,4 +1,0 @@
-// SCL	
-window.onload = function() {
-  	
-};

@@ -44,6 +44,7 @@
 	<h1 th:text="#{orderDetail.title}"/>
 	<label th:text="#{orderDetail.orderId}"/>
 	<input type="text" id="orderId" name="orderId" disabled>	
+	<input type="hidden" id="userId" name="userId">
 	<label th:text="#{orderDetail.username}"/>
  	<input type="text" id="username" name="username" disabled>
 	<label th:text="#{orderDetail.firstname}"/>
@@ -61,6 +62,7 @@
 	<table style="width:50%" id="orderItemTable">
 		<thead>
 			<tr>
+				<th th:text="#{adminOrderDetail.productName}"><	th >
 				<th th:text="#{adminOrderDetail.productName}"></th >
 				<th th:text="#{adminOrderDetail.price}"></th >
 				<th th:text="#{adminOrderDetail.discount}"></th >
@@ -68,6 +70,7 @@
 			</tr>
 		</thead>
 	</table>
+	<input type="hidden" id="shippingId" name="shippingId">
 	<label th:text="#{orderDetail.shippingMethod}"/>
  	<input type="text" id="shippingMethod" name="shippingMethod">
 	<label th:text="#{orderDetail.shippingCost}"/>
