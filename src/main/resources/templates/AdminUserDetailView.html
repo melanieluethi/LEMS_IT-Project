@@ -1,7 +1,7 @@
-<!DOCTYPE html> <!-- angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
+<!DOCTYPE html> 
 <html>
 <head>
-    <title th:text="#{adminUsers.title}"></title>
+    <title th:text="#{userDetail.title}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
@@ -10,7 +10,7 @@
 	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script th:src="@{/scripts/Language.js}"></script>
-	<script th:src="@{/scripts/AdminUsers.js}"></script>
+	<script th:src="@{/scripts/AdminUserDetail.js}"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
@@ -39,30 +39,13 @@
 	</ul>
   </div>
 </nav>
-
-<!-- SCL -->
-
-<div class="adminUsers">
-<h1 th:text="#{adminUsers.text}"></h1 >
-<table style="width:50%" id="adminUserTable"  class="editableTable">
-  <tr>
-    <th th:text="#{adminUsers.username}"></th >
-    <th th:text="#{adminUsers.firstname}"></th >
-    <th th:text="#{adminUsers.lastname}"></th >
-    <th th:text="#{adminUsers.address}"></th >
-    <th th:text="#{adminUsers.zip}"></th >
-    <th th:text="#{adminUsers.city}"></th >
-    <th th:text="#{adminUsers.country}"></th >
-    <th th:text="#{adminUsers.email}"></th >
-    <th th:text="#{adminUsers.password}"></th >
-    <th th:text="#{adminUsers.role}"></th >
-    <th th:text="#{adminUsers.language}"></th >
-  </tr>
-</table>
+<!--LUM-->
+<div class="userDetail">
+	<h1 th:text="#{userDetail.title}"/>
+	<input type="hidden" id="userId" name="userId">
+	
+	<button type="button" onclick="save()" th:text="#{userDetail.save}"></button>
 </div>
-<div class="adminUsers">
-
-<button type="button" onclick="editUser()">Edit</button>
 
 </div>
 </body>

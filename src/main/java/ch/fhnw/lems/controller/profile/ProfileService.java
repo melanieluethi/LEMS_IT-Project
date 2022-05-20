@@ -110,6 +110,7 @@ public class ProfileService {
 			users.forEach(u -> {
 				MessageResultProfileSetting msgResultUser = new MessageResultProfileSetting();
 				msgResultUser.setId(u.getUserId());
+				msgResultUser.setUsername(u.getUsername());
 				msgResultUser.setFirstname(u.getFirstname());
 				msgResultUser.setLastname(u.getLastname());
 				msgResultUser.setEmail(u.getEmail());
@@ -119,6 +120,7 @@ public class ProfileService {
 				msgResultUser.setCity(u.getCity());
 				msgResultUser.setCountry(u.getCountry().name());	
 				msgResultUser.setRoleId(u.getRole().getRoleId());
+				msgResultUser.setLanguage(u.getLanguage().name());
 				msgResults.add(msgResultUser);
 				logger.info("Get User " + u.getUsername() + " was successful.");
 			});

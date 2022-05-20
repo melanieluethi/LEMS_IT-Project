@@ -20,6 +20,11 @@ public class ViewsController {
 	public String adminUsers() {
 		return "AdminUsersView.html";
 	}
+	
+	@GetMapping("/adminUserDetail")
+	public String adminUserDetail() {
+		return "AdminUserDetailView.html";
+	}
 
 	@GetMapping("/adminProductDetail")
 	public String adminProductDetail() {

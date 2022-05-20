@@ -81,8 +81,7 @@ function fillOrderItemTable(data) {
 	});
 }
 
-function save() {
-	// TODO LUM: SAVE CHANGES	
+function save() {	
 	let orderId = document.getElementById('orderId').value;
 	let userId = document.getElementById('userId').value;
 	let shippingId = document.getElementById('shippingId').value;
