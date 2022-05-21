@@ -9,8 +9,8 @@ public class PriceCalculationStandard {
 	
     public double calculateStandardPrice(double distance, double pallett) {    	
         deliveryDistanceId = (long) distance / 30;
-        pallettCounter = (int) pallett;
-        
+        pallettCounter = (int) Math.ceil(pallett);
+
         
         
         if(pallettCounter <= 12) {
