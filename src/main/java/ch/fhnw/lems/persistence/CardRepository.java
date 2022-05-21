@@ -8,6 +8,6 @@ import ch.fhnw.lems.entity.Card;
 
 // LUM
 public interface CardRepository extends JpaRepository<Card, Long> {
-	@Query(value="select card_id from card where user_id =:user_id LIMIT 1", nativeQuery = true)
-	Card findByUser(@Param("user_id") Long user_id);
+	@Query(value="select card_id from lems_database.card where user_id =:user_id LIMIT 1", nativeQuery = true)
+	Long findByUser(@Param("user_id") Long user_id);
 }

@@ -48,7 +48,8 @@ public class TransportCostService {
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
 
-		Card card = cardRepository.findByUser(currentUser.getUserId());
+//		Long cardId = cardRepository.findByUser(currentUser.getUserId());
+		Card card = cardRepository.findById(cardId).get();
 		
 		MessageResultTransportCost msgResult = new MessageResultTransportCost();
 		// TODO LUM/HIS getTransportCost

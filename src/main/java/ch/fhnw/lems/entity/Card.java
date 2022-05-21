@@ -21,7 +21,7 @@ public class Card {
 	private User user;
 
 	@OneToMany
-	@JoinColumn(name = "customer_order_id")
+	@JoinColumn(name = "card_id")
 	private List<OrderItem> orderItems;
 
 	@ManyToOne

@@ -51,7 +51,6 @@ function save() {
 	let username = document.getElementById('username').value;
 	let role = document.getElementById('role').value;		
 	
-	debugger;
 	$.ajax({
 		type: 'PUT',
 		url: '/api/profileSettings',
