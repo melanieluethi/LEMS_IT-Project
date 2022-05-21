@@ -79,13 +79,24 @@ nav .ul{
 }
 
 img {
- max-width: 100%;
- max-height: 100%;
+ 	width: 50%;
+  	height: auto
 }
 
 .images{
     height:30px;
     width:30px;
+  	font-size: 18px;
+  	
+}
+
+.pictures {
+  position: relative;
+  float: right;
+}
+
+.productChoice{
+	
 }
 
 /* LUM */

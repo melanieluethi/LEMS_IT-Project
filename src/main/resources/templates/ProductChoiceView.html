@@ -40,8 +40,12 @@ WAE-->
 	</ul>
   </div>
 </nav>
+
+
 <!--SCL-->
 <div class="productChoice">
+<h1 th:text="#{productChoice.title}"></h1>
+ 
  
 <input type="hidden" id="productId" name="productId">
   <select class="dropdown" id="products" name="products" onchange="getSpecificProduct()">	</select>
@@ -51,15 +55,18 @@ WAE-->
 
 
 <!--Shows Productname you have chosen-->
-<h1 id="productname"></h1>
+<h2 id="productname"></h2>
 <p id="description"> </p>
 <p id="price"> </p>
 <p id="discount"> </p>
-	
-<img id="productImg" class="image"/>
+</div>
+
+<figure class="pictures">
+		<img id="productImg" class="image"/>
+</figure>	
 
 <button type="button" onclick="window.location.href='/cart'" th:text="#{productChoice.cart}"></button>
-</div>
+
 
 </div>
 </body>
