@@ -50,10 +50,13 @@ WAE-->
 <input type="hidden" id="productId" name="productId">
   <select class="dropdown" id="products" name="products" onchange="getSpecificProduct()">	</select>
   	<label for="quantities" th:text="#{productchoice.quantity}">:</label>
-	<input type="number" id="quantity" name="quantity" min="1" max="200">
-  	<button type="button" onclick="addToCart()" th:text="#{productChoice.addCart}"></button>
+	<input class="dropdown" type="number" id="quantity" name="quantity" min="1" max="200">
+ 
+ <button type="button" class="button" onclick="window.location.href='/cart'" th:text="#{productChoice.cart}"></button>
 
+</div>
 
+<div>
 <!--Shows Productname you have chosen-->
 <h2 id="productname"></h2>
 <p id="description"> </p>
@@ -63,9 +66,10 @@ WAE-->
 
 <figure class="pictures">
 		<img id="productImg" class="image"/>
-</figure>	
+</figure>
+	
+<button type="button.addToCart" class="button" onclick="addToCart()" th:text="#{productChoice.addCart}"></button>
 
-<button type="button" onclick="window.location.href='/cart'" th:text="#{productChoice.cart}"></button>
 
 
 </div>

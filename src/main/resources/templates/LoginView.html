@@ -28,8 +28,8 @@
 	    <label for="password" th:text="#{login.password}"></label>
 	    <input type="password" th:attr="placeholder=#{login.enterPassword}" name="password" required> <br>
 	    
-	    <button type="button" onclick="window.location.href='/register'" th:text="#{login.register}"></button>
-	    <button type="submit" th:text="#{login.login}"></button>
+	    <button type="button" class="button" onclick="window.location.href='/register'" th:text="#{login.register}"></button>
+	    <button type="submit" class="button" th:text="#{login.login}"></button>
 	  </div>
 	</form>
 </body>
