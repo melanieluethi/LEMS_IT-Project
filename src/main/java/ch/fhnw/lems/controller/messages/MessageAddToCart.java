@@ -1,7 +1,7 @@
 package ch.fhnw.lems.controller.messages;
 
 //LUM
-public class MessageAddToCard {
+public class MessageAddToCart {
 	private Long productId;
 	private Integer quantity;
 	private Double price;

@@ -13,24 +13,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.fhnw.lems.controller.messages.MessageAddToCard;
-import ch.fhnw.lems.controller.messages.MessageResultShoppingCard;
-import ch.fhnw.lems.entity.Card;
+import ch.fhnw.lems.controller.messages.MessageAddToCart;
+import ch.fhnw.lems.controller.messages.MessageResultShoppingCart;
+import ch.fhnw.lems.entity.Cart;
 import ch.fhnw.lems.entity.OrderItem;
 import ch.fhnw.lems.entity.Product;
 import ch.fhnw.lems.entity.User;
-import ch.fhnw.lems.persistence.CardRepository;
+import ch.fhnw.lems.persistence.CartRepository;
 import ch.fhnw.lems.persistence.OrderItemRepository;
 import ch.fhnw.lems.persistence.ProductRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 
 // LUM
 @RestController
-public class CardService {
-	Logger logger = LoggerFactory.getLogger(CardService.class);
+public class CartService {
+	Logger logger = LoggerFactory.getLogger(CartService.class);
 	
 	@Autowired
-	private CardRepository cardRepository;
+	private CartRepository cartRepository;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -41,25 +41,25 @@ public class CardService {
 	@Autowired
 	private ProductRepository productRepository;
 		
-	@PostMapping(path= "/api/addProductToCard", produces = " application/json")
-	public boolean addProductToCard(@RequestBody MessageAddToCard msgAddToCard) {
+	@PostMapping(path= "/api/addProductToCart", produces = " application/json")
+	public boolean addProductToCart(@RequestBody MessageAddToCart msgAddToCart) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);		
 		
-		Long cartId = cardRepository.findByUser(currentUser.getUserId());
-		Card cart;
+		Long cartId = cartRepository.findByUser(currentUser.getUserId());
+		Cart cart;
 		if(cartId == null) {
-			cart = new Card();
+			cart = new Cart();
 			cart.setUser(currentUser);
 		} else {
-			cart = cardRepository.findById(cartId).get();
+			cart = cartRepository.findById(cartId).get();
 		}
 		
-		Product product = productRepository.findById(msgAddToCard.getProductId()).get();		
+		Product product = productRepository.findById(msgAddToCart.getProductId()).get();		
 		OrderItem orderItem = new OrderItem();
 		orderItem.setProduct(product);
-		Integer quantity = msgAddToCard.getQuantity();
+		Integer quantity = msgAddToCart.getQuantity();
 		orderItem.setQuantity(quantity);
 		OrderItem savedOrderItem = orderItemRepository.save(orderItem);
 		
@@ -70,26 +70,26 @@ public class CardService {
 		orderItems.add(savedOrderItem);
 		cart.setOrderItems(orderItems);
 				
-		cardRepository.save(cart);
+		cartRepository.save(cart);
 		
-		logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Card.");
+		logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Cart.");
 		return true;
 	}
 	
-	@GetMapping(path= "/api/shoppingCard", produces = " application/json")
-	public MessageResultShoppingCard getShoppingCard() {
+	@GetMapping(path= "/api/shoppingCart", produces = " application/json")
+	public MessageResultShoppingCart getShoppingCart() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);		
 		
-		Long cardId = cardRepository.findByUser(currentUser.getUserId());
-		Card card = cardRepository.findById(cardId).get();
+		Long cartId = cartRepository.findByUser(currentUser.getUserId());
+		Cart cart = cartRepository.findById(cartId).get();
 		
-		MessageResultShoppingCard msgResult = new MessageResultShoppingCard();
-		msgResult.setOrderItems(card.getOrderItems());
-		msgResult.setShipping(card.getShipping());
+		MessageResultShoppingCart msgResult = new MessageResultShoppingCart();
+		msgResult.setOrderItems(cart.getOrderItems());
+		msgResult.setShipping(cart.getShipping());
 		
-		logger.info("Get Card of: " + card.getUser().getUsername());
+		logger.info("Get Cart of: " + cart.getUser().getUsername());
 		return msgResult;
 	}
 }

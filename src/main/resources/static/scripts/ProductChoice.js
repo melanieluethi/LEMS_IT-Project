@@ -66,7 +66,7 @@ function addToCart() {
 	
 	$.ajax({
 		type: 'POST',
-		url: '/api/addProductToCard',
+		url: '/api/addProductToCart',
 		data: JSON.stringify ({
 			productId: productId,
 			quantity: quantity,

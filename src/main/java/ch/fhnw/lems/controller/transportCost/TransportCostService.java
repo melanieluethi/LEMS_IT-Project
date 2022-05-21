@@ -16,11 +16,11 @@ import ch.fhnw.lems.business.PriceCalculationExpress;
 import ch.fhnw.lems.business.PriceCalculationPackage;
 import ch.fhnw.lems.business.SpaceCalculation;
 import ch.fhnw.lems.controller.messages.MessageResultTransportCost;
-import ch.fhnw.lems.entity.Card;
+import ch.fhnw.lems.entity.Cart;
 import ch.fhnw.lems.entity.CustomerOrder;
 import ch.fhnw.lems.entity.TransportCost;
 import ch.fhnw.lems.entity.User;
-import ch.fhnw.lems.persistence.CardRepository;
+import ch.fhnw.lems.persistence.CartRepository;
 import ch.fhnw.lems.persistence.OrderRepository;
 import ch.fhnw.lems.persistence.TransportCostRepository;
 import ch.fhnw.lems.persistence.UserRepository;
@@ -34,7 +34,7 @@ public class TransportCostService {
 	UserRepository userRepository;
 
 	@Autowired
-	CardRepository cardRepository;
+	CartRepository cartRepository;
 
 	@Autowired
 	OrderRepository orderRepository;
@@ -42,14 +42,14 @@ public class TransportCostService {
 	@Autowired
 	TransportCostRepository transportCostRepository;
 
-	@GetMapping(path = "/api/transportCostCard/{cardId}", produces = " application/json")
-	public MessageResultTransportCost getTransportCostCard(@PathVariable Long cardId) {
+	@GetMapping(path = "/api/transportCostCart/{cartId}", produces = " application/json")
+	public MessageResultTransportCost getTransportCostCart(@PathVariable Long cartId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
 
-//		Long cardId = cardRepository.findByUser(currentUser.getUserId());
-		Card card = cardRepository.findById(cardId).get();
+//		Long cartId = cartRepository.findByUser(currentUser.getUserId());
+		Cart cart = cartRepository.findById(cartId).get();
 		
 		MessageResultTransportCost msgResult = new MessageResultTransportCost();
 		// TODO LUM/HIS getTransportCost

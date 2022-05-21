@@ -11,29 +11,29 @@ import javax.persistence.OneToMany;
 
 // LUM
 @Entity
-public class Card {
+public class Cart {
 	@Id
 	@GeneratedValue
-	private Long cardId;
+	private Long cartId;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
 	@OneToMany
-	@JoinColumn(name = "card_id")
+	@JoinColumn(name = "cart_id")
 	private List<OrderItem> orderItems;
 
 	@ManyToOne
 	@JoinColumn(name = "shipping_id")
 	private Shipping shipping;
 
-	public Long getCardId() {
-		return cardId;
+	public Long getCartId() {
+		return cartId;
 	}
 
-	public void setCardId(Long cardId) {
-		this.cardId = cardId;
+	public void setCartId(Long cartId) {
+		this.cartId = cartId;
 	}
 
 	public User getUser() {
