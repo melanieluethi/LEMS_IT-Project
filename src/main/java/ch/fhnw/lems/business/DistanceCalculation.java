@@ -13,8 +13,15 @@ import java.util.Map;
 
 public class DistanceCalculation {
 
-    public static double calculateDistance(int inputPlz) {
+
+	
+    
+
+
+	public static double calculateDistance(int inputPlz) {
     	double deliveryDistance = 999.999;
+
+    	
     	// please fill in the distance calculation
     	
     	// 1. get Input
@@ -43,6 +50,15 @@ public class DistanceCalculation {
 		}
         
         deliveryDistance = distanceMap.get(inputPlz);
+        
+        
+        
+        
+  
+        
+        
 		return deliveryDistance;	
     }   
+	
+	
 }
