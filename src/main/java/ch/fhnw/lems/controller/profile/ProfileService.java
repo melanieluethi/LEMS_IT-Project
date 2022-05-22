@@ -81,11 +81,11 @@ public class ProfileService {
 		if (user != null) {
 			msgResult.setSuccessful(true);
 			msgResult.setId(user.getUserId());
+			msgResult.setUsername(user.getUsername());
 			msgResult.setFirstname(user.getFirstname());
 			msgResult.setLastname(user.getLastname());
 			msgResult.setEmail(user.getEmail());
-			msgResult.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12)));
-			msgResult.setRoleId(user.getRole().getRoleId());
+			msgResult.setRole(user.getRole().getRole().name());
 			msgResult.setAddress(user.getAddress());
 			msgResult.setPostalCode(user.getPostalCode());
 			msgResult.setCity(user.getCity());
@@ -110,6 +110,7 @@ public class ProfileService {
 			users.forEach(u -> {
 				MessageResultProfileSetting msgResultUser = new MessageResultProfileSetting();
 				msgResultUser.setId(u.getUserId());
+				msgResultUser.setUsername(u.getUsername());
 				msgResultUser.setFirstname(u.getFirstname());
 				msgResultUser.setLastname(u.getLastname());
 				msgResultUser.setEmail(u.getEmail());
@@ -118,7 +119,8 @@ public class ProfileService {
 				msgResultUser.setPostalCode(u.getPostalCode());
 				msgResultUser.setCity(u.getCity());
 				msgResultUser.setCountry(u.getCountry().name());	
-				msgResultUser.setRoleId(u.getRole().getRoleId());
+				msgResultUser.setRole(u.getRole().getRole().name());
+				msgResultUser.setLanguage(u.getLanguage().name());
 				msgResults.add(msgResultUser);
 				logger.info("Get User " + u.getUsername() + " was successful.");
 			});
@@ -140,16 +142,16 @@ public class ProfileService {
 	public boolean changeProfileSettings(@RequestBody MessageChangeProfileSetting msgProfileSetting) {
 		User user = userRepository.findById(msgProfileSetting.getUserId()).get();
 		if (user != null) {
+			user.setUsername(msgProfileSetting.getUsername());
 			user.setFirstname(msgProfileSetting.getFirstname());
 			user.setLastname(msgProfileSetting.getLastname());
 			user.setEmail(msgProfileSetting.getEmail());
 			user.setPassword(BCrypt.hashpw(msgProfileSetting.getPassword(), BCrypt.gensalt(12)));
-			user.setLanguage(Language.valueOf(msgProfileSetting.getLanguage()));
 			user.setAddress(msgProfileSetting.getAddress());
 			user.setPostalCode(msgProfileSetting.getPostalCode());
 			user.setCity(msgProfileSetting.getCity());
 			user.setCountry(Country.valueOf(msgProfileSetting.getCountry().toUpperCase()));
-			Role role = roleRepository.findById(msgProfileSetting.getRoleId()).get();
+			Role role = roleRepository.findByRole(UserRole.valueOf(msgProfileSetting.getRole().toUpperCase()));
 			user.setRole(role);
 			userRepository.save(user);
 			logger.info("Change User Settings of" + user.getUsername() + " were successful.");
@@ -160,6 +162,22 @@ public class ProfileService {
 		}
 	}
 
+	@PutMapping(path = "/api/changePassword/{userId}", produces = "application/json")
+	public boolean changePassword(@PathVariable Long userId, @RequestBody MessageChangePassword msgPassword) {
+		User user = userRepository.findById(userId).get();
+		if (user != null && !(msgPassword.getNewPassword().equals(msgPassword.getOldPassword())
+				&& msgPassword.getNewPassword().length() >= 8)) {
+			user.setPassword(BCrypt.hashpw(msgPassword.getNewPassword(), BCrypt.gensalt(12)));
+			userRepository.save(user);
+
+			logger.info("Change Password of" + user.getUsername() + " was successful.");
+			return true;
+		} else {
+			logger.info("Change Password was not successful.");
+			return false;
+		}
+	}
+	
 	@PutMapping(path = "/api/changePassword", produces = "application/json")
 	public boolean changePassword(@RequestBody MessageChangePassword msgPassword) {
 		User user = userRepository.findById(msgPassword.getUserId()).get();

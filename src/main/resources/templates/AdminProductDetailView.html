@@ -1,7 +1,7 @@
-<!DOCTYPE html> <!-- WAE angelehnt an https://lerneprogrammieren.de/bootstrap/#:~:text=Bootstrap%20einbinden%20oder%20downloaden,online%20%C3%BCber%20einen%20CDN%20einbinden -->
+<!DOCTYPE html> 
 <html>
 <head>
-    <title th:text="#{successfulOrder.title}"></title>
+    <title th:text="#{productDetail.title}"></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
@@ -10,20 +10,22 @@
 	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 	<script th:src="@{/scripts/Language.js}"></script>
+	<script th:src="@{/scripts/ProductChoice.js}"></script>
+	<script th:src="@{/scripts/AdminProductDetail.js}"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md">
-   <a class="navbar-brand" th:href="@{/home}" th:text="#{login.firma}"></a>
+   <a class="navbar-brand" th:href="@{/admin}" th:text="#{login.firma}"></a>
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="main-navigation">
 	<ul class="navbar-nav">
 	  	  <li class="nav-item">
-		<a class="nav-link" href="/userManagement" th:text="#{menu.profil}"></a>
+		<a class="nav-link" href="/adminUserManagement" th:text="#{menu.profil}"></a>
 	  </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="/help" th:text="#{menu.help}"></a>
+		<a class="nav-link" href="/adminHelp" th:text="#{menu.help}"></a>
 	  </li>	  
 	  <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
@@ -38,10 +40,19 @@
 	</ul>
   </div>
 </nav>
-<div class="successfulOrder">
-<h1 th:text="#{successfulOrder.thanks}"></h1 >
-<p th:text="#{successfulOrder.number}"></p >
-
+<!--LUM-->
+<div class="productDetail">
+	<h1 th:text="#{productDetail.title}"/>
+	<input type="hidden" id="productId" name="productId">
+	<label th:text="#{productDetail.title}"/>
+ 	<input type="text" id="productname" name="productname">
+	<label th:text="#{productDetail.description}"/>
+	<input type="text" id="description" name="description">
+	<label th:text="#{productDetail.discount}"/>
+	<input type="text" id="discount" name="discount">
+	<img id="productImg" class="image"/>
+	<button type="button" class="button" onclick="save()" th:text="#{productDetail.save}"></button>
+</div>
 
 </div>
 </body>

@@ -20,7 +20,32 @@ public class ViewsController {
 	public String adminUsers() {
 		return "AdminUsersView.html";
 	}
+	
+	@GetMapping("/adminUserDetail")
+	public String adminUserDetail() {
+		return "AdminUserDetailView.html";
+	}
 
+	@GetMapping("/adminProductDetail")
+	public String adminProductDetail() {
+		return "AdminProductDetailView.html";
+	}
+	
+	@GetMapping("/adminOrderDetail")
+	public String adminOrderDetail() {
+		return "AdminOrderDetailView.html";
+	}
+	
+	@GetMapping("/adminUserManagement")
+	public String adminUserManagement() {
+		return "AdminUserManagementView.html";
+	}
+	
+	@GetMapping("/adminHelp")
+	public String adminHelp() {
+		return "AdminHelpView.html";
+	}
+	
 	@GetMapping("/admin")
 	public String admin() {
 		return "AdminView.html";

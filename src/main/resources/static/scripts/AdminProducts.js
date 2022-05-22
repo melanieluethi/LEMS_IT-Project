@@ -1,16 +1,16 @@
 // LUM
 // https://www.delftstack.com/de/howto/javascript/create-table-javascript/
-function getOrders() {
+function getProducts() {
 	 $.ajax({
 		type: "GET",
-		 url: "/api/orders",
+		 url: "/api/products",
 		success: function (data) {
 			//get dropdown element
-			let table = document.getElementById('adminOrderTable');	
+			let table = document.getElementById('productAdminTable');	
 			let tbody = document.createElement('tbody');
 			
 			table.appendChild(tbody);
-			
+	
 			data.forEach(d => {
 				// Creating and adding data to second row of the table
 				let row = document.createElement('tr');
@@ -18,20 +18,20 @@ function getOrders() {
 				rowData.setAttribute('class', 'idColumn');
 				rowData.innerHTML = d.id;				
 				let rowData2 = document.createElement('td');
-				rowData2.innerHTML = d.order.user.username;
+				rowData2.innerHTML = d.productName;
 				let rowData3 = document.createElement('td');
-				rowData3.innerHTML = d.order.orderId;
+				rowData3.innerHTML = d.description;
 				let rowData4 = document.createElement('td');
-				rowData4.innerHTML = d.order.totalPrice;
+				rowData4.innerHTML = d.discount;
 								
 				row.appendChild(rowData);
 				row.appendChild(rowData2);
 				row.appendChild(rowData3);
 				row.appendChild(rowData4);
-
+				
 				tbody.appendChild(row);
 				
-				handlingSelectedTableRow();
+  				handlingSelectedTableRow();
 			});	
         }, error: function(e) {
 			console.log(e);
@@ -40,26 +40,25 @@ function getOrders() {
 }
 
 function handlingSelectedTableRow() {
-	$("#adminOrderTable tr").click(function(){
+	$("#productAdminTable tr").click(function(){
 	   $(this).addClass('selected').siblings().removeClass('selected');    
 	});
 }
 
-function editOrder() {
+function editProduct() {
 	let lang = window.location.search
-	let id = $("#adminOrderTable tr.selected td:first").html();
+	let id = $("#productAdminTable tr.selected td:first").html();
 	if(id !== undefined) {
-		window.location.href='/adminOrderDetail' + lang + '&id=' + id;	
+		window.location.href='/adminProductDetail' + lang + '&id=' + id;
 	} else {
 		if(lang.includes('eng')){
-			alert('No element is selected! Please select an Order!');	
+			alert('No element is selected! Please select a Product!');	
 		} else {
-			alert('Kein Element selektiert! Bitte einen Auftrag selektieren.');			
+			alert('Kein Element selektiert! Bitte ein Produkt selektieren.');			
 		}
 	}
-	
 }
 
 window.onload = function() {
-  getOrders();
+  getProducts();
 };

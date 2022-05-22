@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title th:text="#{orderDetail.title}"></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" th:href="@{/styles/dummy.css}" />
+	<link rel="shortcut icon" href="#" />
+	<script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script th:src="@{/scripts/Language.js}"></script>
+	<script th:src="@{/scripts/AdminOrderDetail.js}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md">
+   <a class="navbar-brand" th:href="@{/admin}" th:text="#{login.firma}"></a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+	<span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="main-navigation">
+	<ul class="navbar-nav">
+	  	  <li class="nav-item">
+		<a class="nav-link" href="/adminUserManagement" th:text="#{menu.profil}"></a>
+	  </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="/adminHelp" th:text="#{menu.help}"></a>
+	  </li>	  
+	  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#" onclick="setLanguage('eng')" th:text="#{menu.english}"></a>
+          <a class="dropdown-item" href="#" onclick="setLanguage('de')" th:text="#{menu.german}"></a>
+        </div>
+      </li>
+	  <li class="nav-item">
+		<a class="nav-link" href="/logout" th:text="#{menu.logout}"></a>
+	  </li>
+	</ul>
+  </div>
+</nav>
+<!--LUM-->
+<div class="orderDetail">
+	<h1 th:text="#{orderDetail.title}"/>
+	<label th:text="#{orderDetail.orderId}"/>
+	<input type="text" id="orderId" name="orderId" disabled>	
+	<input type="hidden" id="userId" name="userId">
+	<label th:text="#{orderDetail.username}"/>
+ 	<input type="text" id="username" name="username" disabled>
+	<label th:text="#{orderDetail.firstname}"/>
+	<input type="text" id="firstname" name="firstname" disabled>
+	<label th:text="#{orderDetail.lastname}"/>
+	<input type="text" id="lastname" name="lastname" disabled>	
+	<label th:text="#{orderDetail.address}"/>
+ 	<input type="text" id="address" name="address" disabled> 	
+	<label th:text="#{orderDetail.postalCode}"/>
+	<input type="text" id="postalCode" name="postalCode" disabled>
+	<label th:text="#{orderDetail.city}"/>
+	<input type="text" id="city" name="city" disabled>
+	<label th:text="#{orderDetail.country}"/>
+	<input type="text" id="country" name="country" disabled>	
+	<table style="width:50%" id="orderItemTable">
+		<thead>
+			<tr>
+				<th th:text="#{orderDetail.productName}"></th>
+				<th th:text="#{orderDetail.price}"></th>
+				<th th:text="#{orderDetail.discount}"></th>
+				<th th:text="#{orderDetail.quantity}"></th>
+			</tr>
+		</thead>
+	</table>
+	<input type="hidden" id="shippingId" name="shippingId">
+	<label th:text="#{orderDetail.shippingMethod}"/>
+	<select name="shippingMethod" id="shippingMethod">
+  		<option value="Express" th:text="#{cart.express}"></option>
+  		<option value="Standard" th:text="#{cart.standard}"></option>
+	</select>
+	<label th:text="#{orderDetail.shippingCost}"/>
+	<input type="text" id="shippingCost" name="shippingCost">
+	<label th:text="#{orderDetail.totalPrice}"/>
+	<input type="text" id="totalPrice" name="totalPrice">
+	<button type="button" class="button" onclick="save()" th:text="#{orderDetail.save}"></button>
+</div>
+
+</div>
+</body>
+</html>
