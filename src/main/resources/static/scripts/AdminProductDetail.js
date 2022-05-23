@@ -13,8 +13,11 @@ function getProduct() {
 			let productname = document.getElementById('productname');
 			productname.value = data.productName;
 			
-			let description = document.getElementById('description');
-			description.value = data.description;
+			let descriptionDe = document.getElementById('descriptionDe');
+			descriptionDe.value = data.description;
+			
+			let descriptionEng = document.getElementById('descriptionEng');
+			descriptionEng.value = data.descriptionEng;
 			
 			let productImg = document.getElementById('productImg');
 			productImg.src = data.productImg;
@@ -31,7 +34,8 @@ function getProduct() {
 function save() {
 	let productId = document.getElementById('productId').value;
 	let productname = document.getElementById('productname').value;
-	let description = document.getElementById('description').value;
+	let descriptionDe = document.getElementById('descriptionDe').value;
+	let descriptionEng = document.getElementById('descriptionEng').value;
 	let discount = document.getElementById('discount').value;
 		
 	$.ajax({
@@ -40,7 +44,8 @@ function save() {
 		data: JSON.stringify ({
 			productId: productId,
 			productName: productname,
-			description: description,
+			description: descriptionDe,
+			descriptionEng: descriptionEng,
 			discount: discount					
 		}),	
 		dataType: 'json',

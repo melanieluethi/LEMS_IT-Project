@@ -3,9 +3,6 @@ package ch.fhnw.lems.controller.profile;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,7 +126,7 @@ public class ProfileService {
 	}
 
 	@GetMapping(path = "/api/user", produces = "application/json")
-	public User getUser(HttpServletRequest request, HttpServletResponse response) {
+	public User getUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
 		String username = userDetails.getUsername();

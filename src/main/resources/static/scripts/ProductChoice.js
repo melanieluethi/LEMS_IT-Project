@@ -38,19 +38,25 @@ function getSpecificProduct() {
 			productId.value = data.id;
 			
 			let productname = document.getElementById('productname');
-			productname.value = data.productName;
+			productname.textContent = data.productName;
 			
 			let description = document.getElementById('description');
-			description.value = data.description;
+			let baseUrl = window.location.href; 
+			let language = baseUrl.substring(baseUrl.lastIndexOf('=') + 1);
+			if(language === 'eng'){
+				description.textContent = data.descriptionEng;
+			} else {
+				description.textContent = data.description;	
+			}
 			
 			let price = document.getElementById('price');
-			price.value = data.price;
+			price.textContent = data.price;
 			
 			let productImg = document.getElementById('productImg');
 			productImg.src = data.productImg;
 			
 			let discount = document.getElementById('discount');
-			discount.value = data.discount;	
+			discount.textContent = data.discount;	
         }, 
         error: function(e) {
 			console.log(e);
