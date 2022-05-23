@@ -39,6 +39,40 @@ function getUser() {
 	});
 }
 
+function getLoggedInUser() {
+	$.ajax({
+		type: "GET",
+		url: "/api/user/",	
+		dataType: 'json',
+		contentType: 'application/json',	
+		success: function (data) {	
+			let userId = document.getElementById('userId');
+			userId.value = data.userId;
+			let fname = document.getElementById('fname');
+			fname.value = data.firstname;
+			let lname = document.getElementById('lname');
+			lname.value = data.lastname;
+			let address = document.getElementById('address');
+			address.value = data.address;
+			let zip = document.getElementById('zip');
+			zip.value = data.postalCode;
+			let city = document.getElementById('city');
+			city.value = data.city;
+			let country = document.getElementById('country');
+			country.value = data.country;
+			let mail = document.getElementById('mail');
+			mail.value = data.email;
+			let username = document.getElementById('username');
+			username.value = data.username;	
+			let role = document.getElementById('role');			
+			role.value  = data.role.role;			
+        }, 
+        error: function(e) {
+			console.log(e);
+	  	}
+	});
+}
+
 function save() {
 	let userId = document.getElementById('userId').value;
 	let fname = document.getElementById('fname').value;
@@ -72,7 +106,11 @@ function save() {
 		contentType: 'application/json',	
 		success: function (data) {
 			if(data) {
-				window.location.href='/adminUsers';	
+				if(isProfileData){
+					window.location.href='/adminUserManagement';	
+				} else {
+					window.location.href='/adminUsers' + lang + '&id=' + userId;		
+				}
 			} else {
 				if(window.location.search.includes('eng')){
 					alert('Something went wrong.');
@@ -106,7 +144,11 @@ function changePw() {
 		contentType: 'application/json',	
 		success: function (data) {
 			if(data) {
-				window.location.href='/adminUsers';	
+				if(isProfileData){
+					window.location.href='/adminUserManagement';	
+				} else {
+					window.location.href='/adminUsers' + lang + '&id=' + userId;		
+				}
 			} else {
 				if(window.location.search.includes('eng')){
 					alert('Something went wrong.');
@@ -126,6 +168,20 @@ function changePw() {
 	});
 }
 
+function isProfileData() {
+	let baseUrl = window.location.href; 
+	let searchAttr = baseUrl.substring(baseUrl.lastIndexOf('=') + 1);
+	if(searchAttr === 'de' || searchAttr === 'eng'){
+		return true;
+	} else {
+		return false;	
+	}
+}
+
 window.onload = function() {
-  getUser();
+	if(isProfileData){
+		getLoggedInUser();
+	} else {
+		getUser();	
+	}
 };
