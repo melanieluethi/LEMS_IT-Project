@@ -57,6 +57,7 @@ public class TransportCostService {
 		double distance = DistanceCalculation.calculateDistance(currentUser.getPostalCode());
 		SpaceCalculation spaceCalculation = new SpaceCalculation();
 		
+		// TODO LUM/HIS change to actual product ammount
 		int amountProduct1 = 1;
 		int amountProduct2 = 5;
 		int amountProduct3 = 2;
