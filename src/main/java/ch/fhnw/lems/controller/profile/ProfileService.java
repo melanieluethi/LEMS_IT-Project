@@ -143,7 +143,6 @@ public class ProfileService {
 			user.setFirstname(msgProfileSetting.getFirstname());
 			user.setLastname(msgProfileSetting.getLastname());
 			user.setEmail(msgProfileSetting.getEmail());
-			user.setPassword(BCrypt.hashpw(msgProfileSetting.getPassword(), BCrypt.gensalt(12)));
 			user.setAddress(msgProfileSetting.getAddress());
 			user.setPostalCode(msgProfileSetting.getPostalCode());
 			user.setCity(msgProfileSetting.getCity());

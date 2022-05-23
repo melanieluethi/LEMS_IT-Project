@@ -10,7 +10,7 @@ public class MessageChangeOrder {
 	private Long userId;
 	private List<List<String>> orderItems;
 	private Shipping shipping;
-	private Integer totalPrice;
+	private Double totalPrice;
 
 	public Long getOrderId() {
 		return orderId;
@@ -44,11 +44,11 @@ public class MessageChangeOrder {
 		this.shipping = shipping;
 	}
 
-	public Integer getTotalPrice() {
+	public Double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(Integer totalPrice) {
+	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 }

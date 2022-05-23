@@ -51,7 +51,7 @@ public class OrderService {
 		User user = userRepository.findById(msgOrder.getUserId()).get();
 		order.setUser(user);
 		order.setOrderItems(msgOrder.getOrderItems());
-		order.setTotalPrice();
+		order.setTotalPrice(msgOrder.getTotalPrice());
 		orderRepository.save(order);	
 		logger.info("Create order " + order.getOrderId() + " was successful.");
 		return true;
@@ -81,7 +81,7 @@ public class OrderService {
 			
 			order.setOrderItems(orderItems);
 			order.setShipping(msgOrder.getShipping());
-			order.setTotalPrice();
+			order.setTotalPrice(msgOrder.getTotalPrice());
 			orderRepository.save(order);
 			logger.info("Change order " + order.getOrderId() + " was successful.");
 			return true;
