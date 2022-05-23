@@ -26,8 +26,8 @@
 	  <li class="nav-item">
 		<a class="nav-link" href="/adminHelp" th:text="#{menu.help}"></a>
 	  </li>	  
-	  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
+	  <li class="nav-item-dropdown">
+        <a class="nav-link-dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#" onclick="setLanguage('eng')" th:text="#{menu.english}"></a>
           <a class="dropdown-item" href="#" onclick="setLanguage('de')" th:text="#{menu.german}"></a>
@@ -55,9 +55,9 @@
   		<option value="ADMIN" th:text="ADMIN"></option>
   		<option value="USER" th:text="USER"></option>
 	</select>
-	<button type="button" onclick="save()" th:text="#{userDetail.save}"></button>
+	<button type="button" class="button" onclick="save()" th:text="#{userDetail.save}"></button>
 	
-	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
+	<input type="password" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
 	<button type="button" class="button" onclick="changePw()" th:text="#{userDetail.changePassword}"></button>
 </div>
 

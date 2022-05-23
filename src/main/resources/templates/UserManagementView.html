@@ -41,19 +41,21 @@
 </nav>
 
 <!--SCL - muss noch Userdaten ziehen-->
+<div class="userManagement">
 <h1 th:text="#{userManagement.title}"></h1>
-<form th:action="@{/UserManagement}" onsubmit="putUserData();" method="PUT">
-<input type="text" id="fname" name="fname" th:value="fname" required>
-<input type="text" id="lname" name="lname" th:value="lname" required>
-<input type="text" id="address" name="address" th:value="address" required>
-<input id="zip" name="zip" th:value="zip" type="number" max="9999" min="1000" required>
-<input type="text" id="city" name="city" th:value="city" maxlength="58" required>
-<input type="text" id="country" name="country" value="CH" required readonly>
-<input type="text" id="mail" name="mail" th:value="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
-<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
-<button class="button" style=margin-left:5% type="submit" th:text="#{userManagement.save}"></button>
-</form>
+	<input type="hidden" id="userId" name="userId">
+	<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
+	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
+	<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
+	<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+	<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
+	<input type="text" id="country" name="country" value="CH" required readonly>
+	<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
+	<button type="button" class="button" onclick="save()" th:text="#{userDetail.save}"></button>
+	<input type="password" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
+	<button type="button" class="button" onclick="changePw()" th:text="#{userDetail.changePassword}"></button>
+</div>
 
 <div class="UserMangement">
 <h1 th:text="#{userManagement.order}"></h1 >
