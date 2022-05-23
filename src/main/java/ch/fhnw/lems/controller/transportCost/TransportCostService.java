@@ -9,19 +9,23 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.lems.business.DistanceCalculation;
 import ch.fhnw.lems.business.PriceCalculationExpress;
 import ch.fhnw.lems.business.PriceCalculationPackage;
+import ch.fhnw.lems.business.PriceCalculationStandard;
 import ch.fhnw.lems.business.SpaceCalculation;
 import ch.fhnw.lems.controller.messages.MessageResultTransportCost;
+import ch.fhnw.lems.controller.messages.MessageTransportCostCart;
 import ch.fhnw.lems.entity.Cart;
 import ch.fhnw.lems.entity.CustomerOrder;
-import ch.fhnw.lems.entity.TransportCost;
+import ch.fhnw.lems.entity.Shipping;
 import ch.fhnw.lems.entity.User;
 import ch.fhnw.lems.persistence.CartRepository;
 import ch.fhnw.lems.persistence.OrderRepository;
+import ch.fhnw.lems.persistence.ShippingRepository;
 import ch.fhnw.lems.persistence.TransportCostRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 
@@ -41,34 +45,29 @@ public class TransportCostService {
 
 	@Autowired
 	TransportCostRepository transportCostRepository;
+	
+	@Autowired
+	ShippingRepository shippingRepository;
 
 	@GetMapping(path = "/api/transportCostCart/{cartId}", produces = " application/json")
-	public MessageResultTransportCost getTransportCostCart(@PathVariable Long cartId) {
+	public MessageResultTransportCost getTransportCostCart(@RequestBody MessageTransportCostCart msgTransportCostCart) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
 
-//		Long cartId = cartRepository.findByUser(currentUser.getUserId());
-		Cart cart = cartRepository.findById(cartId).get();
-		
+		Cart cart = cartRepository.findById(msgTransportCostCart.getCartId()).get();		
 		MessageResultTransportCost msgResult = new MessageResultTransportCost();
-		// TODO LUM/HIS getTransportCost
-
 		double distance = DistanceCalculation.calculateDistance(currentUser.getPostalCode());
 		SpaceCalculation spaceCalculation = new SpaceCalculation();
 		
-		// TODO LUM/HIS change to actual product ammount
-		int amountProduct1 = 1;
-		int amountProduct2 = 5;
-		int amountProduct3 = 2;
-		int amountProduct4 = 8;
+		int amountProduct1 = msgTransportCostCart.getAmountProduct1();
+		int amountProduct2 = msgTransportCostCart.getAmountProduct2();
+		int amountProduct3 = msgTransportCostCart.getAmountProduct3();
+		int amountProduct4 = msgTransportCostCart.getAmountProduct4();
 		
 		int pallett = spaceCalculation.totalPalletts(amountProduct1, amountProduct2, amountProduct3, amountProduct4);
-
-		Double transportId = Math.ceil(distance / 30);
-		TransportCost tc = transportCostRepository.findById(transportId.longValue()).get();
-
-		Double standardPriceOfPallett = getPallett(tc, pallett);		
+		PriceCalculationStandard standardPrice = new PriceCalculationStandard();
+		Double standardPriceOfPallett = standardPrice.calculateStandardPrice(distance, pallett);		
 		msgResult.setTransportCostStandard(standardPriceOfPallett);
 		
 		PriceCalculationPackage pcp = new PriceCalculationPackage();
@@ -79,55 +78,17 @@ public class TransportCostService {
 		double expressPrice = express.calculateExpressPrice(distance, pallett);
 		msgResult.setTransportCostExpress(expressPrice);
 		msgResult.setDeliveryExpressAvailable(express.expressOffer(pallett));
-
+		
+		Shipping shipping = new Shipping();
+		shipping.setShippingMethod(msgTransportCostCart.getShippingMethod());
+		shipping.setShippingPackageCost(pcp.getPriceForDelivery());
+		shipping.setShippingStandardCost(standardPriceOfPallett);
+		shipping.setShippingExpressCost(standardPriceOfPallett);		
+		shipping = shippingRepository.save(shipping);
+		cart.setShipping(shipping);
 		return msgResult;
 	}
-	
-	private Double getPallett(TransportCost tc, int pallett) {
-		double pallet = 0.0d;
-		switch (pallett) {
-			case 1:
-				pallet = tc.getPallet1();
-				break;
-			case 2: 
-				pallet = tc.getPallet2();
-				break;
-			case 3:
-				pallet = tc.getPallet3();
-				break;
-			case 4: 
-				pallet = tc.getPallet4();
-				break;
-			case 5:
-				pallet = tc.getPallet5();
-				break;
-			case 6: 
-				pallet = tc.getPallet6();
-				break;
-			case 7:
-				pallet = tc.getPallet7();
-				break;
-			case 8: 
-				pallet = tc.getPallet8();
-				break;
-			case 9:
-				pallet = tc.getPallet9();
-				break;
-			case 10: 
-				pallet = tc.getPallet10();
-				break;
-			case 11:
-				pallet = tc.getPallet11();
-				break;
-			case 12: 
-				pallet = tc.getPallet12();
-				break;
-			default:
-				break;
-		}
-		return pallet;
-	}
-
+		
 	@GetMapping(path = "/api/transportCostOrder/{orderId}", produces = " application/json")
 	public MessageResultTransportCost getTransportCostOrder(@PathVariable Long orderId) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -137,7 +98,7 @@ public class TransportCostService {
 		List<CustomerOrder> order = orderRepository.findByUserId(currentUser.getUserId());
 
 		MessageResultTransportCost msgResult = new MessageResultTransportCost();
-		// TODO LUM/HIS getTransportCost
+		// TODO LUM show Transportcost of Order
 
 
 		return msgResult;
