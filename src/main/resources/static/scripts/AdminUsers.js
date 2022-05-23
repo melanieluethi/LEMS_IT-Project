@@ -35,7 +35,7 @@ function getUsers() {
 				let rowData9 = document.createElement('td');
 				rowData9.innerHTML = d.password;
 				let rowData10 = document.createElement('td');
-				rowData10.innerHTML = d.roleId;
+				rowData10.innerHTML = d.role;
 				let rowData11 = document.createElement('td');
 				rowData11.innerHTML = d.language;			
 				
