@@ -42,6 +42,7 @@
 
 <!--SCL - muss noch Userdaten ziehen-->
 <h1 th:text="#{userManagement.title}"></h1>
+<form th:action="@{/adminUserManagement}"  onsubmit="save();" method="PUT">
 	<input type="hidden" id="userId" name="userId">
 	<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
 	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
@@ -51,13 +52,15 @@
 	<input type="text" id="country" name="country" value="CH" required readonly>
 	<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
 	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
-	<select name="role" id="role">
+	<select name="role" id="role" disabled>
   		<option value="ADMIN" th:text="ADMIN"></option>
   		<option value="USER" th:text="USER"></option>
 	</select>
-	<button type="button" onclick="save()" th:text="#{userDetail.save}"></button>
-	
+	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.save}"></button>
+</form>
+<form th:action="@{/adminUserManagement}" onsubmit="changePw();" method="PUT">
 	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
-	<button type="button" class="button" onclick="changePw()" th:text="#{userDetail.changePassword}"></button>
+	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.changePassword}"></button>
+</form >
 </body>
 </html>

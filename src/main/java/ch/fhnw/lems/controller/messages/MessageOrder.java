@@ -9,6 +9,7 @@ public class MessageOrder {
 	private Long userId;
 	private List<OrderItem> orderItems;
 	private Long shippingId;
+	private Double totalPrice;
 
 	public Long getUserId() {
 		return userId;
@@ -32,5 +33,13 @@ public class MessageOrder {
 
 	public void setShippingId(Long shippingId) {
 		this.shippingId = shippingId;
+	}
+
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 }

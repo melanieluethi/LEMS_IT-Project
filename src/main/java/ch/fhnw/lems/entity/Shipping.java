@@ -11,7 +11,9 @@ public class Shipping {
 	@GeneratedValue
 	private Long shippingId;
 	private String shippingMethod;
-	private Double shippingCost;
+	private Double shippingStandardCost;
+	private Double shippingExpressCost;
+	private Double shippingPackageCost;
 
 	public Long getShippingId() {
 		return shippingId;
@@ -29,11 +31,27 @@ public class Shipping {
 		this.shippingMethod = shippingMethod;
 	}
 
-	public Double getShippingCost() {
-		return shippingCost;
+	public Double getShippingStandardCost() {
+		return shippingStandardCost;
 	}
 
-	public void setShippingCost(Double shippingCost) {
-		this.shippingCost = shippingCost;
+	public void setShippingStandardCost(Double shippingStandardCost) {
+		this.shippingStandardCost = shippingStandardCost;
+	}
+
+	public Double getShippingExpressCost() {
+		return shippingExpressCost;
+	}
+
+	public void setShippingExpressCost(Double shippingExpressCost) {
+		this.shippingExpressCost = shippingExpressCost;
+	}
+
+	public Double getShippingPackageCost() {
+		return shippingPackageCost;
+	}
+
+	public void setShippingPackageCost(Double shippingPackageCost) {
+		this.shippingPackageCost = shippingPackageCost;
 	}
 }

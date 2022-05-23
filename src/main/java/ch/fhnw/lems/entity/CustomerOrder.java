@@ -66,13 +66,7 @@ public class CustomerOrder {
 		return totalPrice;
 	}
 
-	public void setTotalPrice() {
-		double sumOrder = 0;
-		
-		for (OrderItem o : orderItems) {
-			sumOrder += o.getQuantity() * (o.getProduct().getPrice() * o.getProduct().getDiscount());
-		}
-		
-		this.totalPrice = sumOrder + this.shipping.getShippingCost();
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 }
