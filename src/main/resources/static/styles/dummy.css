@@ -18,7 +18,8 @@ body {
   margin-right: 1em !important;
 }
 .nav-link:hover,
-.navbar-brand:hover {
+.navbar-brand:hover,
+.dropdown-menu:hover{
   color: white;
   text-decoration: underline;
   
@@ -34,6 +35,7 @@ body {
 	background-color: #555555;
 	color: white;
 	border:none;
+	text-align: center;
 }
 
 
