@@ -139,7 +139,7 @@ nav .ul{
 }
 
 img {
- 	width: 50%;
+ 	width: 55%;
   	height: auto
 }
 
@@ -151,12 +151,34 @@ img {
 }
 
 .pictures {
-  float: right;
+	position: absolute;   
+	height: auto; 
+	width: 50%;    
+	left: 70%; 
+	top:30%;
 }
 
-.productChoice{
-	
+.productChoiceX{
+	float: left;
+     width: 70%;
+     padding: 20px;
+     
+     
 }
+
+.productDetails{
+		width: 70%;
+		padding: 20px;
+     	
+}
+
+.addToCart{
+	float: left;
+     width: 25%;
+     padding: 20px;
+}
+
+
 .dropdown #quantity,
 .dropdown #products{
 	border:thick;
@@ -185,7 +207,7 @@ img {
 }
 
 .button #addToCart{
-	float: botton;
+	float: right;
 	}
 	
 .button #cart{

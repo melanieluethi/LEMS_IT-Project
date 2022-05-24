@@ -50,33 +50,33 @@ WAE-->
 
 <!--SCL-->
 <div class="productChoice">
-<h1 th:text="#{productChoice.title}"></h1>
- 
- 
+<h1 th:text="#{productChoice.title}"></h1> 
+ </div> <br />
+ <div class="productChoiceX">
 <input type="hidden" id="productId" name="productId">
   <select class="dropdown" id="products" name="products" onchange="getSpecificProduct()">	</select>
   	<label for="quantities" th:text="#{productchoice.quantity}">:</label>
 	<input class="dropdown" type="number" id="quantity" name="quantity" min="1" max="200">
+ </div>
+
  
 
-</div>
-
-<div>
+<div class="productDetails">
 <!--Shows Productname you have chosen-->
-<h2 id="productname" th:text="#{productChoice.name}"></h2>
-<p id="description" th:text="#{productChoice.description}"> </p>
-<p id="price" th:text="#{productChoice.price}"> </p>
+<h2 id="productname" th:text="#{productChoice.name}"></h2> <br />
+<p id="description" th:text="#{productChoice.description}"> </p> <br />
+<p id="price" th:text="#{productChoice.price}"> </p> <br />
 <p id="discount" th:text="#{productChoice.discount}"> </p>
 </div>
 
 <figure class="pictures">
-		<img id="productImg" class="image"/>
+		<img class="image" id="productImg" />
 </figure>
 	
+<div class=addToCart>
 <button type="button" class="button" id="addToCart" onclick="addToCart()" th:text="#{productChoice.addCart}"></button>
-
-
-
 </div>
+
+
 </body>
 </html>
