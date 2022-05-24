@@ -58,10 +58,10 @@ WAE-->
 
 <div>
 <!--Shows Productname you have chosen-->
-<h2 id="productname"></h2>
-<p id="description"> </p>
-<p id="price"> </p>
-<p id="discount"> </p>
+<h2 id="productname" th:text="#{productChoice.name}"></h2>
+<p id="description" th:text="#{productChoice.description}"> </p>
+<p id="price" th:text="#{productChoice.price}"> </p>
+<p id="discount" th:text="#{productChoice.discount}"> </p>
 </div>
 
 <figure class="pictures">
