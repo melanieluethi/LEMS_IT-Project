@@ -35,6 +35,33 @@ body {
 	color: white;
 	border:none;
 }
+
+
+	
+}
+
+.login{
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	text-align: center;
+  	font-size:2vw;
+  	
+	
+}
+
+.loginLables{
+	font-size: 20pt;
+     
+}
+.lablebox{
+	 float: left;
+     padding: 20px;
+     box-sizing: border-box;
+}
+
+
 .welcome{
   left: 50%;
   position: absolute;
@@ -47,6 +74,19 @@ h1 {
   color: #555555;
   font-size:6vw;
 }
+
+
+h2 {
+  color: #555555;
+  text-indent: 1em;
+  margin: 0;
+}
+p {
+  color: #555555;
+  text-indent: 2em;
+  margin: 0;
+}
+
 .register, .logout, .successfulOrder{
   text-align: center;
   font-size:2vw;
@@ -56,6 +96,15 @@ h1 {
 	margin-left: 5%;
 	font-size:2vw;
 }
+
+
+.productChoice{
+	float:top;
+	margin:30px;
+}
+
+
+
 input, text{
 	border-radius: 5px;
 	color: #555555;
@@ -114,8 +163,8 @@ img {
 }
 
 .dropdown{
-	background-color: rgb(248, 248, 255);
-  	color: #555555;
+	background-color:#555555;
+  	color:white;
   	padding: 3px;
   	font-size: 16px;
   	border: none;
@@ -139,12 +188,22 @@ img {
 	float: botton;
 	}
 	
+.button #cart{
+	float: right
+}
+	
 .button #product{
 	float: center;
 	height: 100px; 
 	width: 1000px;
-	margin: 0 50px;
+	margin: 100px;
 	}
+	
+		
+.button #register, .button #login{
+	height: 50px;
+    width: 100px;
+}
 
 /* LUM */
 .editableTable tr.selected {
