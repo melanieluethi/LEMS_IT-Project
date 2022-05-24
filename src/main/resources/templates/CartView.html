@@ -41,7 +41,7 @@
 </nav>
 <div class="cart">
 <h1 th:text="#{cart.title}"></h1 > <br>
-<table class="table" style="width:50%">
+<table class="table">
   <tr>
     <th th:text="#{cart.product}"></th >
     <th th:text="#{cart.quantity}"></th >
@@ -56,17 +56,17 @@
  </table>
 
 
-
+<div class="cartDropdown">
+<label th:text="#{cart.shipping}"/> 
 <form class="dropdown" name="Select Shipping">
-<label th:text="#{cart.shipping}"/>
-  <select id="sipping" class="dropdown" name="shipping" onchange="getShipping()">
+  <select class="dropdown" id="sipping" name="shipping" onchange="getShipping()">
     <option value="express" th:text="#{cart.express}"></option>
     <option value="standard" th:text="#{cart.standard}"></option>
   </select>
  
   <input type="submit" class="button" value="Order">
 </form>
-
+</div>
 
 
 

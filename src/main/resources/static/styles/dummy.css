@@ -63,7 +63,6 @@ body {
      box-sizing: border-box;
 }
 
-
 .welcome{
   left: 50%;
   position: absolute;
@@ -103,6 +102,10 @@ p {
 .productChoice{
 	float:top;
 	margin:30px;
+}
+
+.cartDropdown{
+	width: 100%;
 }
 
 
@@ -227,6 +230,12 @@ img {
 .button #register, .button #login{
 	height: 50px;
     width: 100px;
+}
+
+.table{
+	height: auto;
+     width: 100%;
+     padding: 20px;
 }
 
 /* LUM */
