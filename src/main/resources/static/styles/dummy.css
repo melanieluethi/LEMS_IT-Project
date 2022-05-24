@@ -110,8 +110,7 @@ img {
 }
 .dropdown #quantity,
 .dropdown #products{
-	border: 3px #555555;
-	
+	border:thick;
 }
 
 .dropdown{
