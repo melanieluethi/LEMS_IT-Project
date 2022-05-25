@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.fhnw.lems.business.DistanceCalculation;
@@ -18,7 +18,6 @@ import ch.fhnw.lems.business.PriceCalculationPackage;
 import ch.fhnw.lems.business.PriceCalculationStandard;
 import ch.fhnw.lems.business.SpaceCalculation;
 import ch.fhnw.lems.controller.messages.MessageResultTransportCost;
-import ch.fhnw.lems.controller.messages.MessageTransportCostCart;
 import ch.fhnw.lems.entity.Cart;
 import ch.fhnw.lems.entity.CustomerOrder;
 import ch.fhnw.lems.entity.Shipping;
@@ -49,21 +48,27 @@ public class TransportCostService {
 	@Autowired
 	ShippingRepository shippingRepository;
 
-	@GetMapping(path = "/api/transportCostCart/{cartId}", produces = " application/json")
-	public MessageResultTransportCost getTransportCostCart(@RequestBody MessageTransportCostCart msgTransportCostCart) {
+	@GetMapping(path = "/api/transportCostCart", produces = " application/json")
+	public MessageResultTransportCost getTransportCostCart(
+			@RequestParam Long msgCartId,
+			@RequestParam String msgShippingMethod,
+			@RequestParam Integer msgAmountProduct1,
+			@RequestParam Integer msgAmountProduct2,
+			@RequestParam Integer msgAmountProduct3,
+			@RequestParam Integer msgAmountProduct4) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
 
-		Cart cart = cartRepository.findById(msgTransportCostCart.getCartId()).get();		
+		Cart cart = cartRepository.findById(msgCartId).get();		
 		MessageResultTransportCost msgResult = new MessageResultTransportCost();
 		double distance = DistanceCalculation.calculateDistance(currentUser.getPostalCode());
 		SpaceCalculation spaceCalculation = new SpaceCalculation();
 		
-		int amountProduct1 = msgTransportCostCart.getAmountProduct1();
-		int amountProduct2 = msgTransportCostCart.getAmountProduct2();
-		int amountProduct3 = msgTransportCostCart.getAmountProduct3();
-		int amountProduct4 = msgTransportCostCart.getAmountProduct4();
+		int amountProduct1 = msgAmountProduct1;
+		int amountProduct2 = msgAmountProduct2;
+		int amountProduct3 = msgAmountProduct3;
+		int amountProduct4 = msgAmountProduct4;
 		
 		int pallett = spaceCalculation.totalPalletts(amountProduct1, amountProduct2, amountProduct3, amountProduct4);
 		PriceCalculationStandard standardPrice = new PriceCalculationStandard();
@@ -80,7 +85,7 @@ public class TransportCostService {
 		msgResult.setDeliveryExpressAvailable(express.expressOffer(pallett));
 		
 		Shipping shipping = new Shipping();
-		shipping.setShippingMethod(msgTransportCostCart.getShippingMethod());
+		shipping.setShippingMethod(msgShippingMethod);
 		shipping.setShippingPackageCost(pcp.getPriceForDelivery());
 		shipping.setShippingStandardCost(standardPriceOfPallett);
 		shipping.setShippingExpressCost(standardPriceOfPallett);		

@@ -79,6 +79,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/api/order").hasRole(USER_ROLE_ADMIN)
 				.antMatchers("/api/changeLanguage").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				.antMatchers("/api/language").permitAll()
+				.antMatchers("/api/transportCostCart").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
+				.antMatchers("/api/transportCostOrder/{orderId}").hasAnyRole(USER_ROLE_ADMIN, USER_ROLE_USER)
 				// Rights for views
 				.antMatchers("/adminOrders").hasRole(USER_ROLE_ADMIN)
 				.antMatchers("/adminProducts").hasRole(USER_ROLE_ADMIN)

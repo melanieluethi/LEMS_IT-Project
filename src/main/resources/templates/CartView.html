@@ -43,41 +43,41 @@ WAE-->
 <!-- LUM -->
 <div class="cart">
 <h1 th:text="#{cart.title}"></h1 > <br>
-<table class="table">
+<input type="hidden" id="cartId" name="cartId">
+<table style="width:50%" id="cartTable">
   <tr>
-    <th th:text="#{cart.product}"></th >
+  	<th th:text="#{cart.product}"></th >
     <th th:text="#{cart.quantity}"></th >
     <th th:text="#{cart.price}"></th >
-    
   </tr>
-  <tr>
-    <td> - </td>
-    <td> - </td>
-    <td> - </td>
-  </tr> 
- </table>
+</table>
+</div>
+<input type="hidden" id="amountProduct1" name="amountProduct1" value="0">
+<input type="hidden" id="amountProduct2" name="amountProduct2" value="0">
+<input type="hidden" id="amountProduct3" name="amountProduct3" value="0">
+<input type="hidden" id="amountProduct4" name="amountProduct4" value="0">
 
-
+<input type="hidden" id="totalProductCost" name="totalProductCost">
 <div class="cartDropdown">
 <label th:text="#{cart.shipping}"/> 
-<form class="dropdown" name="Select Shipping">
-  <select class="dropdown" id="sipping" name="shipping" onchange="getShipping()">
+  <select class="dropdown" id="shipping" name="shipping" onchange="changeCost()">
     <option value="express" th:text="#{cart.express}"></option>
     <option value="standard" th:text="#{cart.standard}"></option>
+    <option value="package" th:text="#{cart.package}"></option>
   </select>
- 
-  <input type="submit" class="button" value="Order">
-</form>
+
+<label th:text="#{cart.shippingCost}"/>   
+<label id="shippingCost"/>
+<input type="hidden" id="expressCost" name="expressCost">
+<input type="hidden" id="standardCost" name="standardCost">
+<input type="hidden" id="packageCost" name="packageCost">
+
+<label th:text="#{cart.totalCost}"/>   
+<label id="totalCost"/>   
+   
+<button type="button" class="button" id="saveOrder" onclick="saveOrder()" th:text="#{cart.saveOrder}"></button>
 </div>
-
-
-
-
 </div>
-
-
-
-
 </div>
 </body>
 </html>

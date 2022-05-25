@@ -82,14 +82,20 @@ public class CartService {
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);		
 		
-		Long cartId = cartRepository.findByUser(currentUser.getUserId());
-		Cart cart = cartRepository.findById(cartId).get();
-		
 		MessageResultShoppingCart msgResult = new MessageResultShoppingCart();
-		msgResult.setOrderItems(cart.getOrderItems());
-		msgResult.setShipping(cart.getShipping());
-		
-		logger.info("Get Cart of: " + cart.getUser().getUsername());
+		Long cartId = cartRepository.findByUser(currentUser.getUserId());
+		if(cartId != null) {
+			Cart cart = cartRepository.findById(cartId).get();	
+			msgResult.setId(cart.getCartId());
+			msgResult.setUser(currentUser);
+			msgResult.setOrderItems(cart.getOrderItems());
+			msgResult.setShipping(cart.getShipping());
+			msgResult.setSuccessful(true);
+			logger.info("Get Cart of: " + cart.getUser().getUsername());
+		} else {
+			msgResult.setSuccessful(false);
+			logger.info("No Cart for " + username + " exist.");
+		}
 		return msgResult;
 	}
 }
