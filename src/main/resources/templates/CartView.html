@@ -58,8 +58,9 @@ WAE-->
 <input type="hidden" id="amountProduct4" name="amountProduct4" value="0">
 
 <input type="hidden" id="totalProductCost" name="totalProductCost">
+
+<h2 th:text="#{cart.shipping}"></h2> <br>
 <div class="cartDropdown">
-<label th:text="#{cart.shipping}"/> 
   <select class="dropdown" id="shipping" name="shipping" onchange="changeCost()">
     <option value="express" th:text="#{cart.express}"></option>
     <option value="standard" th:text="#{cart.standard}"></option>

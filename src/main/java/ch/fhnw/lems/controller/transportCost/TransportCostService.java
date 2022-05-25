@@ -60,8 +60,9 @@ public class TransportCostService {
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);
 
-		Cart cart = cartRepository.findById(msgCartId).get();		
+		Cart cart = cartRepository.findById(msgCartId).get();
 		MessageResultTransportCost msgResult = new MessageResultTransportCost();
+		msgResult.setId(msgCartId);
 		double distance = DistanceCalculation.calculateDistance(currentUser.getPostalCode());
 		SpaceCalculation spaceCalculation = new SpaceCalculation();
 		
@@ -72,7 +73,7 @@ public class TransportCostService {
 		
 		int pallett = spaceCalculation.totalPalletts(amountProduct1, amountProduct2, amountProduct3, amountProduct4);
 		PriceCalculationStandard standardPrice = new PriceCalculationStandard();
-		Double standardPriceOfPallett = standardPrice.calculateStandardPrice(distance, pallett);		
+		Double standardPriceOfPallett = standardPrice.calculateStandardPrice(transportCostRepository, distance, pallett);		
 		msgResult.setTransportCostStandard(standardPriceOfPallett);
 		
 		PriceCalculationPackage pcp = new PriceCalculationPackage();
@@ -89,8 +90,8 @@ public class TransportCostService {
 		shipping.setShippingPackageCost(pcp.getPriceForDelivery());
 		shipping.setShippingStandardCost(standardPriceOfPallett);
 		shipping.setShippingExpressCost(standardPriceOfPallett);		
-		shipping = shippingRepository.save(shipping);
-		cart.setShipping(shipping);
+		Shipping savedShipping = shippingRepository.save(shipping);
+		cart.setShipping(savedShipping);
 		return msgResult;
 	}
 		
