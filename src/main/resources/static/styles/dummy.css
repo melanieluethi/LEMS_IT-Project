@@ -39,8 +39,9 @@ body {
 }
 
 
-	
-
+select{
+	margin: 5px;
+}
 
 .login{
 	position: absolute;
@@ -81,11 +82,13 @@ h2 {
   color: #555555;
   text-indent: 1em;
   margin: 0;
+	display:inline-block;
 }
 p {
   color: #555555;
   text-indent: 2em;
   margin: 0;
+  display: inline-block;
 }
 
 .register, .logout, .successfulOrder{

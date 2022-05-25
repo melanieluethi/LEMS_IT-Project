@@ -63,10 +63,14 @@ WAE-->
 
 <div class="productDetails">
 <!--Shows Productname you have chosen-->
-<h2 id="productname" th:text="#{productChoice.name}"></h2> <br />
-<p id="description" th:text="#{productChoice.description}"> </p> <br />
-<p id="price" th:text="#{productChoice.price}"> </p> <br />
-<p id="discount" th:text="#{productChoice.discount}"> </p>
+<h2 th:text="#{productChoice.name}"></h2>
+<h2 id="productname"></h2> <br />
+<label th:text="#{productChoice.description}"> </label>
+<p id="description"> </p> <br />
+<label th:text="#{productChoice.price}"></label>
+<p id="price"> </p> <br />
+<label th:text="#{productChoice.discount}"></label>
+<p id="discount"> </p>
 </div>
 
 <figure class="pictures">
