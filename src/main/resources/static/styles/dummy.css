@@ -80,18 +80,18 @@ h1 {
 
 h2 {
   color: #555555;
-  text-indent: 1em;
+  text-indent: 0em;
   margin: 0;
 	display:inline-block;
 }
 p {
   color: #555555;
-  text-indent: 2em;
+  text-indent: 0em;
   margin: 0;
   display: inline-block;
 }
 
-.register, .logout, .successfulOrder{
+.register, .logout, .successfulOrder, .userManagement{
   text-align: center;
   font-size:2vw;
 }
@@ -118,29 +118,41 @@ input, text{
 	color: #555555;
 	margin: 0.5%;
 }
-.register #fname{
+.register #fname,
+.userManagement #fname{
 	width: 45%;
 }
-.register #lname{
+.register #lname,
+.userManagement #lname{
 	width: 45%;
 }
-.register #address{
+.register #address,
+.userManagement #address{
 	width: 34%;
 }
-.register #zip{
+.register #zip,
+.userManagement #zip{
 	width: 9.5%;
 }
-.register #city{
+.register #city,
+.userManagement #city{
 	width: 34%;
 }
-.register #country{
+.register #country,
+.userManagement #country{
 	width: 9.5%;
 }
-.register #email{
-	width: 45%;
+.register #email,
+.userManagement #email{
+	width: 40%;
 }
-.register #password{
-	width: 45%;
+.register #password,
+.userManagement #password{
+	width: 30%;
+}
+.register #username,
+.userManagement #username{
+	width: 30%;
 }
 nav .ul{
 	visibility: hidden;
