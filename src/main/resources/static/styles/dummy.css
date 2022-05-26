@@ -54,6 +54,10 @@ select{
 	
 }
 
+#divLoginButtons {
+	margin-top: 60px;
+}
+
 .loginLables{
 	font-size: 20pt;
      
