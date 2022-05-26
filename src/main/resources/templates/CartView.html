@@ -13,7 +13,8 @@ WAE-->
 	<script th:src="@{/scripts/Language.js}"></script>
 	<script th:src="@{/scripts/Cart.js}"></script>
 </head>
-<body>
+<div>
+
 <nav class="navbar navbar-expand-md">
    <a class="navbar-brand" th:href="@{/home}" th:text="#{login.firma}"></a>
   <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
@@ -41,6 +42,7 @@ WAE-->
   </div>
 </nav>
 <!-- LUM -->
+<div id="cartBody">
 <div class="cart">
 <h1 th:text="#{cart.title}"></h1 > <br>
 <input type="hidden" id="cartId" name="cartId">
@@ -67,6 +69,7 @@ WAE-->
     <option value="package" th:text="#{cart.package}"></option>
   </select>
 
+<input type="hidden" id="shippingId" name="shippingId" value="0">
 <label th:text="#{cart.shippingCost}"/>   
 <label id="shippingCost"></label></br>
 <input type="hidden" id="expressCost" name="expressCost">
@@ -80,5 +83,10 @@ WAE-->
 </div>
 </div>
 </div>
+</div>
+<div id="cartNoValue">
+<h1 th:text="#{cart.title}"></h1 ><br>
+<h2 id="cartNoElementsTitle"></h2 >
+</div >
 </body>
 </html>

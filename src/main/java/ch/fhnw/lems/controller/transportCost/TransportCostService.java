@@ -1,14 +1,11 @@
 package ch.fhnw.lems.controller.transportCost;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +16,9 @@ import ch.fhnw.lems.business.PriceCalculationStandard;
 import ch.fhnw.lems.business.SpaceCalculation;
 import ch.fhnw.lems.controller.messages.MessageResultTransportCost;
 import ch.fhnw.lems.entity.Cart;
-import ch.fhnw.lems.entity.CustomerOrder;
 import ch.fhnw.lems.entity.Shipping;
 import ch.fhnw.lems.entity.User;
 import ch.fhnw.lems.persistence.CartRepository;
-import ch.fhnw.lems.persistence.OrderRepository;
 import ch.fhnw.lems.persistence.ShippingRepository;
 import ch.fhnw.lems.persistence.TransportCostRepository;
 import ch.fhnw.lems.persistence.UserRepository;
@@ -40,9 +35,6 @@ public class TransportCostService {
 	CartRepository cartRepository;
 
 	@Autowired
-	OrderRepository orderRepository;
-
-	@Autowired
 	TransportCostRepository transportCostRepository;
 	
 	@Autowired
@@ -51,6 +43,7 @@ public class TransportCostService {
 	@GetMapping(path = "/api/transportCostCart", produces = " application/json")
 	public MessageResultTransportCost getTransportCostCart(
 			@RequestParam Long msgCartId,
+			@RequestParam Long msgShippingId,
 			@RequestParam String msgShippingMethod,
 			@RequestParam Integer msgAmountProduct1,
 			@RequestParam Integer msgAmountProduct2,
@@ -85,29 +78,23 @@ public class TransportCostService {
 		msgResult.setTransportCostExpress(expressPrice);
 		msgResult.setDeliveryExpressAvailable(express.expressOffer(pallett));
 		
-		Shipping shipping = new Shipping();
+		Shipping shipping;
+		if (msgShippingId == 0){
+			shipping = new Shipping();	
+		} else {
+			shipping = shippingRepository.findById(msgShippingId).get();
+		}
 		shipping.setShippingMethod(msgShippingMethod);
 		shipping.setShippingPackageCost(pcp.getPriceForDelivery());
 		shipping.setShippingStandardCost(standardPriceOfPallett);
 		shipping.setShippingExpressCost(standardPriceOfPallett);		
 		Shipping savedShipping = shippingRepository.save(shipping);
-		cart.setShipping(savedShipping);
-		msgResult.setSuccessful(true);
-		return msgResult;
-	}
 		
-	@GetMapping(path = "/api/transportCostOrder/{orderId}", produces = " application/json")
-	public MessageResultTransportCost getTransportCostOrder(@PathVariable Long orderId) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String username = auth.getName();
-		User currentUser = userRepository.findByUsername(username);
-
-		List<CustomerOrder> order = orderRepository.findByUserId(currentUser.getUserId());
-
-		MessageResultTransportCost msgResult = new MessageResultTransportCost();
-		// TODO LUM show Transportcost of Order
-
-
+		msgResult.setShippingId(savedShipping.getShippingId());
+		cart.setShipping(savedShipping);
+		
+		cartRepository.save(cart);
+		msgResult.setSuccessful(true);
 		return msgResult;
 	}
 }

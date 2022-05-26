@@ -4,7 +4,12 @@ function getCart() {
         type: 'GET',
         url: '/api/shoppingCart',
         success: function (data) {
-			if(data) {
+			if(data.successful) {
+				let cartNoValue = document.getElementById("cartNoValue");
+				cartNoValue.style.visibility = "hidden";
+				let cartBody = document.getElementById("cartBody");
+				cartBody.style.visibility = "visible";
+				
 				let totalProductCost = 0;
 				let cartId = document.getElementById('cartId');
 				cartId.value = data.id;
@@ -64,7 +69,17 @@ function getCart() {
 				
 				getTransportCost(data.id);
 			} else {
+				let cartBody = document.getElementById("cartBody");
+				cartBody.style.visibility = "hidden";
+				let cartNoValue = document.getElementById("cartNoValue");
+				cartNoValue.style.visibility = "visible";
 				
+				let cartNoElementsTitle = document.getElementById('cartNoElementsTitle');				
+				if(window.location.search.includes('eng')){
+					cartNoElementsTitle.innerHTML = 'No products in the cart.';
+				} else{
+					cartNoElementsTitle.innerHTML = 'Es sind keine Produkte im Warenkorb.';
+				}
 			}			
         }, error: function(e) {
 			console.log(e);
@@ -73,6 +88,7 @@ function getCart() {
 }
 
 function getTransportCost(cartId) {
+	let shippingId = document.getElementById('shippingId').value;
 	let shippingMethod = document.getElementById('shipping').value;
 	let amountProduct1 = document.getElementById('amountProduct1').value;
 	let amountProduct2 = document.getElementById('amountProduct2').value;
@@ -80,12 +96,16 @@ function getTransportCost(cartId) {
 	let amountProduct4 = document.getElementById('amountProduct4').value;
 	 $.ajax({
         type: 'GET',
-        url: '/api/transportCostCart?msgCartId=' + cartId + '&msgShippingMethod="' + shippingMethod 
+        url: '/api/transportCostCart?msgCartId=' + cartId + 
+        '&msgShippingId=' + shippingId + 
+        '&msgShippingMethod="' + shippingMethod 
         		+ '"&msgAmountProduct1=' + amountProduct1 + '&msgAmountProduct2=' + amountProduct2
         		 + '&msgAmountProduct3=' + amountProduct3 + '&msgAmountProduct4=' + amountProduct4,
 		dataType: 'json',
 		contentType: 'application/json', 
         success: function (data) {
+			let shippingId = document.getElementById('shippingId');
+			shippingId.value = data.shippingId;			
 			let expressCost = document.getElementById('expressCost');
 			expressCost.value = data.transportCostExpress;
 			let standardCost = document.getElementById('standardCost');
@@ -145,7 +165,24 @@ function totalCost(shippingCost) {
 }
 
 function saveOrder() {
-	alert('click save order');
+	debugger;
+	let shippingId = document.getElementById('shippingId').value;
+	let totalPrice = document.getElementById('totalProductCost').value;
+	$.ajax({
+		type:"POST",
+		url: "/api/order",
+		data: JSON.stringify ({
+			orderItems: '',
+			shippingId: shippingId,
+			totalPrice:	totalPrice				
+		}),
+		dataType: 'json',
+    	contentType: 'application/json',
+        success: function () {			
+        }, error: function(e) {
+			console.log(e);			
+	  	}
+	});
 }
 
 window.onload = function() {

@@ -262,3 +262,8 @@ img {
 .idColumn {
 	display: none;
 }
+
+#cartNoValue {
+	margin-top: -370px;
+    margin-left: 30px;
+}

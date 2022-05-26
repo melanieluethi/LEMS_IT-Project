@@ -47,9 +47,11 @@ public class OrderService {
 	
 	@PostMapping (path = "/api/order", produces = "application/json")
 	public boolean createOrder(@RequestBody MessageOrder msgOrder) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		User currentUser = userRepository.findByUsername(username);	
 		CustomerOrder order = new CustomerOrder();
-		User user = userRepository.findById(msgOrder.getUserId()).get();
-		order.setUser(user);
+		order.setUser(currentUser);
 		order.setOrderItems(msgOrder.getOrderItems());
 		order.setTotalPrice(msgOrder.getTotalPrice());
 		orderRepository.save(order);	

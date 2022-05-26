@@ -2,11 +2,20 @@ package ch.fhnw.lems.controller.messages;
 
 // lum
 public class MessageResultTransportCost extends MessageResultStandard {
+	private Long shippingId;
 	private Double transportCostStandard;
 	private Boolean deliveryAvailable;
 	private Double priceForDelivery;
 	private Double transportCostExpress;
 	private Boolean deliveryExpressAvailable;
+
+	public Long getShippingId() {
+		return shippingId;
+	}
+
+	public void setShippingId(Long shippingId) {
+		this.shippingId = shippingId;
+	}
 
 	public Double getTransportCostStandard() {
 		return transportCostStandard;
