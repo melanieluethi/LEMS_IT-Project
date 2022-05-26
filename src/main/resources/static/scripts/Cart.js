@@ -86,35 +86,62 @@ function getTransportCost(cartId) {
 		dataType: 'json',
 		contentType: 'application/json', 
         success: function (data) {
-			debugger;
 			let expressCost = document.getElementById('expressCost');
 			expressCost.value = data.transportCostExpress;
 			let standardCost = document.getElementById('standardCost');
 			standardCost.value = data.transportCostStandard;
 			let packageCost = document.getElementById('packageCost');
 			packageCost.value = data.priceForDelivery;
+			
+			if(!data.deliveryAvailable) {
+				let packageOption = document.getElementById('shipping').options[2];
+				packageOption.disabled = true
+			}
+			if(!data.deliveryExpressAvailable){
+				let expressOption = document.getElementById('shipping').options[0];
+				expressOption.disabled = true
+				
+			}
+			
+			// default selected value is standard	
+			let selectedShippingMethod = document.getElementById('shipping');
+			selectedShippingMethod.selectedIndex = 1;
+			
+			setShippingCost();			
         }, error: function(e) {
 			console.log(e);
 	  	}
 	});
 }
 
-function changeCost() {
+function setShippingCost() {
 	let selectedShippingMethod = document.getElementById('shipping').value;
-	let expressCost = document.getElementById('expressCost').value;
-	let standardCost = document.getElementById('standardCost').value;
-	let packageCost = document.getElementById('packageCost').value;
-
-debugger;
-	let shippingCost = 100;
-	totalCost(shippingCost);	
+	let shippingCost = document.getElementById('shippingCost');
+	switch(selectedShippingMethod) {
+		case 'express':
+			let expressCost = document.getElementById('expressCost').value;
+			shippingCost.textContent = (Math.round(expressCost)).toFixed(2);
+			break;
+		case 'standard':
+			let standardCost = document.getElementById('standardCost').value;
+			shippingCost.textContent = (Math.round(standardCost)).toFixed(2);
+			break;
+		case 'package':
+			let packageCost = document.getElementById('packageCost').value;
+			shippingCost.textContent = (Math.round(packageCost)).toFixed(2);
+			break;
+		default:
+			shippingCost.textContent = 0.0;
+		    break;
+	}
+	totalCost(shippingCost.textContent);
 }
 
 function totalCost(shippingCost) {
 	let totalProductCost = document.getElementById('totalProductCost').value;
 	let totalCost = totalProductCost + shippingCost;
 	let totalCostLabel = document.getElementById('totalCost');
-	totalCostLabel.value = totalCost;
+	totalCostLabel.textContent = (Math.round(totalCost)).toFixed(2);
 }
 
 function saveOrder() {

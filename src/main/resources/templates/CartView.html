@@ -61,20 +61,20 @@ WAE-->
 
 <h2 th:text="#{cart.shipping}"></h2> <br>
 <div class="cartDropdown">
-  <select class="dropdown" id="shipping" name="shipping" onchange="changeCost()">
+  <select class="dropdown" id="shipping" name="shipping" onchange="setShippingCost()">
     <option value="express" th:text="#{cart.express}"></option>
     <option value="standard" th:text="#{cart.standard}"></option>
     <option value="package" th:text="#{cart.package}"></option>
   </select>
 
 <label th:text="#{cart.shippingCost}"/>   
-<label id="shippingCost"/>
+<label id="shippingCost"></label></br>
 <input type="hidden" id="expressCost" name="expressCost">
 <input type="hidden" id="standardCost" name="standardCost">
 <input type="hidden" id="packageCost" name="packageCost">
 
-<label th:text="#{cart.totalCost}"/>   
-<label id="totalCost"/>   
+<h2 th:text="#{cart.totalCost}"/>   
+<label id="totalCost"></label></br>
    
 <button type="button" class="button" id="saveOrder" onclick="saveOrder()" th:text="#{cart.saveOrder}"></button>
 </div>

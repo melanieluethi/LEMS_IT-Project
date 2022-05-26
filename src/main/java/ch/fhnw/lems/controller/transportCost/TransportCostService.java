@@ -92,6 +92,7 @@ public class TransportCostService {
 		shipping.setShippingExpressCost(standardPriceOfPallett);		
 		Shipping savedShipping = shippingRepository.save(shipping);
 		cart.setShipping(savedShipping);
+		msgResult.setSuccessful(true);
 		return msgResult;
 	}
 		
