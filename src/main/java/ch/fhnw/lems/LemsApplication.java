@@ -82,7 +82,7 @@ public class LemsApplication {
 			testUser1.setUsername("testUser1");
 			testUser1.setFirstname("Test");
 			testUser1.setLastname("User 1");
-			testUser1.setEmail("testUser1@lems.ch");
+			testUser1.setEmail("testuser1@lems.ch");
 			testUser1.setPassword(BCrypt.hashpw("testUser1", BCrypt.gensalt(12)));
 			testUser1.setLanguage(Language.DE);
 			testUser1.setAddress("Marzilli 2");
@@ -102,8 +102,8 @@ public class LemsApplication {
 			p1.setProductId(1l);
 			p1.setProductName("Firewall");
 			p1.setProductNameEng("Firewall");
-			p1.setDescription("Firewall");
-			p1.setDescriptionEng("Firewall");
+			p1.setDescription("Zyxel USGFLEX 100 & UTM 1J");
+			p1.setDescriptionEng("Zyxel USGFLEX 100 & UTM 1J");
 			p1.setPrice(1499.00);
 			p1.setDiscount(0);
 			p1.setProductImg("productImages/firewall.png");
@@ -112,8 +112,8 @@ public class LemsApplication {
 			p2.setProductId(2l);
 			p2.setProductName("Serverschrank");
 			p2.setProductNameEng("Rack");
-			p2.setDescription("Serverschrank");
-			p2.setDescriptionEng("Rack");
+			p2.setDescription("18 HE 19 Zoll Serverschrank, mit Glastür (BxTxH) 600 x 600 x 1000mm");
+			p2.setDescriptionEng("18 U 19 inch rack, with glass door (WxDxH) 600 x 600 x 1000mm");
 			p2.setPrice(7899.00);
 			p2.setDiscount(0);
 			p2.setProductImg("productImages/serverschrank.jpg");
@@ -121,9 +121,9 @@ public class LemsApplication {
 			Product p3 = new Product();
 			p3.setProductId(3l);
 			p3.setProductName("HPE Server ProLiant DL385 Gen10 Plus AMD EPYC 7262 Entry");
-			p3.setProductNameEng("Server");
+			p3.setProductNameEng("HPE Server ProLiant DL385 Gen10 Plus AMD EPYC 7262 Entry");
 			p3.setDescription("Prozessorfamilie: AMD EPYC, Unterstützte Netzteile: 2, Anzahl Laufwerkschächte: 8 ×, Netzteil Nennleistung: 500 W, Tiefe: 711 mm, Verbauter Arbeitsspeicher: 16 GB.");
-			p3.setDescriptionEng("Server Description");
+			p3.setDescriptionEng("Processor family: AMD EPYC, Supported power supplies: 2, Number of drive bays: 8 ×, Power supply rating: 500 W, Depth: 711 mm, Installed memory: 16 GB.");
 			p3.setPrice(3499.00);
 			p3.setDiscount(0);
 			p3.setProductImg("productImages/server.png");
@@ -132,8 +132,8 @@ public class LemsApplication {
 			p4.setProductId(4l);
 			p4.setProductName("Switch");
 			p4.setProductNameEng("Switch");
-			p4.setDescription("Switch");
-			p4.setDescriptionEng("Switch");
+			p4.setDescription("Cisco Nexus N3K-C3132Q-40GX 32x 40GbE QSFP+ - 4x 10GbE SFP+ L3 Network Switch 19 Zoll 1U Rack");
+			p4.setDescriptionEng("Cisco Nexus N3K-C3132Q-40GX 32x 40GbE QSFP+ - 4x 10GbE SFP+ L3 Network Switch 19 inch 1U Rack");
 			p4.setPrice(999.00);
 			p4.setDiscount(0);
 			p4.setProductImg("productImages/switch.jpeg");
