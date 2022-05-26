@@ -2,12 +2,6 @@ package ch.fhnw.lems.business;
 
 //done by HiS
 public class PriceCalculationPackage {
-	private int testSumP1;
-	private int testSumP2;
-	private int testSumP3;
-	private int testSumP4;
-    
-	
 	private static int WEIGHT_MULTIPLICATOR_P1 = 20;
 	private static int WEIGHT_MULTIPLICATOR_P2 = 60;
 	private static int WEIGHT_MULTIPLICATOR_P3 = 58;
@@ -34,9 +28,9 @@ public class PriceCalculationPackage {
 	//if size & weight smaller than 1 Pallet-Stack & 550 KG --> offer Package price.
     //if not applicaple return false / "not applicable"
 		
-	public boolean packageOffer() {
-		spaceOfDelivery = testSumP1 * spaceMultiplicatorP1 + testSumP2 * spaceMultiplicatorP2 + testSumP3 * spaceMultiplicatorP3 + testSumP4 * spaceMultiplicatorP4;
-		weightOfDelivery = testSumP1 * WEIGHT_MULTIPLICATOR_P1 + testSumP2 * WEIGHT_MULTIPLICATOR_P2 + testSumP3 * WEIGHT_MULTIPLICATOR_P3 + testSumP4 * WEIGHT_MULTIPLICATOR_P4;
+	public boolean packageOffer(int sumP1, int sumP2, int sumP3, int sumP4) {
+		spaceOfDelivery = sumP1 * spaceMultiplicatorP1 + sumP2 * spaceMultiplicatorP2 + sumP3 * spaceMultiplicatorP3 + sumP4 * spaceMultiplicatorP4;
+		weightOfDelivery = sumP1 * WEIGHT_MULTIPLICATOR_P1 + sumP2 * WEIGHT_MULTIPLICATOR_P2 + sumP3 * WEIGHT_MULTIPLICATOR_P3 + sumP4 * WEIGHT_MULTIPLICATOR_P4;
 		
 		if(spaceOfDelivery <= 1.0 && weightOfDelivery <= 550.0) {
 			return true;

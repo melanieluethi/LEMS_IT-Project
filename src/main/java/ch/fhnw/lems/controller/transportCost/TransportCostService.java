@@ -77,7 +77,7 @@ public class TransportCostService {
 		msgResult.setTransportCostStandard(standardPriceOfPallett);
 		
 		PriceCalculationPackage pcp = new PriceCalculationPackage();
-		msgResult.setDeliveryAvailable(pcp.packageOffer());
+		msgResult.setDeliveryAvailable(pcp.packageOffer(amountProduct1, amountProduct2, amountProduct3, amountProduct4));
 		msgResult.setPriceForDelivery(pcp.getPriceForDelivery());
 
 		PriceCalculationExpress express = new PriceCalculationExpress();
