@@ -56,24 +56,42 @@ public class CartService {
 			cart = cartRepository.findById(cartId).get();
 		}
 		
-		Product product = productRepository.findById(msgAddToCart.getProductId()).get();		
-		OrderItem orderItem = new OrderItem();
-		orderItem.setProduct(product);
-		Integer quantity = msgAddToCart.getQuantity();
-		orderItem.setQuantity(quantity);
-		OrderItem savedOrderItem = orderItemRepository.save(orderItem);
-		
 		List<OrderItem> orderItems = new ArrayList<>();
 		if(cart.getOrderItems() != null) {
-			orderItems.addAll(cart.getOrderItems());	
+			orderItems.addAll(cart.getOrderItems());
+			OrderItem orderItemExist = orderItems.stream()
+					  .filter(o -> o.getProduct().getProductId().equals((msgAddToCart.getProductId())))
+					  .findAny()
+					  .orElse(null);
+			
+			if(orderItemExist != null) {
+				int indexOfExistingOrderItem = orderItems.indexOf(orderItemExist);
+				Integer newQuantity = orderItemExist.getQuantity() + msgAddToCart.getQuantity();
+				orderItems.get(indexOfExistingOrderItem).setQuantity(newQuantity);
+				logger.info("Change Quantity of OrderItem: " + orderItemExist.getProduct().getProductName() + " in Cart.");
+			} else {
+				OrderItem orderItem = saveNewOrderItem(msgAddToCart.getProductId(), msgAddToCart.getQuantity());
+				orderItems.add(orderItem);
+				logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Cart.");	
+			}
+		} else {
+			OrderItem orderItem = saveNewOrderItem(msgAddToCart.getProductId(), msgAddToCart.getQuantity());
+			orderItems.add(orderItem);
+			logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Cart.");	
 		}
-		orderItems.add(savedOrderItem);
-		cart.setOrderItems(orderItems);
-				
+		
+		cart.setOrderItems(orderItems);			
 		cartRepository.save(cart);
 		
-		logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Cart.");
 		return true;
+	}
+	
+	private OrderItem saveNewOrderItem(Long productId,Integer quantity) {
+		Product product = productRepository.findById(productId).get();		
+		OrderItem orderItem = new OrderItem();
+		orderItem.setProduct(product);
+		orderItem.setQuantity(quantity);
+		return orderItemRepository.save(orderItem);
 	}
 	
 	@GetMapping(path= "/api/shoppingCart", produces = " application/json")

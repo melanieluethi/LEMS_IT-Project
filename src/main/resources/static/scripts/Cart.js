@@ -145,7 +145,7 @@ function totalCost(shippingCost) {
 }
 
 function saveOrder() {
-	allert('click save order');
+	alert('click save order');
 }
 
 window.onload = function() {
