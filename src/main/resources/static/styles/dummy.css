@@ -257,6 +257,17 @@ img {
 }
 
 /* LUM */
+.editableUserOrderTable {
+	height: auto;
+    width: 100%;
+    padding: 20px;
+}
+
+.editableUserOrderTable tr.selected {
+    background-color: brown;
+    color: #FFF;	
+} 
+
 .editableTable tr.selected {
     background-color: brown;
     color: #FFF;

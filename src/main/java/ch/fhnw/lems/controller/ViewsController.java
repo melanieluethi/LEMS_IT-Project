@@ -96,6 +96,11 @@ public class ViewsController {
 		return "UserManagementView.html";
 	}
 	
+	@GetMapping("/orderDetail")
+	public String orderDetailView() {
+		return "OrderDetailView.html";
+	}
+	
 	@GetMapping("/international")
     public String getInternationalPage() {
         return "international";

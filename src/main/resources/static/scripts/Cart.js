@@ -172,6 +172,8 @@ function saveOrder() {
 	let cartId = document.getElementById('cartId').value;
 	let shippingId = document.getElementById('shippingId').value;
 	let shippingMethod = document.getElementById('shipping').value;
+	let deliveryAvailable = document.getElementById('deliveryAvailable').value;
+	let deliveryExpressAvailable = document.getElementById('deliveryExpressAvailable').value;
 	let totalPrice = document.getElementById('totalProductCost').value;
 	$.ajax({
 		type:"POST",
@@ -180,6 +182,8 @@ function saveOrder() {
 			cartId: cartId,
 			shippingId: shippingId,
 			shippingMethod: shippingMethod,
+			deliveryAvailable: deliveryAvailable,
+			deliveryExpressAvailable: deliveryExpressAvailable,
 			totalPrice:	totalPrice				
 		}),
 		dataType: 'json',

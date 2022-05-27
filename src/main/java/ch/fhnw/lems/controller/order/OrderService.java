@@ -141,20 +141,6 @@ public class OrderService {
 		return msgResultOrder;
 	}
 	
-	@GetMapping(path= "/api/orders/{userId}", produces = " application/json")
-	public ArrayList<MessageResultOrder> getOrderByUserId(@PathVariable Long userId){
-		ArrayList<MessageResultOrder> results = new ArrayList<>();
-		ArrayList<CustomerOrder> orders = orderRepository.findByUserId(userId);		
-		orders.forEach(o -> {
-			MessageResultOrder msgResultOrder = new MessageResultOrder();
-			msgResultOrder.setId(o.getOrderId());
-			msgResultOrder.setOrder(o);
-			results.add(msgResultOrder);
-			logger.info("Get order " + o.getOrderId());
-		});			
-		return results;
-	}
-	
 	@GetMapping(path= "/api/orders", produces = " application/json")
 	public ArrayList<MessageResultOrder> getOrders(){
 		ArrayList<MessageResultOrder> results = new ArrayList<>();
@@ -170,7 +156,17 @@ public class OrderService {
 				results.add(msgResultOrder);
 				logger.info("Get order of " + o.getOrderId());
 			});				
+		} else {
+			ArrayList<CustomerOrder> orders = orderRepository.findByUserId(currentUser.getUserId());	
+			orders.forEach(o -> {
+				MessageResultOrder msgResultOrder = new MessageResultOrder();
+				msgResultOrder.setId(o.getOrderId());
+				msgResultOrder.setOrder(o);
+				results.add(msgResultOrder);
+				logger.info("Get order of " + o.getOrderId());
+			});	
 		}
+		
 		return results;
 	}
 }
