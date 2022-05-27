@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import ch.fhnw.lems.controller.messages.MessageAddToCart;
 import ch.fhnw.lems.controller.messages.MessageResultShoppingCart;
 import ch.fhnw.lems.entity.Cart;
-import ch.fhnw.lems.entity.OrderItem;
+import ch.fhnw.lems.entity.OrderItemCart;
 import ch.fhnw.lems.entity.Product;
 import ch.fhnw.lems.entity.User;
 import ch.fhnw.lems.persistence.CartRepository;
-import ch.fhnw.lems.persistence.OrderItemRepository;
+import ch.fhnw.lems.persistence.OrderItemCartRepository;
 import ch.fhnw.lems.persistence.ProductRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 
@@ -36,7 +36,7 @@ public class CartService {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private OrderItemRepository orderItemRepository;
+	private OrderItemCartRepository orderItemRepository;
 	
 	@Autowired
 	private ProductRepository productRepository;
@@ -56,10 +56,10 @@ public class CartService {
 			cart = cartRepository.findById(cartId).get();
 		}
 		
-		List<OrderItem> orderItems = new ArrayList<>();
+		List<OrderItemCart> orderItems = new ArrayList<>();
 		if(cart.getOrderItems() != null) {
 			orderItems.addAll(cart.getOrderItems());
-			OrderItem orderItemExist = orderItems.stream()
+			OrderItemCart orderItemExist = orderItems.stream()
 					  .filter(o -> o.getProduct().getProductId().equals((msgAddToCart.getProductId())))
 					  .findAny()
 					  .orElse(null);
@@ -70,12 +70,12 @@ public class CartService {
 				orderItems.get(indexOfExistingOrderItem).setQuantity(newQuantity);
 				logger.info("Change Quantity of OrderItem: " + orderItemExist.getProduct().getProductName() + " in Cart.");
 			} else {
-				OrderItem orderItem = saveNewOrderItem(msgAddToCart.getProductId(), msgAddToCart.getQuantity());
+				OrderItemCart orderItem = saveNewOrderItem(msgAddToCart.getProductId(), msgAddToCart.getQuantity());
 				orderItems.add(orderItem);
 				logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Cart.");	
 			}
 		} else {
-			OrderItem orderItem = saveNewOrderItem(msgAddToCart.getProductId(), msgAddToCart.getQuantity());
+			OrderItemCart orderItem = saveNewOrderItem(msgAddToCart.getProductId(), msgAddToCart.getQuantity());
 			orderItems.add(orderItem);
 			logger.info("Adding OrderItem: " + orderItem.getProduct().getProductName() + " to Cart.");	
 		}
@@ -86,9 +86,9 @@ public class CartService {
 		return true;
 	}
 	
-	private OrderItem saveNewOrderItem(Long productId,Integer quantity) {
+	private OrderItemCart saveNewOrderItem(Long productId,Integer quantity) {
 		Product product = productRepository.findById(productId).get();		
-		OrderItem orderItem = new OrderItem();
+		OrderItemCart orderItem = new OrderItemCart();
 		orderItem.setProduct(product);
 		orderItem.setQuantity(quantity);
 		return orderItemRepository.save(orderItem);

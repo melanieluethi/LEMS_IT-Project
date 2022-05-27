@@ -2,14 +2,14 @@ package ch.fhnw.lems.controller.messages;
 
 import java.util.List;
 
-import ch.fhnw.lems.entity.OrderItem;
+import ch.fhnw.lems.entity.OrderItemCart;
 import ch.fhnw.lems.entity.Shipping;
 import ch.fhnw.lems.entity.User;
 
 // LUM
 public class MessageResultShoppingCart extends MessageResultStandard {
 	private User user;
-	private List<OrderItem> orderItems;
+	private List<OrderItemCart> orderItems;
 	private Shipping shipping;
 
 	public User getUser() {
@@ -20,11 +20,11 @@ public class MessageResultShoppingCart extends MessageResultStandard {
 		this.user = user;
 	}
 
-	public List<OrderItem> getOrderItems() {
+	public List<OrderItemCart> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
+	public void setOrderItems(List<OrderItemCart> orderItems) {
 		this.orderItems = orderItems;
 	}
 

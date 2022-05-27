@@ -165,22 +165,39 @@ function totalCost(shippingCost) {
 }
 
 function saveOrder() {
-	debugger;
+	let cartId = document.getElementById('cartId').value;
 	let shippingId = document.getElementById('shippingId').value;
+	let shippingMethod = document.getElementById('shipping').value;
 	let totalPrice = document.getElementById('totalProductCost').value;
 	$.ajax({
 		type:"POST",
 		url: "/api/order",
 		data: JSON.stringify ({
-			orderItems: '',
+			cartId: cartId,
 			shippingId: shippingId,
+			shippingMethod: shippingMethod,
 			totalPrice:	totalPrice				
 		}),
 		dataType: 'json',
     	contentType: 'application/json',
-        success: function () {			
+        success: function (data) {
+			if(data.successful) {
+				let lang = window.location.search;
+				window.location.href='/successfulOrder' + lang + '&id=' + data.id;
+			} else {
+				if(window.location.search.includes('eng')){
+					alert('Something went wrong.');
+				} else{
+					alert('Etwas ist schief gelaufen');
+				}
+			}
         }, error: function(e) {
-			console.log(e);			
+			console.log(e);	
+			if(window.location.search.includes('eng')){
+				alert('Something went wrong.');
+			} else{
+				alert('Etwas ist schief gelaufen');
+			}		
 	  	}
 	});
 }

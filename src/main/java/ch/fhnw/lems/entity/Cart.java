@@ -22,7 +22,7 @@ public class Cart {
 
 	@OneToMany
 	@JoinColumn(name = "cart_id")
-	private List<OrderItem> orderItems;
+	private List<OrderItemCart> orderItems;
 
 	@ManyToOne
 	@JoinColumn(name = "shipping_id")
@@ -44,11 +44,11 @@ public class Cart {
 		this.user = user;
 	}
 
-	public List<OrderItem> getOrderItems() {
+	public List<OrderItemCart> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
+	public void setOrderItems(List<OrderItemCart> orderItems) {
 		this.orderItems = orderItems;
 	}
 

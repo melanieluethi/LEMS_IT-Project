@@ -77,9 +77,9 @@ public class LemsApplication {
 	
 	@PostConstruct
 	public void createTestUser() {	
-		if (userRepository.findByUsername("testUser1") == null) {
+		if (userRepository.findByUsername("testuser1") == null) {
 			User testUser1 = new User();
-			testUser1.setUsername("testUser1");
+			testUser1.setUsername("testuser1");
 			testUser1.setFirstname("Test");
 			testUser1.setLastname("User 1");
 			testUser1.setEmail("testuser1@lems.ch");

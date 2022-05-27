@@ -18,14 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 import ch.fhnw.lems.controller.messages.MessageChangeOrder;
 import ch.fhnw.lems.controller.messages.MessageOrder;
 import ch.fhnw.lems.controller.messages.MessageResultOrder;
+import ch.fhnw.lems.controller.messages.MessageResultStandard;
+import ch.fhnw.lems.entity.Cart;
 import ch.fhnw.lems.entity.CustomerOrder;
-import ch.fhnw.lems.entity.OrderItem;
+import ch.fhnw.lems.entity.OrderItemOrder;
 import ch.fhnw.lems.entity.Product;
+import ch.fhnw.lems.entity.Shipping;
 import ch.fhnw.lems.entity.User;
 import ch.fhnw.lems.entity.UserRole;
-import ch.fhnw.lems.persistence.OrderItemRepository;
+import ch.fhnw.lems.persistence.CartRepository;
+import ch.fhnw.lems.persistence.OrderItemCartRepository;
+import ch.fhnw.lems.persistence.OrderItemOrderRepository;
 import ch.fhnw.lems.persistence.OrderRepository;
 import ch.fhnw.lems.persistence.ProductRepository;
+import ch.fhnw.lems.persistence.ShippingRepository;
 import ch.fhnw.lems.persistence.UserRepository;
 
 //LUM
@@ -40,23 +46,52 @@ public class OrderService {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private OrderItemRepository orderItemRepository;
+	private OrderItemCartRepository orderItemCartRepository;
+	
+	@Autowired
+	private OrderItemOrderRepository orderItemOrderRepository;
+	
+	@Autowired
+	private ShippingRepository shippingRepository;
 	
 	@Autowired
 	private ProductRepository productRepository;
 	
+	@Autowired
+	private CartRepository cartRepository;
+	
 	@PostMapping (path = "/api/order", produces = "application/json")
-	public boolean createOrder(@RequestBody MessageOrder msgOrder) {
+	public MessageResultStandard createOrder(@RequestBody MessageOrder msgOrder) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String username = auth.getName();
 		User currentUser = userRepository.findByUsername(username);	
 		CustomerOrder order = new CustomerOrder();
 		order.setUser(currentUser);
-		order.setOrderItems(msgOrder.getOrderItems());
+		Cart cart = cartRepository.findById(msgOrder.getCartId()).get();
+		List<OrderItemOrder> orderItems = new ArrayList<>();
+		cart.getOrderItems().forEach(o -> {
+			OrderItemOrder orderItem = new OrderItemOrder();
+			orderItem.setProduct(o.getProduct());
+			orderItem.setQuantity(o.getQuantity());
+			orderItem = orderItemOrderRepository.save(orderItem);
+			orderItems.add(orderItem);
+		});
+		order.setOrderItems(orderItems);
+		Shipping shipping = cart.getShipping();
+		shipping.setShippingMethod(msgOrder.getShippingMethod());
+		shipping = shippingRepository.save(shipping);
+		order.setShipping(shipping);
 		order.setTotalPrice(msgOrder.getTotalPrice());
-		orderRepository.save(order);	
+		order = orderRepository.save(order);	
+		
+		orderItemCartRepository.deleteAll(cart.getOrderItems());
+		//cart.setShipping(null);
+		cartRepository.deleteById(msgOrder.getCartId());
 		logger.info("Create order " + order.getOrderId() + " was successful.");
-		return true;
+		MessageResultStandard msgResult = new MessageResultStandard();
+		msgResult.setId(order.getOrderId());
+		msgResult.setSuccessful(true);
+		return msgResult;
 	}
 	
 	@PutMapping(path = "/api/order", produces = "application/json")
@@ -69,10 +104,10 @@ public class OrderService {
 			User user = userRepository.findById(msgOrder.getUserId()).get();
 			order.setUser(user);
 			
-			List<OrderItem> orderItems = new ArrayList<>();
+			List<OrderItemOrder> orderItems = new ArrayList<>();
 			for (int i = 0; i < msgOrder.getOrderItems().size(); i++) {
 				List<String> orderItemsValues = msgOrder.getOrderItems().get(i);
-				OrderItem orderItem = orderItemRepository.findById(Long.valueOf(orderItemsValues.get(0))).get();
+				OrderItemOrder orderItem = orderItemOrderRepository.findById(Long.valueOf(orderItemsValues.get(0))).get();
 				Product product = productRepository.findByProductName(orderItemsValues.get(1));
 				product.setPrice(Double.valueOf(orderItemsValues.get(2)));
 				product.setDiscount(Integer.valueOf(orderItemsValues.get(3)));

@@ -1,21 +1,18 @@
 package ch.fhnw.lems.controller.messages;
 
-import java.util.List;
-
-import ch.fhnw.lems.entity.OrderItem;
-
 // LUM
 public class MessageOrder {
-	private List<OrderItem> orderItems;
+	private Long cartId;
 	private Long shippingId;
+	private String shippingMethod;
 	private Double totalPrice;
 
-	public List<OrderItem> getOrderItems() {
-		return orderItems;
+	public Long getCartId() {
+		return cartId;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
-		this.orderItems = orderItems;
+	public void setCartId(Long cartId) {
+		this.cartId = cartId;
 	}
 
 	public Long getShippingId() {
@@ -24,6 +21,14 @@ public class MessageOrder {
 
 	public void setShippingId(Long shippingId) {
 		this.shippingId = shippingId;
+	}
+
+	public String getShippingMethod() {
+		return shippingMethod;
+	}
+
+	public void setShippingMethod(String shippingMethod) {
+		this.shippingMethod = shippingMethod;
 	}
 
 	public Double getTotalPrice() {
