@@ -159,7 +159,7 @@ function setShippingCost() {
 
 function totalCost(shippingCost) {
 	let totalProductCost = document.getElementById('totalProductCost').value;
-	let totalCost = totalProductCost + shippingCost;
+	let totalCost = parseFloat(totalProductCost) + parseFloat(shippingCost);
 	let totalCostLabel = document.getElementById('totalCost');
 	totalCostLabel.textContent = (Math.round(totalCost)).toFixed(2);
 }
