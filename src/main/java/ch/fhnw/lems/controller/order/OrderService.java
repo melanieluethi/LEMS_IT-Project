@@ -81,6 +81,8 @@ public class OrderService {
 		shipping.setShippingMethod(msgOrder.getShippingMethod());
 		shipping = shippingRepository.save(shipping);
 		order.setShipping(shipping);
+		order.setDeliveryAvailable(msgOrder.getDeliveryAvailable());
+		order.setDeliveryExpressAvailable(msgOrder.getDeliveryExpressAvailable());
 		order.setTotalPrice(msgOrder.getTotalPrice());
 		order = orderRepository.save(order);	
 		

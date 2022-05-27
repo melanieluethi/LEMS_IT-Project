@@ -27,8 +27,10 @@ public class CustomerOrder {
 	@ManyToOne
 	@JoinColumn(name = "shipping_id")
 	private Shipping shipping;
-	
+
 	private Double totalPrice;
+	private Boolean deliveryAvailable;
+	private Boolean deliveryExpressAvailable;
 
 	public Long getOrderId() {
 		return orderId;
@@ -68,5 +70,21 @@ public class CustomerOrder {
 
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public Boolean getDeliveryAvailable() {
+		return deliveryAvailable;
+	}
+
+	public void setDeliveryAvailable(Boolean deliveryAvailable) {
+		this.deliveryAvailable = deliveryAvailable;
+	}
+
+	public Boolean getDeliveryExpressAvailable() {
+		return deliveryExpressAvailable;
+	}
+
+	public void setDeliveryExpressAvailable(Boolean deliveryExpressAvailable) {
+		this.deliveryExpressAvailable = deliveryExpressAvailable;
 	}
 }

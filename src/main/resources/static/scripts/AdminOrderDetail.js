@@ -33,10 +33,34 @@ function getOrder() {
 					
 			let shippingId = document.getElementById('shippingId');	
 			shippingId.value = data.order.shipping.shippingId;	
-			let shippingMethod = document.getElementById('shippingMethod');			
-			shippingMethod.value = data.order.shipping.shippingMethod;			
+			
+			let shippingMethod = document.getElementById('shippingMethod');		
+			if(!data.order.deliveryAvailable) {
+				let packageOption = shippingMethod.options[2];
+				packageOption.disabled = true
+			}
+			if(!data.order.deliveryExpressAvailable){
+				let expressOption = shippingMethod.options[0];
+				expressOption.disabled = true;
+			}
+				
 			let shippingCost = document.getElementById('shippingCost');	
-			shippingCost.value = data.order.shipping.shippingCost;		
+			switch(data.order.shipping.shippingMethod) {
+				case 'package':
+					shippingMethod.selectedIndex = 2;	
+				 	shippingCost.value = data.order.shipping.shippingPackageCost;				 	
+				  	break;
+				case 'standard':
+					shippingMethod.selectedIndex = 1;
+					shippingCost.value = data.order.shipping.shippingStandardCost;	
+					break;
+				case 'express':
+					shippingMethod.selectedIndex = 0;
+				   	shippingCost.value = data.order.shipping.shippingExpressCost;	
+				   	break;
+				default:
+				    break;
+			}	
 			let totalPrice = document.getElementById('totalPrice');
 			totalPrice.value = data.order.totalPrice;		
         }, 

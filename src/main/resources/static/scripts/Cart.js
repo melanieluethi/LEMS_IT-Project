@@ -113,6 +113,10 @@ function getTransportCost(cartId) {
 			let packageCost = document.getElementById('packageCost');
 			packageCost.value = data.priceForDelivery;
 			
+			let deliveryAvailable = document.getElementById('deliveryAvailable');
+			deliveryAvailable.value = data.deliveryAvailable;
+			let deliveryExpressAvailable = document.getElementById('deliveryExpressAvailable');
+			deliveryExpressAvailable.value = data.deliveryExpressAvailable;
 			if(!data.deliveryAvailable) {
 				let packageOption = document.getElementById('shipping').options[2];
 				packageOption.disabled = true

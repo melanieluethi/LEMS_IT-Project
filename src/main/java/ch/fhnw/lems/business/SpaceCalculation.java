@@ -41,11 +41,6 @@ public class SpaceCalculation {
 	private double totalHeightP3;
 	private double totalHeightP4;
 
-	private double restHeightP1;
-	private double restHeightP2;
-	private double restHeightP3;
-	private double restHeightP4;
-
 	private int palletSpaceP1;
 	private int palletSpaceP2;
 	private int palletSpaceP3;
@@ -228,8 +223,4 @@ public class SpaceCalculation {
 		
 		return palletts;
 	}
-	
-	
-	
-	
 }

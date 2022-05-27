@@ -5,6 +5,8 @@ public class MessageOrder {
 	private Long cartId;
 	private Long shippingId;
 	private String shippingMethod;
+	private Boolean deliveryAvailable;
+	private Boolean deliveryExpressAvailable;
 	private Double totalPrice;
 
 	public Long getCartId() {
@@ -29,6 +31,22 @@ public class MessageOrder {
 
 	public void setShippingMethod(String shippingMethod) {
 		this.shippingMethod = shippingMethod;
+	}
+	
+	public Boolean getDeliveryAvailable() {
+		return deliveryAvailable;
+	}
+
+	public void setDeliveryAvailable(Boolean deliveryAvailable) {
+		this.deliveryAvailable = deliveryAvailable;
+	}
+
+	public Boolean getDeliveryExpressAvailable() {
+		return deliveryExpressAvailable;
+	}
+
+	public void setDeliveryExpressAvailable(Boolean deliveryExpressAvailable) {
+		this.deliveryExpressAvailable = deliveryExpressAvailable;
 	}
 
 	public Double getTotalPrice() {
