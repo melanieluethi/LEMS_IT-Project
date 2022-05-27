@@ -72,7 +72,7 @@ WAE siehe auch RegisterView-->
 	<select name="role" id="role" disabled>
   		<option value="ADMIN" th:text="ADMIN"></option>
   		<option value="USER" th:text="USER"></option>
-	</select>
+	</select><br>
 	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.save}"></button>
 </form>
 <form th:action="@{/userManagement}" onsubmit="changePw();" method="PUT">

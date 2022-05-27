@@ -124,15 +124,15 @@ input, text{
 }
 .register #fname,
 .userManagement #fname{
-	width: 45%;
+	width: 35%;
 }
 .register #lname,
 .userManagement #lname{
-	width: 45%;
+	width: 35%;
 }
 .register #address,
 .userManagement #address{
-	width: 34%;
+	width: 21%;
 }
 .register #zip,
 .userManagement #zip{
@@ -140,7 +140,7 @@ input, text{
 }
 .register #city,
 .userManagement #city{
-	width: 34%;
+	width: 21%;
 }
 .register #country,
 .userManagement #country{
@@ -148,15 +148,15 @@ input, text{
 }
 .register #email,
 .userManagement #email{
-	width: 40%;
+	width: 20%;
 }
 .register #password,
 .userManagement #password{
-	width: 30%;
+	width: 40%;
 }
 .register #username,
 .userManagement #username{
-	width: 30%;
+	width: 20%;
 }
 nav .ul{
 	visibility: hidden;

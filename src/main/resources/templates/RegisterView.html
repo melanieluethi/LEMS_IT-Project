@@ -40,7 +40,7 @@ WAE-->
 <label th:text="#{register.email}"></label>
 <input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required> <!-- Quelle: https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute -->
 <label th:text="#{register.username}"></label>
-<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
+<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required><br>
 <label th:text="#{register.password}"></label>
 <input type="password" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
 </div >
