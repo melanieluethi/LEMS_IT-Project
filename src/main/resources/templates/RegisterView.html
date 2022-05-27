@@ -21,18 +21,27 @@ WAE-->
 <form th:action="@{/login}" onsubmit="setUserData();" method="POST">
 <div class="register">
 <h1 th:text="#{register.greeting}"></h1 >
+<label th:text="#{register.fname}"></label>
 <input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
+<label th:text="#{register.lname}"></label>
 <input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
 </div>
 <div class="register">
+<label th:text="#{register.address}"></label>
 <input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
+<label th:text="#{register.zip}"></label>
 <input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+<label th:text="#{register.city}"></label>
 <input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
+<label th:text="#{register.country}"></label>
 <input type="text" id="country" name="country" value="CH" required readonly>
 </div >
 <div class="register">
+<label th:text="#{register.email}"></label>
 <input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required> <!-- Quelle: https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute -->
+<label th:text="#{register.username}"></label>
 <input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
+<label th:text="#{register.password}"></label>
 <input type="password" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
 </div >
 <button class="button" style=margin-left:5% type="submit" th:text="#{login.register}"></button>
