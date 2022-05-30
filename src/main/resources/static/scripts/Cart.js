@@ -31,7 +31,8 @@ function getCart() {
 					let rowData3 = document.createElement('td');
 					rowData3.innerHTML = d.quantity;
 					let rowData4 = document.createElement('td');
-					rowData4.innerHTML = d.product.price * d.quantity;
+					let productPrice = (d.product.price * ((100 - d.product.discount) / 100)) * d.quantity;
+					rowData4.innerHTML = (Math.round(productPrice)).toFixed(2);
 								
 					row.appendChild(rowData);
 					row.appendChild(rowData2);
@@ -123,8 +124,7 @@ function getTransportCost(cartId) {
 			}
 			if(!data.deliveryExpressAvailable){
 				let expressOption = document.getElementById('shipping').options[0];
-				expressOption.disabled = true
-				
+				expressOption.disabled = true				
 			}
 			
 			// default selected value is standard	

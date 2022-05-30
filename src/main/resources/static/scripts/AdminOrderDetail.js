@@ -33,16 +33,26 @@ function getOrder() {
 					
 			let shippingId = document.getElementById('shippingId');	
 			shippingId.value = data.order.shipping.shippingId;	
-			
 			let shippingMethod = document.getElementById('shippingMethod');		
+			let deliveryAvailable = document.getElementById('deliveryAvailable');
+			deliveryAvailable.value = data.order.deliveryAvailable;
+			let deliveryExpressAvailable = document.getElementById('deliveryExpressAvailable');
+			deliveryExpressAvailable.value = data.order.deliveryExpressAvailable;
 			if(!data.order.deliveryAvailable) {
 				let packageOption = shippingMethod.options[2];
 				packageOption.disabled = true
 			}
 			if(!data.order.deliveryExpressAvailable){
 				let expressOption = shippingMethod.options[0];
-				expressOption.disabled = true;
+				expressOption.disabled = true;		
 			}
+			
+			let expressCost = document.getElementById('expressCost');
+			expressCost.value = data.order.shipping.shippingExpressCost;
+			let standardCost = document.getElementById('standardCost');
+			standardCost.value = data.order.shipping.shippingStandardCost;
+			let packageCost = document.getElementById('packageCost');
+			packageCost.value = data.order.shipping.shippingPackageCost;
 				
 			let shippingCost = document.getElementById('shippingCost');	
 			switch(data.order.shipping.shippingMethod) {
@@ -87,13 +97,12 @@ function fillOrderItemTable(data) {
 		let rowData3 = document.createElement('td');
 		rowData3.innerHTML = d.product.price;
 		let rowData4 = document.createElement('td');
-		let inputDiscountField = document.createElement("input");
+		let inputDiscountField = document.createElement("input");	
+		inputDiscountField.setAttribute('onchange', 'changeTotalPrice()');
 		inputDiscountField.value = d.product.discount;
 		rowData4.appendChild(inputDiscountField);
 		let rowData5 = document.createElement('td');
-		let inputQuantityField = document.createElement("input");
-		inputQuantityField.value = d.quantity;
-		rowData5.appendChild(inputQuantityField);
+		rowData5.innerHTML = d.quantity;
 						
 		row.appendChild(rowData);
 		row.appendChild(rowData2);
@@ -103,6 +112,44 @@ function fillOrderItemTable(data) {
 
 		tbody.appendChild(row);
 	});
+}
+
+function setShippingCost() {
+	let shippingMethod = document.getElementById('shippingMethod').value;		
+	let shippingCost = document.getElementById('shippingCost');	
+	switch(shippingMethod) {
+		case 'package':
+			shippingMethod.selectedIndex = 2;	
+		 	shippingCost.value = document.getElementById('packageCost').value;					 	
+		  	break;
+		case 'standard':
+			shippingMethod.selectedIndex = 1;
+			shippingCost.value = document.getElementById('standardCost').value;	
+			break;
+		case 'express':
+			shippingMethod.selectedIndex = 0;
+		   	shippingCost.value = document.getElementById('expressCost').value;	
+		   	break;
+		default:
+		    break;
+	}	
+	changeTotalPrice();
+}
+
+function changeTotalPrice() {
+	let totalPriceField = document.getElementById('totalPrice');
+	let shippingCost = document.getElementById('shippingCost').value;
+	let totalPrice = 0;
+	
+	let orderItemTable = document.getElementById('orderItemTable');
+	for (let i = 1; i < orderItemTable.rows.length; i++) {
+		let price = orderItemTable.rows[i].cells[2].innerHTML;
+		let discount = orderItemTable.rows[i].cells[3].firstChild.value;
+		let quantity = orderItemTable.rows[i].cells[4].innerHTML;
+		totalPrice = totalPrice + (price * ((100 - discount) / 100)) * quantity;
+	}
+	let totalCost = parseFloat(totalPrice) + parseFloat(shippingCost);
+	totalPriceField.value = (Math.round(totalCost)).toFixed(2);
 }
 
 function save() {	
@@ -137,11 +184,9 @@ function save() {
 			orderId: orderId,
 			userId: userId,
 			orderItems: orderItems,
-			shipping: {
-					shippingId: shippingId,
-					shippingMethod: shippingMethod,
-					shippingCost: shippingCost
-				},
+			shippingId: shippingId,
+			shippingMethod: shippingMethod,
+			shippingCost: shippingCost,
 			totalPrice: totalPrice							
 		}),	
 		dataType: 'json',

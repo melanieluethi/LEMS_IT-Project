@@ -2,14 +2,14 @@ package ch.fhnw.lems.controller.messages;
 
 import java.util.List;
 
-import ch.fhnw.lems.entity.Shipping;
-
 //LUM
 public class MessageChangeOrder {
 	private Long orderId;
 	private Long userId;
 	private List<List<String>> orderItems;
-	private Shipping shipping;
+	private Long shippingId;
+	private String shippingMethod;
+	private Double shippingCost;
 	private Double totalPrice;
 
 	public Long getOrderId() {
@@ -36,12 +36,28 @@ public class MessageChangeOrder {
 		this.orderItems = orderItems;
 	}
 
-	public Shipping getShipping() {
-		return shipping;
+	public Long getShippingId() {
+		return shippingId;
 	}
 
-	public void setShipping(Shipping shipping) {
-		this.shipping = shipping;
+	public void setShippingId(Long shippingId) {
+		this.shippingId = shippingId;
+	}
+
+	public String getShippingMethod() {
+		return shippingMethod;
+	}
+
+	public void setShippingMethod(String shippingMethod) {
+		this.shippingMethod = shippingMethod;
+	}
+
+	public Double getShippingCost() {
+		return shippingCost;
+	}
+
+	public void setShippingCost(Double shippingCost) {
+		this.shippingCost = shippingCost;
 	}
 
 	public Double getTotalPrice() {

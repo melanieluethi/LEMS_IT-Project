@@ -72,13 +72,18 @@ WAE-->
 	</table>
 	<input type="hidden" id="shippingId" name="shippingId">
 	<label th:text="#{orderDetail.shippingMethod}"/>
-	<select name="shippingMethod" id="shippingMethod">
+	<select name="shippingMethod" id="shippingMethod" onchange="setShippingCost()">
   		<option value="express" th:text="#{cart.express}"></option>
   		<option value="standard" th:text="#{cart.standard}"></option>
   		<option value="package" th:text="#{cart.package}"></option>
 	</select>
 	<label th:text="#{orderDetail.shippingCost}"/>
-	<input type="text" id="shippingCost" name="shippingCost">
+	<input type="hidden" id="deliveryAvailable" name="deliveryAvailable">
+	<input type="hidden" id="deliveryExpressAvailable" name="deliveryExpressAvailable">
+	<input type="hidden" id="expressCost" name="expressCost">
+	<input type="hidden" id="standardCost" name="standardCost">
+	<input type="hidden" id="packageCost" name="packageCost">
+	<input type="text" id="shippingCost" name="shippingCost" onchange="changeTotalPrice()">
 	<label th:text="#{orderDetail.totalPrice}"/>
 	<input type="text" id="totalPrice" name="totalPrice">
 	<button type="button" class="button" onclick="save()" th:text="#{orderDetail.save}"></button>

@@ -119,7 +119,18 @@ public class OrderService {
 			}
 			
 			order.setOrderItems(orderItems);
-			order.setShipping(msgOrder.getShipping());
+			
+			Shipping shipping = shippingRepository.getById(msgOrder.getShippingId());
+			shipping.setShippingMethod(msgOrder.getShippingMethod());
+			if(msgOrder.getShippingMethod().equals("express")) {
+				shipping.setShippingExpressCost(msgOrder.getShippingCost());
+			} else if (msgOrder.getShippingMethod().equals("package")) {
+				shipping.setShippingPackageCost(msgOrder.getShippingCost());
+			} else {
+				shipping.setShippingStandardCost(msgOrder.getShippingCost());
+			}
+			shipping = shippingRepository.save(shipping);
+			order.setShipping(shipping);
 			order.setTotalPrice(msgOrder.getTotalPrice());
 			orderRepository.save(order);
 			logger.info("Change order " + order.getOrderId() + " was successful.");
