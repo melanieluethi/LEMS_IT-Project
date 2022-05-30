@@ -45,14 +45,23 @@ WAE-->
 <h1 th:text="#{userManagement.title}"></h1>
 <form th:action="@{/adminUserManagement}"  onsubmit="save();" method="PUT">
 	<input type="hidden" id="userId" name="userId">
+	<label th:text="#{register.fname}"></label>
 	<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
-	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
+	<label th:text="#{register.lname}"></label>
+	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required> <br>
+	<label th:text="#{register.address}"></label>
 	<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
+	<label th:text="#{register.zip}"></label>
 	<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+	<label th:text="#{register.city}"></label>
 	<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
-	<input type="text" id="country" name="country" value="CH" required readonly>
+	<label th:text="#{register.country}"></label>
+	<input type="text" id="country" name="country" value="CH" required readonly> <br>
+	<label th:text="#{register.email}"></label>
 	<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+	<label th:text="#{register.username}"></label>
 	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
+	<label th:text="#{register.role}"></label>
 	<select name="role" id="role" disabled>
   		<option value="ADMIN" th:text="ADMIN"></option>
   		<option value="USER" th:text="USER"></option>
