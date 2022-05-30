@@ -157,6 +157,7 @@ input, text{
 .userManagement #username{
 	width: 20%;
 }
+
 nav .ul{
 	visibility: hidden;
 }
@@ -254,6 +255,49 @@ img {
 	height: auto;
      width: 100%;
      padding: 20px;
+}
+
+/* WAE Phone view*/
+@media only screen and (max-width: 768px) {
+	input, label{
+		text-align: left;
+	}
+.register #fname,
+.userManagement #fname{
+	width: 80%;
+}
+.register #lname,
+.userManagement #lname{
+	width: 80%;
+}
+.register #address,
+.userManagement #address{
+	width: 80%;
+}
+.register #zip,
+.userManagement #zip{
+	width: 15%;
+}
+.register #city,
+.userManagement #city{
+	width: 40%;
+}
+.register #country,
+.userManagement #country{
+	width: 15%;
+}
+.register #email,
+.userManagement #email{
+	width: 40%;
+}
+.register #password,
+.userManagement #password{
+	width: 80%;
+}
+.register #username,
+.userManagement #username{
+	width: 80%;
+}
 }
 
 /* LUM */

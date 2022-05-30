@@ -22,13 +22,13 @@ WAE-->
 <div class="register">
 <h1 th:text="#{register.greeting}"></h1 >
 <label th:text="#{register.fname}"></label>
-<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
+<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required><wbr>
 <label th:text="#{register.lname}"></label>
 <input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
 </div>
 <div class="register">
 <label th:text="#{register.address}"></label>
-<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
+<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required><wbr>
 <label th:text="#{register.zip}"></label>
 <input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
 <label th:text="#{register.city}"></label>
@@ -38,7 +38,7 @@ WAE-->
 </div >
 <div class="register">
 <label th:text="#{register.email}"></label>
-<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required> <!-- Quelle: https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute -->
+<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required> <!-- Quelle: https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute --><wbr>
 <label th:text="#{register.username}"></label>
 <input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required><br>
 <label th:text="#{register.password}"></label>
