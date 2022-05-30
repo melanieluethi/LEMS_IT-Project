@@ -14,6 +14,7 @@ public class OrderItemOrder {
 	@ManyToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
+	private Integer orderDiscount;
 	private Integer quantity;
 
 	public Long getOrderItemId() {
@@ -30,6 +31,14 @@ public class OrderItemOrder {
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public Integer getOrderDiscount() {
+		return orderDiscount;
+	}
+
+	public void setOrderDiscount(Integer orderDiscount) {
+		this.orderDiscount = orderDiscount;
 	}
 
 	public Integer getQuantity() {

@@ -31,13 +31,16 @@ function getCart() {
 					let rowData3 = document.createElement('td');
 					rowData3.innerHTML = d.quantity;
 					let rowData4 = document.createElement('td');
+					rowData4.innerHTML = d.product.discount;
+					let rowData5 = document.createElement('td');
 					let productPrice = (d.product.price * ((100 - d.product.discount) / 100)) * d.quantity;
-					rowData4.innerHTML = (Math.round(productPrice)).toFixed(2);
+					rowData5.innerHTML = (Math.round(productPrice)).toFixed(2);
 								
 					row.appendChild(rowData);
 					row.appendChild(rowData2);
 					row.appendChild(rowData3);
 					row.appendChild(rowData4);
+					row.appendChild(rowData5);
 					
 					tbody.appendChild(row);
 					

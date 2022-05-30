@@ -99,7 +99,7 @@ function fillOrderItemTable(data) {
 		let rowData4 = document.createElement('td');
 		let inputDiscountField = document.createElement("input");	
 		inputDiscountField.setAttribute('onchange', 'changeTotalPrice()');
-		inputDiscountField.value = d.product.discount;
+		inputDiscountField.value = d.orderDiscount;
 		rowData4.appendChild(inputDiscountField);
 		let rowData5 = document.createElement('td');
 		rowData5.innerHTML = d.quantity;

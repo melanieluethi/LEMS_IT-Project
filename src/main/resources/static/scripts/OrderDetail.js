@@ -71,7 +71,7 @@ function fillOrderItemTable(data) {
 		let rowData3 = document.createElement('td');
 		rowData3.innerHTML = d.product.price;
 		let rowData4 = document.createElement('td');
-		rowData4.innerHTML = d.product.discount;
+		rowData4.innerHTML = d.orderDiscount;
 		let rowData5 = document.createElement('td');
 		rowData5.innerHTML = d.quantity;
 								

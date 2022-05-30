@@ -73,6 +73,7 @@ public class OrderService {
 			OrderItemOrder orderItem = new OrderItemOrder();
 			orderItem.setProduct(o.getProduct());
 			orderItem.setQuantity(o.getQuantity());
+			orderItem.setOrderDiscount(o.getProduct().getDiscount());
 			orderItem = orderItemOrderRepository.save(orderItem);
 			orderItems.add(orderItem);
 		});
@@ -112,8 +113,8 @@ public class OrderService {
 				OrderItemOrder orderItem = orderItemOrderRepository.findById(Long.valueOf(orderItemsValues.get(0))).get();
 				Product product = productRepository.findByProductName(orderItemsValues.get(1));
 				product.setPrice(Double.valueOf(orderItemsValues.get(2)));
-				product.setDiscount(Integer.valueOf(orderItemsValues.get(3)));
 				orderItem.setProduct(product);
+				orderItem.setOrderDiscount(Integer.valueOf(orderItemsValues.get(3)));
 				orderItem.setQuantity(Integer.valueOf(orderItemsValues.get(4)));
 				orderItems.add(orderItem);
 			}
@@ -141,7 +142,7 @@ public class OrderService {
 		}
 	}
 	
-	@GetMapping(path= "api/order/{orderId}", produces = " application/json")
+	@GetMapping(path= "/api/order/{orderId}", produces = " application/json")
 	public MessageResultOrder getOrder(@PathVariable Long orderId){
 		CustomerOrder order = orderRepository.findById(orderId).get();
 		logger.info("Search for order: " + order.getOrderId());		
