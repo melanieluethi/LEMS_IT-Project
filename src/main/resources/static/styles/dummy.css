@@ -77,20 +77,20 @@ select{
 }
 h1 {
   color: #555555;
-  font-size:6vw;
+  font-size:10vw;
 }
 
 
 h2 {
   color: #555555;
-  font-size: 5vw;
+  font-size: 8vw;
   text-indent: 0em;
   margin: 0;
 	display:inline-block;
 }
 p {
   color: #555555;
-  font-size: 2vw;
+  font-size: 6vw;
   text-indent: 0em;
   margin: 0;
   display: inline-block;
