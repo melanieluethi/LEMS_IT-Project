@@ -83,12 +83,14 @@ h1 {
 
 h2 {
   color: #555555;
+  font-size: 5vw;
   text-indent: 0em;
   margin: 0;
 	display:inline-block;
 }
 p {
   color: #555555;
+  font-size: 2vw;
   text-indent: 0em;
   margin: 0;
   display: inline-block;
