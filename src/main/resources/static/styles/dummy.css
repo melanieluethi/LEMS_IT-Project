@@ -54,17 +54,21 @@ select{
 }
 
 #divLoginButtons {
-	margin-top: 60px;
+	left: 50%;
+    margin-top: 60px;
 }
 
 .loginLables{
 	font-size: 20pt;
-     
+	width: 100%;
+    
 }
 .lablebox{
 	 float: left;
+	 left: 50%;
      padding: 20px;
      box-sizing: border-box;
+     
 }
 
 .welcome{
@@ -77,26 +81,23 @@ select{
 }
 h1 {
   color: #555555;
-  font-size:10vw;
+  font-size:6vw;
+  margin-top:50px;
 }
 
 
 h2 {
   color: #555555;
-  font-size: 8vw;
-  text-indent: 0em;
-  margin: 0;
-	display:inline-block;
+  font-size: 4vw;
+  display:inline-block;
 }
 p {
   color: #555555;
-  font-size: 6vw;
-  text-indent: 0em;
-  margin: 0;
+  font-size: 2vw;
   display: inline-block;
 }
 
-.register, .logout, .successfulOrder, .userManagement{
+.register, .logout, .successfulOrder {
   text-align: center;
   font-size:2vw;
 }
@@ -116,23 +117,38 @@ p {
 	width: 100%;
 }
 
-
+.icon-chevron:before {
+    content: "\1F5A4";
+    font-size: 1.5em;
+}
 
 input, text{
 	border-radius: 5px;
 	color: #555555;
 	margin: 0.5%;
 }
+.userManagement{
+	float:left;
+	margin-left: 5%;
+	font-size:2vw;
+}
+
+.userbox{
+	float: left;
+	padding: 20px;
+    background: #eee;
+}
 .register #fname,
 .userManagement #fname{
-	width: 35%;
+	width: 37%;
 }
 .register #lname,
 .userManagement #lname{
-	width: 35%;
+	width: 37%;
 }
 .register #address,
 .userManagement #address{
+	
 	width: 21%;
 }
 .register #zip,
@@ -141,15 +157,17 @@ input, text{
 }
 .register #city,
 .userManagement #city{
+	
 	width: 21%;
 }
 .register #country,
 .userManagement #country{
-	width: 9.5%;
+	width: 8.5%;
 }
 .register #email,
 .userManagement #email{
-	width: 20%;
+	width: 36%;
+	
 }
 .register #password,
 .userManagement #password{
@@ -157,7 +175,8 @@ input, text{
 }
 .register #username,
 .userManagement #username{
-	width: 20%;
+	width: 60%;
+	
 }
 
 nav .ul{
@@ -195,6 +214,7 @@ img {
 .productDetails{
 		width: 70%;
 		padding: 20px;
+
      	
 }
 

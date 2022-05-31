@@ -48,51 +48,50 @@ WAE siehe auch RegisterView-->
   </div>
 </nav>
 
-<!--SCL - muss noch Userdaten ziehen-->
+<!--SCL -->
 <div class="userManagement">
 <h1 th:text="#{userManagement.title}"></h1>
 <form th:action="@{/userManagement}"  onsubmit="save();" method="PUT">
-	<ul>
-		<li>
-		<input type="hidden" id="userId" name="userId">
-		<label th:text="#{register.fname}"></label>
-		<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
-		</li>
-		<li>
-		<label th:text="#{register.lname}"></label>
-		<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
-		</li>
-		<li>
-		<label th:text="#{register.address}"></label>
-		<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
-		</li>
-		<li>
-		<label th:text="#{register.zip}"></label>
-		<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
-		</li>
-		<li>
-		<label th:text="#{register.city}"></label>
-		<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
-		</li>
-		<li>
-		<label th:text="#{register.country}"></label>
-		<input type="text" id="country" name="country" value="CH" required readonly>
-		</li>
-		<li>
-		<label th:text="#{register.email}"></label>
-		<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-		</li>
-		<li>
-		<label th:text="#{register.username}"></label>
-		<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
-		</li>
-		<li>
-		<label th:text="#{register.role}"></label>
-		<select name="role" id="role" disabled>
-  			<option value="ADMIN" th:text="ADMIN"></option>
-  			<option value="USER" th:text="USER"></option>
-		</select>
-		</li>
+	
+	<input type="hidden" id="userId" name="userId">
+	
+
+	<div class="userbox">
+	<label th:text="#{register.fname}"></label> <br>
+	<label th:text="#{register.address}"></label> <br>
+	<label th:text="#{register.email}"></label> <br>
+	<label th:text="#{register.username}"></label> <br>
+	<label th:text="#{register.city}"></label>
+	</div>
+	
+	<div class="userbox">
+	<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required> <br>
+	<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required> <br>
+	<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required> <br>
+	<input type="text" id="email" name="email" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required> <br>
+	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required> <br>
+	</div>
+	
+	<div class="userbox">
+	<label th:text="#{register.lname}"></label> <br>
+	<label th:text="#{register.zip}"></label> <br>
+	<label th:text="#{register.country}"></label> <br>
+	</div>
+	
+	
+	<div class="userbox">
+	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required> <br>
+	<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+	<input type="text" id="country" name="country" value="CH" required readonly> <br>
+	</div>
+	
+	
+	
+	<label th:text="#{register.role}"></label>
+	<select name="role" id="role" disabled>
+  		<option value="ADMIN" th:text="ADMIN"></option>
+  		<option value="USER" th:text="USER"></option>
+	</select><br>
 	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.save}"></button>
 </form>
 <form th:action="@{/userManagement}" onsubmit="changePw();" method="PUT">
