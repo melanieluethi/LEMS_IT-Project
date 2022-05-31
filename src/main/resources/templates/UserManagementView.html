@@ -56,15 +56,15 @@ WAE siehe auch RegisterView-->
 	<input type="hidden" id="userId" name="userId">
 	
 
-	<div class="userbox">
+	<div class="userbox_lable">
 	<label th:text="#{register.fname}"></label> <br>
 	<label th:text="#{register.address}"></label> <br>
+	<label th:text="#{register.city}"></label> <br>
 	<label th:text="#{register.email}"></label> <br>
 	<label th:text="#{register.username}"></label> <br>
-	<label th:text="#{register.city}"></label>
 	</div>
 	
-	<div class="userbox">
+	<div class="userbox_input">
 	<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required> <br>
 	<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required> <br>
 	<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required> <br>
@@ -72,34 +72,36 @@ WAE siehe auch RegisterView-->
 	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required> <br>
 	</div>
 	
-	<div class="userbox">
+	<div class="userbox_lable">
 	<label th:text="#{register.lname}"></label> <br>
-	<label th:text="#{register.zip}"></label> <br>
+	<label th:text="#{register.zip}"></label> </br>
 	<label th:text="#{register.country}"></label> <br>
 	</div>
+		
 	
-	
-	<div class="userbox">
+	<div class="userbox_input">
 	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required> <br>
-	<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+	<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required> <br>
 	<input type="text" id="country" name="country" value="CH" required readonly> <br>
-	</div>
+	</div> <br>
 	
-	
-	
+	<div class="userbox_h">
 	<label th:text="#{register.role}"></label>
 	<select name="role" id="role" disabled>
   		<option value="ADMIN" th:text="ADMIN"></option>
   		<option value="USER" th:text="USER"></option>
-	</select><br>
+	</select>
 	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.save}"></button>
+	</div> 
+	
 </form>
-<form th:action="@{/userManagement}" onsubmit="changePw();" method="PUT">
+<form class ="pwForm" th:action="@{/userManagement}" onsubmit="changePw();" method="PUT">
 	<label th:text="#{register.password}"></label>
-	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
+	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> 
 	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.changePassword}"></button>
 </form >
-<div class="UserMangement">
+
+<div class="UserMangement_button">
 <h1 th:text="#{userManagement.order}"></h1 >
 	<table class="editableUserOrderTable" id="orderUserTable">
 		<thead>
@@ -110,7 +112,7 @@ WAE siehe auch RegisterView-->
 		</thead>
 	</table>
 	<button type="button" class="button" onclick="showOrderDetail()" th:text="#{userManagement.showOrderDetail}"></button>
-	<button type="button" class="button" onclick="window.location.href='/cart'" th:text="#{userManagement.cart}"></button>
+	
 
 
 </div> 

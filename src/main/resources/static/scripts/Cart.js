@@ -172,6 +172,7 @@ function totalCost(shippingCost) {
 }
 
 function saveOrder() {
+	debugger;
 	let cartId = document.getElementById('cartId').value;
 	let shippingId = document.getElementById('shippingId').value;
 	let shippingMethod = document.getElementById('shipping').value;
