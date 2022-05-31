@@ -97,11 +97,15 @@ p {
   display: inline-block;
 }
 
-.register, .logout, .successfulOrder {
+.logout, .successfulOrder {
   text-align: center;
   font-size:2vw;
 }
-.help, .adminView {
+.register{
+	text-align: left;
+	font-size:2vw;
+}
+.help, .adminView{
 	text-align: left;
 	margin-left: 5%;
 	font-size:2vw;
@@ -131,6 +135,32 @@ input, text{
 	float:left;
 	margin-left: 5%;
 	font-size:2vw;
+}
+
+.register ul{
+	list-style-type: none;
+	float:left;
+	width:100%;
+}
+.register li{
+	display: inline;
+}
+.fname,
+.lname{
+	width:50%;
+}
+.address,
+.city{
+	width:40%;
+}
+.zip,
+.country{
+	width:10%;
+}
+.email,
+.username,
+.password{
+	width:33%;
 }
 
 .userbox{
@@ -175,7 +205,7 @@ input, text{
 }
 .register #username,
 .userManagement #username{
-	width: 60%;
+	width: 40%;
 	
 }
 
