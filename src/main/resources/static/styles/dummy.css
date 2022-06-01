@@ -123,7 +123,7 @@ p {
 
 .icon-chevron:before {
     content: "\1F5A4";
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 input, text{
@@ -163,45 +163,77 @@ input, text{
 	width:33%;
 }
 
-.userbox{
+.userbox_h{
 	float: left;
-	padding: 20px;
-    background: #eee;
+     width: 100%;
+     padding: 20px;
+     box-sizing: border-box;
 }
+
+.userbox_input{
+	float: left;
+	width: 30%;
+	padding: 20px;
+    
+    
+}
+
+.userbox_lable{
+	float: left;
+	width: 18%;
+	padding: 20px;
+   
+    
+}
+
+
+.pwForm{
+	float: left;
+	width: 100%;
+	padding: 20px;
+ 
+}
+
+.UserMangement_button{
+	float: left;
+	top: 80%;
+	width: 80%;
+}
+
 .register #fname,
 .userManagement #fname{
-	width: 37%;
+	width: 100%;
 }
 .register #lname,
 .userManagement #lname{
-	width: 37%;
+	width: 100%;
 }
 .register #address,
 .userManagement #address{
 	
-	width: 21%;
+	width: 100%;
 }
 .register #zip,
 .userManagement #zip{
-	width: 9.5%;
+	width: 100%;
 }
 .register #city,
 .userManagement #city{
 	
-	width: 21%;
+	width: 100%;
 }
 .register #country,
 .userManagement #country{
-	width: 8.5%;
+	width: 100%;
 }
 .register #email,
 .userManagement #email{
-	width: 36%;
+	width: 100%;
 	
 }
 .register #password,
 .userManagement #password{
-	width: 40%;
+	width: 60%;
 }
 .register #username,
 .userManagement #username{
