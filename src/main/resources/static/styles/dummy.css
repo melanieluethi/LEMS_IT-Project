@@ -443,6 +443,72 @@ img {
 	    width: 100%;
 	}
 }
+.fname, 
+.lname,
+.address,
+.zip,
+.city,
+.country,
+.email,
+.username,
+.password{
+	display:block;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+.register ul{
+	list-style-type: none;
+}
+.register #fname,
+.userManagement #fname{
+	width:auto;
+}
+.register #lname,
+.userManagement #lname{
+	width: auto;
+}
+.register #address,
+.userManagement #address{
+	width: auto;
+}
+.register #zip,
+.userManagement #zip{
+	width: auto;
+}
+.register #city,
+.userManagement #city{
+	width: auto;
+}
+.register #country,
+.userManagement #country{
+	width: auto;
+}
+.register #mail,
+.userManagement #mail{
+	width: auto;
+}
+.register #password,
+.userManagement #password{
+	width: auto;
+}
+.register #username,
+.userManagement #username{
+	width: auto;
+}
+.admin button{
+	margin:5%;
+}
+.hidden{
+	visibility:collapse;
+}
+.orderDetail label{
+	display:block;
+}
+.productDetail label{
+	display:block;
+}
+}
 
 /* LUM */
 .editableUserOrderTable {
