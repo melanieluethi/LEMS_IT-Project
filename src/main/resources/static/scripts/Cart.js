@@ -172,13 +172,12 @@ function totalCost(shippingCost) {
 }
 
 function saveOrder() {
-	debugger;
 	let cartId = document.getElementById('cartId').value;
 	let shippingId = document.getElementById('shippingId').value;
 	let shippingMethod = document.getElementById('shipping').value;
 	let deliveryAvailable = document.getElementById('deliveryAvailable').value;
 	let deliveryExpressAvailable = document.getElementById('deliveryExpressAvailable').value;
-	let totalPrice = document.getElementById('totalProductCost').value;
+	let totalPrice = document.getElementById('totalProductCost').value;d
 	$.ajax({
 		type:"POST",
 		url: "/api/order",
