@@ -202,42 +202,42 @@ input, text{
 
 .register #fname,
 .userManagement #fname{
-	width: 100%;
+	width: 35%;
 }
 .register #lname,
 .userManagement #lname{
-	width: 100%;
+	width: 35%;
 }
 .register #address,
 .userManagement #address{
 	
-	width: 100%;
+	width: 30%;
 }
 .register #zip,
 .userManagement #zip{
-	width: 100%;
+	width: 7%;
 }
 .register #city,
 .userManagement #city{
 	
-	width: 100%;
+	width: 25%;
 }
 .register #country,
 .userManagement #country{
-	width: 100%;
+	width: 5%;
 }
-.register #email,
-.userManagement #email{
-	width: 100%;
+.register #mail,
+.userManagement #mail{
+	width: 35%;
 	
 }
 .register #password,
 .userManagement #password{
-	width: 60%;
+	width: 40%;
 }
 .register #username,
 .userManagement #username{
-	width: 40%;
+	width: 35%;
 	
 }
 
