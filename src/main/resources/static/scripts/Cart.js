@@ -177,7 +177,7 @@ function saveOrder() {
 	let shippingMethod = document.getElementById('shipping').value;
 	let deliveryAvailable = document.getElementById('deliveryAvailable').value;
 	let deliveryExpressAvailable = document.getElementById('deliveryExpressAvailable').value;
-	let totalPrice = document.getElementById('totalProductCost').value;d
+	let totalPrice = document.getElementById('totalProductCost').value;
 	$.ajax({
 		type:"POST",
 		url: "/api/order",
