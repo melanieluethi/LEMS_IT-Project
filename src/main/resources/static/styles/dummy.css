@@ -21,8 +21,7 @@ body {
 .navbar-brand:hover,
 .dropdown-menu:hover{
   color: white;
-  text-decoration: underline;
-  
+  text-decoration: underline; 
 }
 .navbar-collapse {
   justify-content: flex-end;
@@ -62,16 +61,15 @@ select{
 
 .loginLables{
 	font-size: 20pt;
-	width: 100%;
-    
+	width: 100%;   
 }
+
 .lablebox{
 	 float: left;
 	 width:50%;
 	 left: 50%;
      padding: 20px;
-     box-sizing: border-box;
-     
+     box-sizing: border-box;     
 }
 
 .welcome{
@@ -82,18 +80,19 @@ select{
   text-align: center;
   font-size:2vw;
 }
+
 h1 {
   color: #555555;
   font-size:6vw;
   margin-top:50px;
 }
 
-
 h2 {
   color: #555555;
   font-size: 4vw;
   display:inline-block;
 }
+
 p {
   color: #555555;
   font-size: 2vw;
@@ -104,16 +103,17 @@ p {
   text-align: center;
   font-size:2vw;
 }
+
 .register{
 	text-align: left;
 	font-size:2vw;
 }
+
 .help, .adminView{
 	text-align: left;
 	margin-left: 5%;
 	font-size:2vw;
 }
-
 
 .productChoice{
 	float:top;
@@ -176,25 +176,19 @@ input, text{
 .userbox_input{
 	float: left;
 	width: 30%;
-	padding: 20px;
-    
-    
+	padding: 20px;    
 }
 
 .userbox_lable{
 	float: left;
 	width: 18%;
 	padding: 20px;
-   
-    
 }
-
 
 .pwForm{
 	float: left;
 	width: 100%;
-	padding: 20px;
- 
+	padding: 20px; 
 }
 
 .UserMangement_button{
@@ -221,8 +215,7 @@ input, text{
 	width: 7%;
 }
 .register #city,
-.userManagement #city{
-	
+.userManagement #city{	
 	width: 25%;
 }
 .register #country,
@@ -231,8 +224,7 @@ input, text{
 }
 .register #mail,
 .userManagement #mail{
-	width: 35%;
-	
+	width: 35%;	
 }
 .register #password,
 .userManagement #password{
@@ -240,8 +232,7 @@ input, text{
 }
 .register #username,
 .userManagement #username{
-	width: 35%;
-	
+	width: 35%;	
 }
 
 nav .ul{
@@ -256,8 +247,7 @@ img {
 .images{
     height:30px;
     width:30px;
-  	font-size: 18px;
-  	
+  	font-size: 18px;  	
 }
 
 .pictures {
@@ -271,9 +261,7 @@ img {
 .productChoiceX{
 	float: left;
      width: 70%;
-     padding: 20px;
-     
-     
+     padding: 20px;     
 }
 
 .productDetails{
@@ -286,7 +274,6 @@ img {
      width: 25%;
      padding: 20px;
 }
-
 
 .dropdown #quantity,
 .dropdown #products{
@@ -329,7 +316,6 @@ img {
 	width: 1000px;
 	margin: 100px;
 }
-	
 		
 .button #register, .button #login{
 	height: 50px;
@@ -434,6 +420,14 @@ img {
 		visibility:collapse;
 	}
 	
+	.orderDetail label{
+		display:block;
+	}
+	
+	.productDetail label{
+		display:block;
+	}
+	
 	/* LUM */
 	#divLoginButtons {
 	    position: absolute;
@@ -442,72 +436,7 @@ img {
 	    margin: auto;
 	    width: 100%;
 	}
-	/*WAE*/
-	.fname, 
-	.lname,
-	.address,
-	.zip,
-	.city,
-	.country,
-	.email,
-	.username,
-	.password{
-		display:block;
-		list-style-type: none;
-		margin:0;
-		padding:0;
-	}
-	.register ul{
-		list-style-type: none;
-	}
-	.register #fname,
-	.userManagement #fname{
-		width:auto;
-	}
-	.register #lname,
-	.userManagement #lname{
-		width: auto;
-	}
-	.register #address,
-	.userManagement #address{
-		width: auto;
-	}
-	.register #zip,
-	.userManagement #zip{
-		width: auto;
-	}
-	.register #city,
-	.userManagement #city{
-		width: auto;
-	}
-	.register #country,
-	.userManagement #country{
-		width: auto;
-	}
-	.register #mail,
-	.userManagement #mail{
-		width: auto;
-	}
-	.register #password,
-	.userManagement #password{
-		width: auto;
-	}
-	.register #username,
-	.userManagement #username{
-		width: auto;
-	}
-	.admin button{
-		margin:5%;
-	}
-	.hidden{
-		visibility:collapse;
-	}
-	.orderDetail label{
-		display:block;
-	}
-	.productDetail label{
-		display:block;
-	}
+	
 	.totalCost{
 		margin-top: 10px;
     	display: inherit;
