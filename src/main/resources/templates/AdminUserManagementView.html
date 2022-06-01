@@ -27,8 +27,8 @@ WAE-->
 	  <li class="nav-item">
 		<a class="nav-link" href="/adminHelp" th:text="#{menu.help}"></a>
 	  </li>	  
-	  <li class="nav-item-dropdown">
-        <a class="nav-link-dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
+	  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{menu.language}"></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#" onclick="setLanguage('eng')" th:text="#{menu.english}"></a>
           <a class="dropdown-item" href="#" onclick="setLanguage('de')" th:text="#{menu.german}"></a>
@@ -44,52 +44,60 @@ WAE-->
 <!--SCL-->
 <h1 th:text="#{userManagement.title}"></h1>
 <form th:action="@{/adminUserManagement}"  onsubmit="save();" method="PUT">
-	<ul>
-		<li>
+<ul class="register">
+	<li class="fname">
 		<input type="hidden" id="userId" name="userId">
-		<label th:text="#{register.fname}"></label>
-		<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
-		</li>
-		<li>
-		<label th:text="#{register.lname}"></label>
-		<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
-		</li>
-		<li>
-		<label th:text="#{register.address}"></label>
-		<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
-		</li>
-		<li>
-		<label th:text="#{register.zip}"></label>
-		<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
-		</li>
-		<li>
-		<label th:text="#{register.city}"></label>
-		<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
-		</li>
-		<li>
-		<label th:text="#{register.country}"></label>
-		<input type="text" id="country" name="country" value="CH" required readonly>
-		</li>
-		<li>
-		<label th:text="#{register.email}"></label>
-		<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-		</li>
-		<li>
-		<label th:text="#{register.username}"></label>
-		<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
-		</li>
-		<li>
+	<label th:text="#{register.fname}"></label>
+	<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
+	</li >
+	<li class="lname">
+	<label th:text="#{register.lname}"></label>
+	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
+	</li >
+</ul>
+<ul class="register">
+	<li class="address">
+	<label th:text="#{register.address}"></label>
+	<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required><wbr>
+	</li >
+	<li class="zip">
+	<label th:text="#{register.zip}"></label>
+	<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+	</li >
+	<li class="city">
+	<label th:text="#{register.city}"></label>
+	<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
+	</li >
+	<li class="country">
+	<label th:text="#{register.country}"></label>
+	<input type="text" id="country" name="country" value="CH" required readonly>
+	</li >
+</ul  >
+<ul class="register">
+	<li class="email">
+	<label th:text="#{register.email}"></label>
+	<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required> <!-- Quelle: https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute -->
+	</li >
+	<li class="username">
+	<label th:text="#{register.username}"></label>
+	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required><br>
+	</li >
 		<label th:text="#{register.role}"></label>
-		<select name="role" id="role" disabled>
+		<select name="role" id="role">
   			<option value="ADMIN" th:text="ADMIN"></option>
   			<option value="USER" th:text="USER"></option>
 		</select>
 		</li>
-	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.save}"></button>
+		<br>
+	<button class="button" style=margin:5% type="submit" th:text="#{userDetail.save}"></button>
+
 </form>
 <form th:action="@{/adminUserManagement}" onsubmit="changePw();" method="PUT">
-	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
-	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.changePassword}"></button>
+<li class="password">
+	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required>
+	<button class="button" style=margin:5% type="submit" th:text="#{userDetail.changePassword}"></button>
+</li>
 </form >
+</ul >
 </body>
 </html>

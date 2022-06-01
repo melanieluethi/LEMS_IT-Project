@@ -65,6 +65,7 @@ select{
 }
 .lablebox{
 	 float: left;
+	 width:50%;
 	 left: 50%;
      padding: 20px;
      box-sizing: border-box;
@@ -343,44 +344,81 @@ img {
 
 /* WAE Phone view*/
 @media only screen and (max-width: 768px) {
+	h1{
+		font-size:10vw;
+	}
+	h2{
+		font-size:8vw;
+	}
+	p{
+		font-size:5vw;
+	}
 	input, label{
 		text-align: left;
+		font-size: 5vw;
 	}
+	.login{
+		width:100%;
+	}
+	
+	.register label{
+		display:block;
+	}
+.register{
+	width:100%;
+}
+.fname, 
+.lname,
+.address,
+.zip,
+.city,
+.country,
+.email,
+.username,
+.password{
+	display:block;
+	list-style-type: none;
+	margin:0;
+	padding:0;
+}
+.register ul{
+	list-style-type: none;
+}
 .register #fname,
 .userManagement #fname{
-	width: 80%;
+	width:auto;
 }
 .register #lname,
 .userManagement #lname{
-	width: 80%;
+	width: auto;
 }
 .register #address,
 .userManagement #address{
-	width: 80%;
+	width: auto;
 }
 .register #zip,
 .userManagement #zip{
-	width: 15%;
+	width: auto;
 }
 .register #city,
 .userManagement #city{
-	width: 40%;
+	width: auto;
 }
 .register #country,
 .userManagement #country{
-	width: 15%;
+	width: auto;
 }
-.register #email,
-.userManagement #email{
-	width: 40%;
+.register #mail,
+.userManagement #mail{
+	width: auto;
 }
 .register #password,
 .userManagement #password{
-	width: 80%;
+	width: auto;
 }
 .register #username,
 .userManagement #username{
-	width: 80%;
+	width: auto;
 }
 }
 
