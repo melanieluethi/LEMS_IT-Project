@@ -441,6 +441,13 @@ img {
 		margin-top: 10px;
     	display: inherit;
 	}
+	.pictures{
+		position:absolute;
+		height: auto; 
+		width: 50%;    
+		left: 10%; 
+		top:100%;
+	}
 }
 
 /* LUM */
