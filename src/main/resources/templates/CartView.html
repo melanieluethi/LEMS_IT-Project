@@ -81,12 +81,12 @@ WAE-->
 <input type="hidden" id="expressCost" name="expressCost">
 <input type="hidden" id="standardCost" name="standardCost">
 <input type="hidden" id="packageCost" name="packageCost">
-
-<h2 th:text="#{cart.totalCost}"/>   
-<label id="totalCost"></label></br>
-   
-<button type="button" class="button" id="saveOrder" onclick="saveOrder()" th:text="#{cart.saveOrder}"></button>
 </div>
+<div class="totalCost">
+<h2 th:text="#{cart.totalCost}"/>   
+<label id="totalCost"></label>
+</div ></br>
+<button type="button" class="button" id="saveOrder" onclick="saveOrder()" th:text="#{cart.saveOrder}"></button>
 </div>
 </div>
 </div>
