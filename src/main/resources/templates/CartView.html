@@ -4,7 +4,7 @@ WAE-->
 <head>
     <title th:text="#{cart.title}"></title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
 	<link rel="stylesheet" th:href="@{/styles/dummy.css}" />
 	<link rel="shortcut icon" href="#" />
@@ -13,6 +13,7 @@ WAE-->
 	<script th:src="@{/scripts/Language.js}"></script>
 	<script th:src="@{/scripts/Cart.js}"></script>
 </head>
+<body>
 <div>
 <nav class="navbar navbar-expand-md">
    <a class="navbar-brand" th:href="@{/home}" th:text="#{login.firma}"></a>
@@ -47,52 +48,49 @@ WAE-->
 </nav>
 <!-- LUM -->
 <div id="cartBody">
-<div class="cart">
-<h1 th:text="#{cart.title}"></h1 > <br>
-<input type="hidden" id="cartId" name="cartId">
-<table class="table" style="width:50%" id="cartTable">
-  <tr>
-  	<th th:text="#{cart.product}"></th >
-    <th th:text="#{cart.quantity}"></th >
-    <th th:text="#{cart.discount}"></th >
-    <th th:text="#{cart.price}"></th >
-  </tr>
-</table>
-</div>
-<input type="hidden" id="amountProduct1" name="amountProduct1" value="0">
-<input type="hidden" id="amountProduct2" name="amountProduct2" value="0">
-<input type="hidden" id="amountProduct3" name="amountProduct3" value="0">
-<input type="hidden" id="amountProduct4" name="amountProduct4" value="0">
-<input type="hidden" id="deliveryAvailable" name="deliveryAvailable">
-<input type="hidden" id="deliveryExpressAvailable" name="deliveryExpressAvailable">
-<input type="hidden" id="totalProductCost" name="totalProductCost">
+	<div class="cart">
+		<h1 th:text="#{cart.title}"></h1 > <br>
+		<input type="hidden" id="cartId" name="cartId">
+		<table class="table" style="width:50%" id="cartTable">
+		  <tr>
+		  	<th th:text="#{cart.product}"></th >
+		    <th th:text="#{cart.quantity}"></th >
+		    <th th:text="#{cart.discount}"></th >
+		    <th th:text="#{cart.price}"></th >
+		  </tr>
+		</table>
+	</div>
+	<input type="hidden" id="amountProduct1" name="amountProduct1" value="0">
+	<input type="hidden" id="amountProduct2" name="amountProduct2" value="0">
+	<input type="hidden" id="amountProduct3" name="amountProduct3" value="0">
+	<input type="hidden" id="amountProduct4" name="amountProduct4" value="0">
+	<input type="hidden" id="deliveryAvailable" name="deliveryAvailable">
+	<input type="hidden" id="deliveryExpressAvailable" name="deliveryExpressAvailable">
+	<input type="hidden" id="totalProductCost" name="totalProductCost">
+	<h2 th:text="#{cart.shipping}"></h2> <br>
 
-<h2 th:text="#{cart.shipping}"></h2> <br>
-<div class="cartDropdown">
-  <select class="dropdown" id="shipping" name="shipping" onchange="setShippingCost()">
-    <option value="express" th:text="#{cart.express}"></option>
-    <option value="standard" th:text="#{cart.standard}"></option>
-    <option value="package" th:text="#{cart.package}"></option>
-  </select>
-
-<input type="hidden" id="shippingId" name="shippingId" value="0">
-<label th:text="#{cart.shippingCost}"/>   
-<label id="shippingCost"></label></br>
-<input type="hidden" id="expressCost" name="expressCost">
-<input type="hidden" id="standardCost" name="standardCost">
-<input type="hidden" id="packageCost" name="packageCost">
+	<div class="cartDropdown">
+		<select class="dropdown" id="shipping" name="shipping" onchange="setShippingCost()">
+		    <option value="express" th:text="#{cart.express}"></option>
+		    <option value="standard" th:text="#{cart.standard}"></option>
+			<option value="package" th:text="#{cart.package}"></option>
+		</select>
+		<input type="hidden" id="shippingId" name="shippingId" value="0">
+		<label th:text="#{cart.shippingCost}"/>   
+		<label id="shippingCost"></label></br>
+		<input type="hidden" id="expressCost" name="expressCost">
+		<input type="hidden" id="standardCost" name="standardCost">
+		<input type="hidden" id="packageCost" name="packageCost">
+	</div>
+	<div class="totalCost">
+		<h2 th:text="#{cart.totalCost}"/>   
+		<label id="totalCost"></label>
+	</div ></br>
+	<button type="button" class="button" id="saveOrder" onclick="saveOrder()" th:text="#{cart.saveOrder}"></button>
+	<div id="cartNoValue">
+		<h1 th:text="#{cart.title}"></h1 ><br>
+		<h2 id="cartNoElementsTitle"></h2 >
+	</div >
 </div>
-<div class="totalCost">
-<h2 th:text="#{cart.totalCost}"/>   
-<label id="totalCost"></label>
-</div ></br>
-<button type="button" class="button" id="saveOrder" onclick="saveOrder()" th:text="#{cart.saveOrder}"></button>
-</div>
-</div>
-</div>
-<div id="cartNoValue">
-<h1 th:text="#{cart.title}"></h1 ><br>
-<h2 id="cartNoElementsTitle"></h2 >
-</div >
 </body>
 </html>
