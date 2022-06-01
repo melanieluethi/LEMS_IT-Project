@@ -426,6 +426,12 @@ img {
 .hidden{
 	visibility:collapse;
 }
+.orderDetail label{
+	display:block;
+}
+.productDetail label{
+	display:block;
+}
 }
 
 /* LUM */
