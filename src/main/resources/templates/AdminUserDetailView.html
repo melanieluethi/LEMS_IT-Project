@@ -44,27 +44,62 @@ WAE-->
 <div class="userDetail">
 	<h1 th:text="#{userDetail.title}"/>
 <form th:action="@{/adminUsers}"  onsubmit="save();" method="PUT">
-	<input type="hidden" id="userId" name="userId">
+	
+<ul class="register">
+	<li class="fname">
+		<input type="hidden" id="userId" name="userId">
+	<label th:text="#{register.fname}"></label>
 	<input type="text" id="fname" name="fname" th:attr="placeholder=#{register.fname}" required>
+	</li >
+	<li class="lname">
+	<label th:text="#{register.lname}"></label>
 	<input type="text" id="lname" name="lname" th:attr="placeholder=#{register.lname}" required>
-	<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required>
+	</li >
+</ul>
+<ul class="register">
+	<li class="address">
+	<label th:text="#{register.address}"></label>
+	<input type="text" id="address" name="address" th:attr="placeholder=#{register.address}" required><wbr>
+	</li >
+	<li class="zip">
+	<label th:text="#{register.zip}"></label>
 	<input id="zip" name="zip" th:attr="placeholder=#{register.zip}" type="number" max="9999" min="1000" required>
+	</li >
+	<li class="city">
+	<label th:text="#{register.city}"></label>
 	<input type="text" id="city" name="city" th:attr="placeholder=#{register.city}" maxlength="58" required>
+	</li >
+	<li class="country">
+	<label th:text="#{register.country}"></label>
 	<input type="text" id="country" name="country" value="CH" required readonly>
-	<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required>
-	<select name="role" id="role" disabled>
-  		<option value="ADMIN" th:text="ADMIN"></option>
-  		<option value="USER" th:text="USER"></option>
-	</select>
-	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.save}"></button>
-</form>
-<form th:action="@{/adminUsers}" onsubmit="changePw();" method="PUT">
-	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required> <br>
-	<button class="button" style=margin-left:5% type="submit" th:text="#{userDetail.changePassword}"></button>
-</form >
-</div>
+	</li >
+</ul  >
+<ul class="register">
+	<li class="email">
+	<label th:text="#{register.email}"></label>
+	<input type="text" id="mail" name="mail" th:attr="placeholder=#{register.email}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required> <!-- Quelle: https://stackoverflow.com/questions/5601647/html5-email-input-pattern-attribute -->
+	</li >
+	<li class="username">
+	<label th:text="#{register.username}"></label>
+	<input type="text" id="username" name="username" th:attr="placeholder=#{login.enterUsername}" minlength="8" required><br>
+	</li >
+		<label th:text="#{register.role}"></label>
+		<select name="role" id="role">
+  			<option value="ADMIN" th:text="ADMIN"></option>
+  			<option value="USER" th:text="USER"></option>
+		</select>
+		</li>
+		<br>
+	<button class="button" style=margin:5% type="submit" th:text="#{userDetail.save}"></button>
 
+</form>
+<form th:action="@{/adminUserManagement}" onsubmit="changePw();" method="PUT">
+<li class="password">
+	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required>
+	<button class="button" style=margin:5% type="submit" th:text="#{userDetail.changePassword}"></button>
+</li>
+</form >
+</ul >
 </div>
 </body>
 </html>

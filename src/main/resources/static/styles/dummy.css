@@ -420,6 +420,12 @@ img {
 .userManagement #username{
 	width: auto;
 }
+.admin button{
+	margin:5%;
+}
+.hidden{
+	visibility:collapse;
+}
 }
 
 /* LUM */
