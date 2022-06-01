@@ -48,9 +48,7 @@ select{
   	left: 50%;
   	transform: translate(-50%, -50%);
   	text-align: center;
-  	font-size:2vw;
-  	
-	
+  	font-size:2vw;	
 }
 
 #divLoginButtons {
@@ -275,10 +273,8 @@ img {
 }
 
 .productDetails{
-		width: 70%;
-		padding: 20px;
-
-     	
+	width: 70%;
+	padding: 20px;
 }
 
 .addToCart{
@@ -328,7 +324,7 @@ img {
 	height: 100px; 
 	width: 1000px;
 	margin: 100px;
-	}
+}
 	
 		
 .button #register, .button #login{
@@ -361,71 +357,87 @@ img {
 		width:100%;
 	}
 	
+	.loginLables {
+	    font-size: 18pt;
+    	width: 65%;
+	}
+
 	.register label{
 		display:block;
 	}
-.register{
-	width:100%;
-}
-.fname, 
-.lname,
-.address,
-.zip,
-.city,
-.country,
-.email,
-.username,
-.password{
-	display:block;
-	list-style-type: none;
-	margin:0;
-	padding:0;
-}
-.register ul{
-	list-style-type: none;
-}
-.register #fname,
-.userManagement #fname{
-	width:auto;
-}
-.register #lname,
-.userManagement #lname{
-	width: auto;
-}
-.register #address,
-.userManagement #address{
-	width: auto;
-}
-.register #zip,
-.userManagement #zip{
-	width: auto;
-}
-.register #city,
-.userManagement #city{
-	width: auto;
-}
-.register #country,
-.userManagement #country{
-	width: auto;
-}
-.register #mail,
-.userManagement #mail{
-	width: auto;
-}
-.register #password,
-.userManagement #password{
-	width: auto;
-}
-.register #username,
-.userManagement #username{
-	width: auto;
-}
-.admin button{
-	margin:5%;
-}
-.hidden{
-	visibility:collapse;
-}
+	
+	.register{
+		width:100%;
+	}
+	
+	.fname, 
+	.lname,
+	.address,
+	.zip,
+	.city,
+	.country,
+	.email,
+	.username,
+	.password{
+		display:block;
+		list-style-type: none;
+		margin:0;
+		padding:0;
+	}
+	.register ul{
+		list-style-type: none;
+	}
+	.register #fname,
+	.userManagement #fname{
+		width:auto;
+	}
+	.register #lname,
+	.userManagement #lname{
+		width: auto;
+	}
+	.register #address,
+	.userManagement #address{
+		width: auto;
+	}
+	.register #zip,
+	.userManagement #zip{
+		width: auto;
+	}
+	.register #city,
+	.userManagement #city{
+		width: auto;
+	}
+	.register #country,
+	.userManagement #country{
+		width: auto;
+	}
+	.register #mail,
+	.userManagement #mail{
+		width: auto;
+	}
+	.register #password,
+	.userManagement #password{
+		width: auto;
+	}
+	.register #username,
+	.userManagement #username{
+		width: auto;
+	}
+	.admin button{
+		margin:5%;
+	}
+	.hidden{
+		visibility:collapse;
+	}
+	
+	/* LUM */
+	#divLoginButtons {
+	    position: absolute;
+	    top: 100%;
+	    left: auto;
+	    margin: auto;
+	    width: 100%;
+	}
 }
 
 /* LUM */
