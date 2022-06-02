@@ -90,13 +90,14 @@ WAE-->
 		</select>
 		</li>
 		<br>
-	<button class="button" style=margin:5% type="submit" th:text="#{userDetail.save}"></button>
+	<button class="button" type="submit" th:text="#{userDetail.save}"></button>
 
 </form>
 <form th:action="@{/adminUserManagement}" onsubmit="changePw();" method="PUT">
 <li class="password">
+	<label th:text="#{login.enterPassword}"></label>
 	<input type="text" id="password" name="password" th:attr="placeholder=#{login.enterPassword}" minlength="8" required>
-	<button class="button" style=margin:5% type="submit" th:text="#{userDetail.changePassword}"></button>
+	<button class="button" type="submit" th:text="#{userDetail.changePassword}"></button>
 </li>
 </form >
 </ul >
