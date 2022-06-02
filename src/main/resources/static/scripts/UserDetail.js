@@ -20,7 +20,7 @@ function getUser() {
 			city.value = data.city;
 			let country = document.getElementById('country');
 			country.value = data.country;
-			let email = document.getElementById('email');
+			let email = document.getElementById('mail');
 			email.value = data.email;
 			let username = document.getElementById('username');
 			username.value = data.username;	
@@ -41,7 +41,7 @@ function save() {
 	let zip = document.getElementById('zip').value;
 	let city = document.getElementById('city').value;
 	let country = document.getElementById('country').value;
-	let email = document.getElementById('email').value;
+	let email = document.getElementById('mail').value;
 	let username = document.getElementById('username').value;
 	let role = document.getElementById('role').value;		
 	
