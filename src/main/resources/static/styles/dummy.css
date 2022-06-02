@@ -422,13 +422,14 @@ img {
 	
 	.orderDetail label{
 		display:block;
-	}
-	
-	.productDetail label{
-		display:block;
-	}
+	}	
 	
 	/* LUM */
+	.productDetail label{
+		width: 50% !important;
+	    margin: 2%;
+	}
+	
 	#divLoginButtons {
 	    position: absolute;
 	    top: 100%;
@@ -441,12 +442,46 @@ img {
 		margin-top: 10px;
     	display: inherit;
 	}
-	.pictures{
-		position:absolute;
-		height: auto; 
-		width: 50%;    
-		left: 10%; 
-		top:100%;
+	
+	input#productname,
+	input#discount,
+	input#descriptionDe,
+	input#descriptionEng {
+		width: 98% !important;
+	}
+	
+	.productDetail .button {
+	    display: block;
+	    margin-left: auto !important;
+	    margin-right: auto !important;
+	}
+	
+	.productChoiceX {
+		width: 100%;
+	}
+	
+	.productChoiceX #products {
+		width: 98%;
+	}
+	
+	.addToCart {
+	    width: 55%;
+        float: none;
+	    display: block;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	
+	.pictures {
+		position: inherit;
+	    height: auto;
+	    width: 100%;
+	    text-align: center;
+	}
+	
+	img {
+		width: 80%;
+	    height: auto;
 	}
 }
 
@@ -478,4 +513,32 @@ img {
 
 .totalCost{
 	margin-top: 10px;
+}
+
+input#productname,
+input#discount {
+	width: 30%;
+}
+
+input#descriptionDe,
+input#descriptionEng {
+	width: 70%;
+}
+
+.productDetail label{
+	text-align: left;
+    clear: both;
+    float: left;
+    margin: 0.5%;
+    width: 10%;
+}
+
+.productDetail #productImg {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.productDetail .button {
+	margin: 0.5%;
 }
